@@ -1,8 +1,10 @@
-
+import '../styles/event.scss';
 const Event = () => {
   return (
-    <div>Event</div>
-  )
-}
+    <div className='main-container'>
+      <p>Event</p>
+    </div>
+  );
+};
 
-export default Event
+export default Event;
