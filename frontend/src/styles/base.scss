@@ -2,10 +2,9 @@ $color-1: #f5f5f5;
 
 $color-2: #e8e8e8;
 
-
 .color-1 {
-    background-color: $color-1;
-    color: $color-1-text;
+  background-color: $color-1;
+  color: $color-1-text;
 }
 
 .min-klass {
@@ -17,8 +16,6 @@ $color-2: #e8e8e8;
     }
     @media screen and (max-width: 768px) {
       color: $color-1-text;
-      
     }
   }
-
 }
