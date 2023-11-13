@@ -1,7 +1,7 @@
 
 # Pally
 
-![Event parameter](https://github.com/Marcus-Oskarsson/testar/actions/workflows/eslint-and-prettier.yaml/badge.svg?event=push)
+![Event parameter](https://github.com/Marcus-Oskarsson/Pally/actions/workflows/eslint-and-prettier.yaml/badge.svg?event=push)
 
 ## Description
 
