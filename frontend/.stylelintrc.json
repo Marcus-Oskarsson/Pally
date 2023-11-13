@@ -18,6 +18,7 @@
     "at-rule-empty-line-before": [
       "always", {
         "ignore": ["after-comment"]
-      }]
+      }],
+    "property-no-vendor-prefix": null
   }
 }

@@ -23,7 +23,7 @@ $color-2: #e8e8e8;
   }
 }
 
-//Dessa behöver man inte använda, men kan vara god praxis :>
+// Dessa behöver man inte använda, men kan vara god praxis :>
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -31,6 +31,7 @@ $color-2: #e8e8e8;
   -o-border-radius: $radius;
   border-radius: $radius;
 }
+
 // Exempel:
 // @include transition(all 0.5s ease);
 
@@ -41,5 +42,6 @@ $color-2: #e8e8e8;
   -o-transition: $content;
   transition: $content;
 }
+
 // Exempel:
 // @include border-radius(3px);
