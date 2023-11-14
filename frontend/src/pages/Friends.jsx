@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SearchFriends } from '../components/searchFriends';
+import { SearchFriends } from '../components/SearchFriends';
 import { UserFriends } from '../components/UserFriends';
 const Friends = () => {
   const [toggleSearch, setToggleSearch] = useState(false);
