@@ -32,25 +32,37 @@ const Home = () => {
       <div className='BoxContainerActive'>
         <div className='BoxWithTitles'>
           <div className='Box'>Bar</div>
-          <h3 className='EventTitle'>Event Name</h3>
+          <div className='TitleDate'>
+            <h3>Event Name</h3>
+            <span>EventDate</span>
+          </div>
           <h3 className='EventPlace'>Event Place</h3>
         </div>
 
         <div className='BoxWithTitles'>
           <div className='Box'>Bar</div>
-          <h3 className='EventTitle'>Event Name</h3>
+          <div className='TitleDate'>
+            <h3>Event Name</h3>
+            <span>EventDate</span>
+          </div>
           <h4 className='EventPlace'>Event Place</h4>
         </div>
 
         <div className='BoxWithTitles'>
           <div className='Box'>Restaurant</div>
-          <h3 className='EventTitle'>Event Name</h3>
+          <div className='TitleDate'>
+            <h3>Event Name</h3>
+            <span>EventDate</span>
+          </div>
           <h4 className='EventPlace'>Event Place</h4>
         </div>
 
         <div className='BoxWithTitles'>
           <div className='Box'>Activities</div>
-          <h3 className='EventTitle'>Event Name</h3>
+          <div className='TitleDate'>
+            <h3>Event Name</h3>
+            <span>EventDate</span>
+          </div>
           <h4 className='EventPlace'>Event Place</h4>
         </div>
       </div>

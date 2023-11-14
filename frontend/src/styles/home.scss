@@ -1,112 +1,102 @@
 .ProfileMainContainer {
   width: 90%;
   margin: 0 auto;
-  background-color: red;
   padding: 5px;
+  background-color: #f7f2f1;
+}
 
+.Title {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 20px;
+}
 
-  .Title {
-    color: #000;
-    font-size: 20px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-
-  .BoxContainerActive {
-    margin-top: 20px;
-
-  .BoxContainer {
-    gap: 5px;
-    justify-content: space-around;
-    margin-top: 20px;
-
-
-    .Box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 150px;
-      height: 100px;
-
-      background: grey;
-      border: 1px solid #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out;
-
-      &:hover {
-        transform: scale(1.05);
-      }
-
-      .EventTitle {
-        font-size: 10px;
-        color: #000;
-      }
-
-      .EventPlace {
-        font-size: 10px;
-        color: #000;
-      }
-    }
-
-    .BoxWithTitles {
-      margin-bottom: 10px;
-    }
-  }
+.BoxContainerActive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .BoxContainerUpcoming {
+  display: flex;
+  flex-direction: row;
   margin-top: 20px;
-
-
-
-  .Box {
-    width: 150px;
-    height: 100px;
-    background: grey;
-    border: 1px solid #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-
-
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
 }
 
 .FriendsContainer {
   display: flex;
   gap: 15px;
-  margin-bottom: 45px;
   justify-content: center;
-
-  .FriendBox {
-    text-align: center;
-
-    .FriendRoundBorder {
-      width: 40px;
-      height: 40px;
-      background: grey;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      margin-bottom: 2px;
-
-    }
-
-    .FriendName {
-      font-size: 10px;
-      color: #000;
-    }
-  }
+  margin-top: 10px;
+  margin-bottom: 45px;
 }
+
+.FriendBox {
+  text-align: center;
+}
+
+.FriendRoundBorder {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 2px;
+  color: black;
+  background-color: #ffd3b8;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+
+.FriendName {
+  color: #000;
+  font-size: 10px;
+}
+
+.Box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 100px;
+  margin: 4px;
+  color: #fff;
+  background: #ffd3b8;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  box-shadow: 1px 6px 12px rgb(194 194 194);
+  transition: transform 0.3s ease-in-out;
+}
+
+.Box:hover {
+  transform: scale(1.05);
+}
+
+.EventTitle {
+  color: #000;
+  font-size: 10px;
+}
+
+.EventPlace {
+  color: #000;
+  font-size: 10px;
+}
+
+.BoxWithTitles {
+  margin-bottom: 10px;
+}
+
+.TitleDate {
+  display: flex;
+  font-size: 10px;
+
+  span {
+    margin-left: 50px;
+  }
+
+  h3 {
+    font-size: 13px;
+  }
 }

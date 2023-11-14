@@ -8,24 +8,24 @@
 
 .bigContainer {
   display: flex;
-  width: 100%;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   font-family: Poppins, sans-serif;
 
   div {
+    align-items: center;
     width: 300px;
     height: 5em;
-    align-items: center;
 
     .Field {
-      color: rgb(0, 0, 0);
-      height: 40px;
       width: 95%;
-      font-size: 14px;
-      padding-left: 15px;
+      height: 40px;
       margin-bottom: 5px;
+      padding-left: 15px;
+      color: rgb(0 0 0);
+      font-size: 14px;
       border: 1px solid #000;
       border-radius: 50px;
     }
@@ -35,9 +35,9 @@
     }
 
     p {
-      color: rgb(255, 39, 39);
-      font-size: 12px;
       margin-left: 15px;
+      color: rgb(255 39 39);
+      font-size: 12px;
     }
   }
 
