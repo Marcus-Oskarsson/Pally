@@ -27,7 +27,7 @@ a {
 }
 
 // Exempel:
-// @include transition(all 0.5s ease);
+// @include border-radius(3px);
 
 @mixin transition($content) {
   -webkit-transition: $content;
@@ -38,4 +38,4 @@ a {
 }
 
 // Exempel:
-// @include border-radius(3px);
+// @include transition(all 0.5s ease);

@@ -1,8 +1,9 @@
 import '../styles/event.scss';
+import AttendingEvents from '../components/AttendingEvents.jsx';
 const Event = () => {
   return (
-    <div className='main-container'>
-      <p>Event</p>
+    <div>
+      <AttendingEvents />
     </div>
   );
 };
