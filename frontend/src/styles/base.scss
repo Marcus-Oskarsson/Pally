@@ -1,25 +1,19 @@
 // font-family: "Poppins", sans-serif;
 // Klassisk men roligare font om vi vill använda
-
-$color-1: #f5f5f5;
-$color-2: #e8e8e8;
+@import 'variables';
 
 .color-1 {
   color: $color-1-text;
   background-color: $color-1;
 }
 
-.min-klass {
-  a {
-    color: $color-1-text;
+a {
+  color: $color-1-text;
+  text-decoration: underline;
 
-    &:hover {
-      color: $color-1-text;
-    }
-
-    @media screen and (width <= 768px) {
-      color: $color-1-text;
-    }
+  &:active,
+  :focus {
+    outline: 10px solid $color-2;
   }
 }
 
@@ -33,7 +27,7 @@ $color-2: #e8e8e8;
 }
 
 // Exempel:
-// @include transition(all 0.5s ease);
+// @include border-radius(3px);
 
 @mixin transition($content) {
   -webkit-transition: $content;
@@ -44,4 +38,4 @@ $color-2: #e8e8e8;
 }
 
 // Exempel:
-// @include border-radius(3px);
+// @include transition(all 0.5s ease);
