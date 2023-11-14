@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
+  margin: 40px auto;
   background-color: #f7f2f1;
 
   h1 {
@@ -37,7 +38,7 @@
     height: auto;
   }
 
-  button {
+  .button-choices {
     width: 250px;
     margin: 10px 0;
     padding: 10px 35px;
@@ -63,6 +64,26 @@
 .icons {
   max-width: 25px;
   max-height: 25px;
-  margin-top: 10px;
-  margin-right: 10px;
+  margin: 5px 10px;
+}
+
+.icon-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.button-toggle {
+  margin: 10px 0;
+  padding: 10px 35px;
+  color: #fff;
+  font-size: 12px;
+  background-color: #ffd3b8;
+  border: none;
+  border-radius: 50px;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 }
