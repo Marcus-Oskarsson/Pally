@@ -6,7 +6,7 @@
   transition: $content;
 }
 
-.main-container {
+.main-friends-container {
   width: 90%;
   margin: 40px auto; //Tillfällig
   font-family: Poppins, sans-serif; //Tillfällig
@@ -29,6 +29,43 @@
 
     img {
       width: 100px;
+    }
+  }
+
+  .search-friends-container {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 50px;
+    padding: 5px;
+    width: 90%;
+  }
+  input {
+    border: none;
+    width: 85%;
+  }
+  input:focus {
+    outline: none;
+  }
+  img {
+    width: 10%;
+  }
+
+  .result-friends-container {
+    margin-top: 20px;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+
+    .result-friends {
+      display: flex;
+      align-items: center;
+    }
+    img {
+      width: 15%;
     }
   }
 }
