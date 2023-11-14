@@ -15,10 +15,19 @@
   .BoxContainerActive {
     margin-top: 20px;
 
+  .BoxContainer {
+    gap: 5px;
+    justify-content: space-around;
+    margin-top: 20px;
+
 
     .Box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 150px;
       height: 100px;
+
       background: grey;
       border: 1px solid #fff;
       display: flex;
@@ -99,4 +108,5 @@
       color: #000;
     }
   }
+}
 }

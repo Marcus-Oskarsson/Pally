@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { SearchFriends } from '../components/searchFriends';
 import { UserFriends } from '../components/UserFriends';
+import '../styles/friends.scss';
 const Friends = () => {
   const [toggleSearch, setToggleSearch] = useState(false);
   return (
     <>
-      <div>Friends</div>
       {toggleSearch ? <SearchFriends /> : <UserFriends />}
-
-      <button onClick={() => setToggleSearch(!toggleSearch)}>
-        {toggleSearch ? 'Your friends' : 'Find new friends'}
-      </button>
+      <div className='button-container'>
+        <button onClick={() => setToggleSearch(!toggleSearch)}>
+          {toggleSearch ? 'Your friends' : 'Find new friends'}
+        </button>
+      </div>
     </>
   );
 };
