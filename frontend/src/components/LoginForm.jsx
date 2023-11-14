@@ -1,4 +1,4 @@
-import '../styles/login.css';
+import '../styles/login.scss';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <div>
+      <div className='bigContainer'>
         {/* Lägg till onSubmit på Formik-taggen */}
         <Formik
           initialValues={initialValues}
@@ -22,9 +22,9 @@ const LoginForm = () => {
         >
           {({ errors, touched }) => (
             <Form>
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='email'
                   placeholder='Email'
@@ -34,9 +34,9 @@ const LoginForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='password'
                   name='password'
                   placeholder='Password'
@@ -45,18 +45,10 @@ const LoginForm = () => {
                   <p className='fieldError'>{errors.password}</p>
                 )}
               </div>
-              <button className='loginButton' type='submit'>
-                Log in
-              </button>
 
-              <p>
-                Not a member yet?{' '}
-                <span
-                  style={{ cursor: 'pointer', textDecoration: 'underline' }}
-                >
-                  Click here!
-                </span>
-              </p>
+              <div className='buttonDiv'>
+                <button type='submit'>Log in</button>
+              </div>
             </Form>
           )}
         </Formik>

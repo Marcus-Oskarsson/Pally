@@ -1,4 +1,3 @@
-import '../styles/signup.css';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
@@ -37,7 +36,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div>
+      <div className='bigContainer'>
         {/* Lägg till onSubmit på Formik-taggen */}
         <Formik
           initialValues={initialValues}
@@ -45,9 +44,9 @@ const SignUpForm = () => {
         >
           {({ errors, touched }) => (
             <Form>
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='firstName'
                   placeholder='First Name'
@@ -57,9 +56,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='lastName'
                   placeholder='Last Name'
@@ -69,9 +68,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='email'
                   placeholder='Email'
@@ -81,9 +80,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='personalNumber'
                   placeholder='YYYYMMDDXXXX'
@@ -93,9 +92,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='tel'
                   name='phone'
                   placeholder='Phone Number'
@@ -105,9 +104,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='street'
                   placeholder='Street'
@@ -117,9 +116,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='zipCode'
                   placeholder='Zip Code'
@@ -129,9 +128,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='text'
                   name='city'
                   placeholder='City'
@@ -141,9 +140,9 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <div className='fieldContainer'>
+              <div>
                 <Field
-                  className='field'
+                  className='Field'
                   type='password'
                   name='password'
                   placeholder='Password'
@@ -153,9 +152,11 @@ const SignUpForm = () => {
                 )}
               </div>
 
-              <button className='signUpButton' type='submit'>
-                Sign up
-              </button>
+              <div className='buttonDiv'>
+                <button className='signUpButton' type='submit'>
+                  Sign up
+                </button>
+              </div>
             </Form>
           )}
         </Formik>
