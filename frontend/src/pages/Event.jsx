@@ -1,8 +1,11 @@
-
+import '../styles/event.scss';
+import AttendingEvents from '../components/AttendingEvents.jsx';
 const Event = () => {
   return (
-    <div>Event</div>
-  )
-}
+    <div>
+      <AttendingEvents />
+    </div>
+  );
+};
 
-export default Event
+export default Event;

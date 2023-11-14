@@ -1,10 +1,12 @@
-$color-1: #f5f5f5;
+// font-family: "Poppins", sans-serif;
+// Klassisk men roligare font om vi vill använda
 
+$color-1: #f5f5f5;
 $color-2: #e8e8e8;
 
 .color-1 {
-  background-color: $color-1;
   color: $color-1-text;
+  background-color: $color-1;
 }
 
 .min-klass {
@@ -14,8 +16,32 @@ $color-2: #e8e8e8;
     &:hover {
       color: $color-1-text;
     }
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
       color: $color-1-text;
     }
   }
 }
+
+// Dessa behöver man inte använda, men kan vara god praxis :>
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// Exempel:
+// @include border-radius(3px);
+
+@mixin transition($content) {
+  -webkit-transition: $content;
+  -moz-transition: $content;
+  -ms-transition: $content;
+  -o-transition: $content;
+  transition: $content;
+}
+
+// Exempel:
+// @include transition(all 0.5s ease);
