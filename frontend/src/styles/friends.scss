@@ -31,6 +31,26 @@
       width: 100px;
     }
   }
+
+  .search-friends-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #000;
+    border-radius: 50px;
+    padding: 5px;
+    width: 90%;
+  }
+  input {
+    border: none;
+    width: 85%;
+  }
+  input:focus {
+    outline: none;
+  }
+  img {
+width: 10%;
+  }
 }
 
 .button-container {
