@@ -6,17 +6,15 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 
-import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Header from './components/Header';
 
 import './styles/reset.scss';
 
 function Root() {
   return (
     <>
-      <header>
-        <Navbar />
-      </header>
+      <Header />
       <main>
         <Outlet />
       </main>

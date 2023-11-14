@@ -7,14 +7,13 @@
   background-color: $color-1;
 }
 
+.visually-hidden {
+  visibility: hidden;
+}
+
 a {
   color: $color-1-text;
   text-decoration: underline;
-
-  &:active,
-  :focus {
-    outline: 10px solid $color-2;
-  }
 }
 
 // Dessa behöver man inte använda, men kan vara god praxis :>
