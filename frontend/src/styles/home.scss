@@ -1,34 +1,102 @@
-
 .ProfileMainContainer {
-background-color: red;
   width: 90%;
   margin: 0 auto;
-  
+  background-color: red;
+  padding: 5px;
+
 
   .Title {
-    color: #333;
+    color: #000;
     font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
-  
-
-  .BoxContainer {
-    
-    justify-content: space-around;
+  .BoxContainerActive {
     margin-top: 20px;
-    gap: 5px;
-   
+
 
     .Box {
       width: 150px;
       height: 100px;
-      background: #f0f0f0;
-      border: 1px solid #000;
+      background: grey;
+      border: 1px solid #fff;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      border-radius: 5px;
-      
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .EventTitle {
+        font-size: 10px;
+        color: #000;
+      }
+
+      .EventPlace {
+        font-size: 10px;
+        color: #000;
+      }
+    }
+
+    .BoxWithTitles {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.BoxContainerUpcoming {
+  margin-top: 20px;
+
+
+
+  .Box {
+    width: 150px;
+    height: 100px;
+    background: grey;
+    border: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.FriendsContainer {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 45px;
+  justify-content: center;
+
+  .FriendBox {
+    text-align: center;
+
+    .FriendRoundBorder {
+      width: 40px;
+      height: 40px;
+      background: grey;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      margin-bottom: 2px;
+
+    }
+
+    .FriendName {
+      font-size: 10px;
+      color: #000;
     }
   }
 }
