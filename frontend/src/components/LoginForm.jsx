@@ -45,7 +45,9 @@ const LoginForm = () => {
                   <p className='fieldError'>{errors.password}</p>
                 )}
               </div>
-              <button type='submit'>Log in</button>
+              <button className='loginButton' type='submit'>
+                Log in
+              </button>
 
               <p>
                 Not a member yet?{' '}
