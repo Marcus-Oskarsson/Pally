@@ -1,0 +1,28 @@
+@import 'base';
+
+.page-footer {
+  padding: 32px;
+  background: $color-1;
+  box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .link-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    li {
+      margin-bottom: 16px;
+
+      a {
+        color: $color-1-text;
+      }
+    }
+  }
+}

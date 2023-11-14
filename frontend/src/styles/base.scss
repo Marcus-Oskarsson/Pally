@@ -1,26 +1,19 @@
 // font-family: "Poppins", sans-serif;
 // Klassisk men roligare font om vi vill använda
-
-$color-1: #f5f5f5;
-$color-2: #e8e8e8;
+@import 'variables';
 
 .color-1 {
   color: $color-1-text;
   background-color: $color-1;
 }
 
-.min-klass {
-  a {
-    color: $color-1-text;
+.visually-hidden {
+  visibility: hidden;
+}
 
-    &:hover {
-      color: $color-1-text;
-    }
-
-    @media screen and (width <= 768px) {
-      color: $color-1-text;
-    }
-  }
+a {
+  color: $color-1-text;
+  text-decoration: underline;
 }
 
 // Dessa behöver man inte använda, men kan vara god praxis :>
