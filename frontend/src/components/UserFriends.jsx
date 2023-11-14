@@ -20,7 +20,7 @@ export const UserFriends = () => {
   ];
   return (
     <>
-      <div className='main-container'>
+      <div className='main-friends-container'>
         <h2>Your Friends</h2>
         {friendsArray.map((friends) => (
           <div key={friends.id} className='friends-container'>
