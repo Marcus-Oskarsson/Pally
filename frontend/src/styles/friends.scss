@@ -1,0 +1,59 @@
+@mixin transition($content) {
+  -webkit-transition: $content;
+  -moz-transition: $content;
+  -ms-transition: $content;
+  -o-transition: $content;
+  transition: $content;
+}
+
+.main-container {
+  width: 90%;
+  margin: 40px auto; //Tillfällig
+  font-family: Poppins, sans-serif; //Tillfällig
+  animation: fadeIn 0.5s ease forwards;
+
+  h2 {
+    padding-bottom: 15px;
+    font-size: 26px;
+    border-bottom: 1px solid #d1d1d1;
+  }
+
+  .friends-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 5px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 1px 6px 12px rgb(194 194 194);
+
+    img {
+      width: 100px;
+    }
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+
+  button {
+    width: 220px;
+    padding: 10px 25px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50px;
+    animation: fadeIn 1s ease forwards;
+
+    @include transition(all 0.5s ease);
+
+    &:hover {
+      color: #fff;
+      background-color: #000;
+      border: 1px solid #fff;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,5 +1,11 @@
+import '../styles/home.scss';
+import StartPage from '../components/StartPage.jsx';
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <StartPage />
+    </div>
+  );
 };
 
 export default Home;
