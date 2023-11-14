@@ -3,7 +3,6 @@
 .navbar {
   position: fixed;
   left: 0;
-  z-index: 10;
   width: 100dvw;
   height: 100vh;
   background: $color-1;
@@ -17,6 +16,7 @@
   &.open {
     transform: translateY(-32px);
     opacity: 1;
+    z-index: 10;
   }
 
   &.hidden {
