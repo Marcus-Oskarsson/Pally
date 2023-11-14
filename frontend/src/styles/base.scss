@@ -33,7 +33,7 @@ $color-2: #e8e8e8;
 }
 
 // Exempel:
-// @include transition(all 0.5s ease);
+// @include border-radius(3px);
 
 @mixin transition($content) {
   -webkit-transition: $content;
@@ -44,4 +44,4 @@ $color-2: #e8e8e8;
 }
 
 // Exempel:
-// @include border-radius(3px);
+// @include transition(all 0.5s ease);
