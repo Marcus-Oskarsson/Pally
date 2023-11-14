@@ -6,7 +6,7 @@ import profileSettings from '../assets/profileSettings.png';
 const ProfileInfo = () => {
   return (
     <>
-      <div className='main-container'>
+      <div className='flex-container'>
         <div className='div-flex-right'>
           <img className='icons' src={profileSettings} alt='Settings' />
           <img className='icons' src={profileIcon} alt='Profile icon' />
