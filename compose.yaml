@@ -5,7 +5,7 @@ services:
       database:
         condition: service_healthy
     env_file:
-      - ./backend/.env
+      - ./.env
     ports:
       - "3000:3000"
     restart: always
@@ -14,7 +14,7 @@ services:
       - ./.env
     healthcheck:
       interval: 1s
-      test: 'pg_isready --username=postgres'
+      test: "pg_isready --username=postgres"
     image: postgres
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -25,5 +25,5 @@ services:
     ports:
       - "80:80"
     restart: always
-    depends_on: 
+    depends_on:
       - backend
