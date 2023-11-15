@@ -1,10 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/event.scss';
 import UpcomingEvents from './UpcomingEvents';
 import EventImage from '../assets/pallyLogo.png';
 import TrashIcon from '../assets/trashicon.png';
 
 const AttendingEvents = () => {
+  const [applyFetch, setFetch] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api');
+        const data = await response.json();
+        setFetch(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
 
   const handleExploreEventsClick = () => {
@@ -68,6 +84,9 @@ const AttendingEvents = () => {
           <button onClick={handleAttendingEventsClick}>Attending Events</button>
         </div>
       )}
+      <div>
+        <pre>{JSON.stringify(applyFetch, null, 2)}</pre>
+      </div>
     </div>
   );
 };
