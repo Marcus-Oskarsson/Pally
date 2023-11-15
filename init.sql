@@ -54,4 +54,3 @@ VALUES('Party', 'Street 1', 'party@mail.info', '2023-11-18');
 
 INSERT INTO userEvent(userId, eventId)
 VALUES(2, 1);
-```
