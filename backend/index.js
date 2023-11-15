@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
@@ -12,8 +13,22 @@ const client = new Client({
 
 client.connect();
 
+async function main() {
+  try {
+    const { rows } = await client.query('SELECT * FROM userInfo');
+    console.log('Table created successfully!');
+    console.log(rows);
+  } catch (error) {
+    console.error('Error connecting!');
+    console.error(error);
+  }
+}
+
+main();
+
 // Get all poems
 app.get('/', async (_request, response) => {
+  console.log('GET-request received for /');
   const { rows } = await client.query('SELECT * FROM userInfo');
 
   console.log('GET-request received for /api');
@@ -21,6 +36,6 @@ app.get('/', async (_request, response) => {
   response.send(rows);
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Dicker is up n running. GLHF.');
 });
