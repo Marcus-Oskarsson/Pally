@@ -10,6 +10,14 @@ const router = express.Router();
 
 const client = require('../connection');
 
+// GETS ALL USERS
+router.get('/login', async (req, res) => {
+  const { rows } = await client.query('SELECT * FROM userInfo');
+  console.log('GET REQUEST ALL FROM USER INFO ');
+  res.send(rows);
+});
+
+// LOGIN
 router.post('/login', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
