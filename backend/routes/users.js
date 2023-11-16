@@ -11,3 +11,5 @@ router.get('/users', async (req, res) => {
   console.log('GET REQUEST ALL FROM USER INFO ');
   res.send(rows);
 });
+
+module.exports = router;

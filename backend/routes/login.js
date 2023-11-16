@@ -17,13 +17,6 @@ router.get('/login', async (req, res) => {
   res.send(rows);
 });
 
-//events
-router.get('/events', async (req, res) => {
-  const { rows } = await client.query('SELECT * FROM userInfo');
-  console.log('GET REQUEST ALL FROM USER INFO ');
-  res.send(rows);
-});
-
 // LOGIN
 router.post('/login', async (req, res) => {
   const email = req.body.email;
