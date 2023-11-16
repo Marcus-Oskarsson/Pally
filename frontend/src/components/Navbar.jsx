@@ -20,7 +20,7 @@ const Navbar = ({ setIsOpen, isOpen }) => {
     if (page.name === 'Login' && isAuthenticated) {
       return { name: 'Logout', path: 'logout' };
     } else if (!isAuthenticated && page.name !== 'Login') {
-      return { name: page.name + '🔒', path: 'login' };
+      return { name: page.name + '🔒', path: 'login' }; // TODO lägg till en riktig svg
     }
     return page;
   });
