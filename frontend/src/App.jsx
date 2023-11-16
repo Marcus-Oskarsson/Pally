@@ -1,4 +1,4 @@
-import { createHashRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 import UserProvider from './contexts/UserContext';
 
@@ -15,6 +15,15 @@ import Header from './components/Header';
 
 import './styles/reset.scss';
 
+const ErrorPage = () => {
+  return (
+    <div>
+      <h1>404</h1>
+      <p>Page not found 🐊</p>
+    </div>
+  );
+};
+
 function Root() {
   return (
     <UserProvider>
@@ -28,7 +37,7 @@ function Root() {
 }
 
 const App = () => {
-  const router = createHashRouter([
+  const router = createBrowserRouter([
     {
       children: [
         {
@@ -40,8 +49,9 @@ const App = () => {
             { element: <Logout />, path: '/logout' },
           ],
         },
-        { element: <Login />, path: '/login' },
         { element: <Event />, path: '/event' },
+        { element: <Login />, path: '/login' },
+        { element: <ErrorPage />, path: '*' },
       ],
       element: <Root />,
     },
