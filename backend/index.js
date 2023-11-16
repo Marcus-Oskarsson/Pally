@@ -8,8 +8,14 @@ app.use(express.json());
 const login = require('./routes/login');
 app.use(login);
 
+const signup = require('./routes/signup');
+app.use(signup);
+
 const event = require('./routes/event');
 app.use(event);
+
+const profile = require('./routes/profile');
+app.use(profile);
 
 const friend = require('./routes/friend');
 app.use(friend);
