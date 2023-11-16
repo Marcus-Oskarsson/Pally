@@ -11,6 +11,9 @@ app.use(login);
 const event = require('./routes/event');
 app.use(event);
 
+const friend = require('./routes/friend');
+app.use(friend);
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
