@@ -1,5 +1,7 @@
 import { createHashRouter, Outlet, RouterProvider } from 'react-router-dom';
 
+import UserProvider from './contexts/UserContext';
+
 import Event from './pages/Event';
 import Friends from './pages/Friends';
 import Home from './pages/Home';
@@ -13,13 +15,13 @@ import './styles/reset.scss';
 
 function Root() {
   return (
-    <>
+    <UserProvider>
       <Header />
       <main>
         <Outlet />
       </main>
       <Footer />
-    </>
+    </UserProvider>
   );
 }
 
