@@ -8,15 +8,15 @@ const Login = () => {
 
   return (
     <>
-      {togglePage ? <LoginForm /> : <SignUpForm />}
+      {togglePage ? <SignUpForm /> : <LoginForm />}
       <div className='button-container'>
         <span
           onClick={() => settogglePage(!togglePage)}
           style={{ cursor: 'pointer', textDecoration: 'underline' }}
         >
           {togglePage
-            ? 'Not a member yet? Click here to sign up!'
-            : 'Click here to login'}
+            ? 'Click here to login'
+            : 'Not a member yet? Click here to sign up!'}
         </span>
       </div>
     </>
