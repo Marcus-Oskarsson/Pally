@@ -1,20 +1,25 @@
 import { Formik, Form, Field } from 'formik';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 // import '../styles/profile.scss';
 
-//Större del av kod från SignUpForm
 const ProfileSettings = () => {
-  // const initialValues = {
-  //   firstName: 'Name',
-  //   lastName: 'Last name',
-  //   email: 'hello@email.com',
-  //   personalNumber: '891114-1234',
-  //   phone: '0733-123456',
-  //   street: 'street',
-  //   zipCode: '434 89',
-  //   city: 'Gothenburg',
-  //   password: '********',
-  // };
+  const [profileUserSettings, setProfileUserSetings] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/profile')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data, 'here is the data');
+        console.log(data[0].user);
+        //gets first user
+        setProfileUserSetings(data[0]);
+      })
+      .catch((error) => {
+        console.error('Error fetching events:', error);
+      });
+  }, []);
+  //Formik från SignUpForm
   const initialValueSettings = {
     firstName: '',
     lastName: '',
@@ -49,16 +54,16 @@ const ProfileSettings = () => {
 
   return (
     <>
-      <div>
+      <div key={profileUserSettings.userid}>
         <ul>
-          <li>First name: Johannes</li>
-          <li>Last name: And</li>
-          <li>Email: mail@mail.com</li>
-          <li>Phone: 0700112233</li>
-          <li>Street: Eklanda street 30</li>
-          <li>Zip code: 43212</li>
-          <li>City: Gothenburg</li>
-          <li>Password: *******</li>
+          <li>First name: {profileUserSettings.userfirstname}</li>
+          <li>Last name: {profileUserSettings.userlastname}</li>
+          <li>Email: {profileUserSettings.useremail}</li>
+          <li>Phone: {profileUserSettings.userphonenumber}</li>
+          <li>Street: {profileUserSettings.userstreet}</li>
+          <li>Zip code: {profileUserSettings.userzipcode}</li>
+          <li>City: {profileUserSettings.usercity}</li>
+          <li>Password: {profileUserSettings.userPassword}</li>
         </ul>
       </div>
       <div className='bigContainer'>
