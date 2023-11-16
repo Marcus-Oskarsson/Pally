@@ -179,8 +179,11 @@ const ProfileSettings = () => {
               </div>
 
               <div className='buttonDiv'>
-                <button className='signUpButton' type='submit'>
-                  Change settings
+                <button className='changeSettingsButton' type='submit'>
+                  Uppdate settings
+                </button>
+                <button className='deleteAccountButton' type='submit'>
+                  Delete Account
                 </button>
               </div>
             </Form>
