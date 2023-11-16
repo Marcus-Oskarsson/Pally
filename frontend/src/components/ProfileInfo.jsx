@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/profile.scss';
 import pallyLogo from '../assets/pallyLogo.png';
 
@@ -32,15 +33,16 @@ const ProfileInfo = () => {
           </div>
         </div>
         <div className='button-container'>
-          <button className='button-choices'>
-            <p>Active events</p>
-          </button>
-          <button className='button-choices'>
-            <p>Upcoming events</p>
-          </button>
-          <button className='button-choices'>
-            <p>Friends</p>
-          </button>
+          <Link to='/event'>
+            <button className='button-choices'>
+              <p>Attending events</p>
+            </button>
+          </Link>
+          <Link to='/friends'>
+            <button className='button-choices'>
+              <p>Friends</p>
+            </button>
+          </Link>
         </div>
       </div>
     </>
