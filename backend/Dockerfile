@@ -1,4 +1,4 @@
-FROM node
+FROM node:lts-bullseye-slim
 COPY . /app
 WORKDIR /app
 RUN npm install
