@@ -30,6 +30,8 @@ const Navbar = ({ setIsOpen, isOpen }) => {
     [location, setIsOpen]
   );
 
+  if (!isOpen) return null;
+
   return (
     <nav className={`navbar ${isOpen ? 'open' : ''}`}>
       <ul>
