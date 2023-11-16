@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 
 export const Context = createContext();
 
+function auth(token, id) {
+  console.log('auth', id == true);
+  return id == true;
+}
+
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || {
     userfirstname: '',
@@ -12,6 +17,7 @@ const initialState = {
     useraccesstoken: '',
     userid: '',
   },
+  isAuthenticated: false,
 };
 
 const actions = {
@@ -45,6 +51,7 @@ function Provider({ children }) {
   const value = useMemo(
     () => ({
       user: state.user,
+      isAuthenticated: auth('temporary', state.user.userid),
       setUser: (user) => {
         dispatch({ type: actions.SET_USER, payload: user });
         localStorage.setItem('user', JSON.stringify(user));
