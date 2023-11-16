@@ -11,6 +11,9 @@ app.use(login);
 const event = require('./routes/event');
 app.use(event);
 
+const users = require('./routes/users');
+app.use(users);
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
