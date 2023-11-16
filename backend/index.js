@@ -6,7 +6,9 @@ const app = express();
 app.use(express.json());
 
 const login = require('./routes/login');
+const signup = require('./routes/signup');
 app.use(login);
+app.use(signup);
 
 const event = require('./routes/event');
 app.use(event);
