@@ -20,6 +20,9 @@ app.use(profile);
 const friend = require('./routes/friend');
 app.use(friend);
 
+const auth = require('./routes/auth');
+app.use(auth);
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
