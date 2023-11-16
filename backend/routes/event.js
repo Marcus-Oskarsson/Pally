@@ -13,4 +13,20 @@ router.get('/events', async (req, res) => {
   }
 });
 
+router.post('/userevent', async (req, res) => {
+  const { userId, eventId } = req.body;
+
+  try {
+    const result = await client.query(
+      'INSERT INTO userEvent(userId, eventId) VALUES ($1, $2)',
+      [userId, eventId]
+    );
+
+    res.status(201).json({ message: 'User event created successfully' });
+  } catch (err) {
+    console.error('Error creating user event:', err);
+    res.status(500).json({ error: 'Failed to create user event' });
+  }
+});
+
 module.exports = router;
