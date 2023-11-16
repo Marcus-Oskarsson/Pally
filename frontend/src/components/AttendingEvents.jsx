@@ -5,21 +5,21 @@ import EventImage from '../assets/pallyLogo.png';
 import TrashIcon from '../assets/trashicon.png';
 
 const AttendingEvents = () => {
-  const [applyFetch, setFetch] = useState(null);
+  // const [applyFetch, setFetch] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('/api');
-        const data = await response.json();
-        setFetch(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch('/api');
+  //       const data = await response.json();
+  //       setFetch(data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
 
@@ -84,9 +84,6 @@ const AttendingEvents = () => {
           <button onClick={handleAttendingEventsClick}>Attending Events</button>
         </div>
       )}
-      <div>
-        <pre>{JSON.stringify(applyFetch, null, 2)}</pre>
-      </div>
     </div>
   );
 };
