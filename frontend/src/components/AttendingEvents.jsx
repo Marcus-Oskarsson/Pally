@@ -3,23 +3,44 @@ import '../styles/event.scss';
 import UpcomingEvents from './UpcomingEvents';
 import EventImage from '../assets/pallyLogo.png';
 import TrashIcon from '../assets/trashicon.png';
+import { useContext } from 'react';
+import { Context } from '../contexts/UserContext';
 
 const AttendingEvents = () => {
-  // const [applyFetch, setFetch] = useState(null);
+  const { user } = useContext(Context);
+  const [userEvents, setUserEvents] = useState(null);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('/api');
-  //       const data = await response.json();
-  //       setFetch(data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
+  const removeEventUser = async (eventid) => {
+    try {
+      const response = await fetch(`/api/events/${eventid}`, {
+        method: 'DELETE',
+      });
 
-  //   fetchData();
-  // }, []);
+      if (response.ok) {
+        console.log('Application removed successfully');
+      } else {
+        console.error('Failed to remove application');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchUserEvents = async () => {
+      try {
+        const response = await fetch(`/api/events/${user.userid}`);
+        const data = await response.json();
+        setUserEvents(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    if (user && user.userid) {
+      fetchUserEvents();
+    }
+  }, [user, removeEventUser]);
 
   const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
 
@@ -31,24 +52,6 @@ const AttendingEvents = () => {
     setShowUpcomingEvents(false);
   };
 
-  //Exempel istället för databas som vi hämtar senare via api
-  const eventsArray = [
-    {
-      id: 1,
-      name: 'AW Ölstugan Tullen',
-      location: 'Friggagatan 27',
-      email: 'info@tullen.se',
-      date: '01-01-2023',
-    },
-    {
-      id: 2,
-      name: 'AW Ölstugan Tullen 2',
-      location: 'Friggagatan 27 2',
-      email: 'info@tullen.se',
-      date: '02-02-2023',
-    },
-  ];
-
   return (
     <div>
       {showUpcomingEvents ? (
@@ -57,22 +60,27 @@ const AttendingEvents = () => {
         <>
           <div className='main-container'>
             <h2>Attending Events</h2>
-            {eventsArray.map((event) => (
-              <div key={event.id} className='events-container'>
-                <img src={EventImage} alt='Event picutre' />
-                <div className='align-events'>
-                  <h3>{event.name}</h3>
-                  <p>{event.location}</p>
-                  <p>{event.email}</p>
-                  <div>
-                    <p>{event.date}</p>
-                    <div className='icons-container'>
-                      <img src={TrashIcon} alt='Trash icon' />
+            {userEvents &&
+              userEvents.map((event, index) => (
+                <div key={index} className='events-container'>
+                  <img src={EventImage} alt='Event picture' />
+                  <div className='align-events'>
+                    <h3>{event.eventname}</h3>
+                    <p>{event.eventstreet}</p>
+                    <p>{event.eventemail}</p>
+                    <div>
+                      <p>{event.eventdate}</p>
+                      <div className='icons-container'>
+                        <img
+                          src={TrashIcon}
+                          alt='Trash icon'
+                          onClick={() => removeEventUser(event.eventid)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
             <div className='button-container'>
               <button onClick={handleExploreEventsClick}>Explore Events</button>
             </div>

@@ -76,6 +76,9 @@
 
           img {
             width: 20px;
+            &:hover {
+              cursor: pointer;
+            }
           }
 
           button {

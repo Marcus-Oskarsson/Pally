@@ -13,7 +13,6 @@ const UpcomingEvents = () => {
       .then((response) => response.json())
       .then((data) => {
         setEventsArray(data);
-        console.log(user.userid);
       })
       .catch((error) => {
         console.error('Error fetching events:', error);
