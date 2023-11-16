@@ -14,6 +14,9 @@ app.use(signup);
 const event = require('./routes/event');
 app.use(event);
 
+const users = require('./routes/users');
+app.use(users);
+
 const profile = require('./routes/profile');
 app.use(profile);
 
