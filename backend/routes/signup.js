@@ -46,3 +46,16 @@ router.post('/signup', async (req, res) => {
 });
 
 module.exports = router;
+
+// EXAMPLE OF HOW TO POST A USER:
+// {
+//   "lastName": "hejhej",
+//   "email": "hejdå@gmail.com",
+//   "phone": "0730343233",
+//   "personalNumber": "199602056778",
+//   "password": "hej",
+//   "street": "hej",
+//   "city": "hej",
+//   "zipCode": 43494,
+// 	"firstName": "hejdå"
+// }
