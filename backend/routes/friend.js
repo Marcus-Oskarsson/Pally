@@ -16,8 +16,9 @@ router.get('/friends', async (req, res) => {
 });
 
 router.get('/friends/:userId', async (req, res) => {
+  const { userId } = req.params;
+
   try {
-    const { userId } = req.params;
     console.log(userId);
     const friends = await client.query(
       `
@@ -29,7 +30,7 @@ router.get('/friends/:userId', async (req, res) => {
       INNER JOIN userInfo u2 ON f.user2Id = u2.userId
       WHERE f.user1Id = $1 OR f.user2Id = $1
       `,
-      [userId]
+      [userId],
     );
     res.json(friends.rows);
   } catch (error) {

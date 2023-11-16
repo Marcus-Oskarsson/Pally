@@ -24,7 +24,7 @@ router.get('/events/:id', async (req, res) => {
       INNER JOIN userInfo ui ON ue.userId = ui.userId
       INNER JOIN eventInfo ei ON ue.eventId = ei.eventId
       WHERE ue.userId = $1`,
-      [id]
+      [id],
     );
 
     res.json(events.rows);
@@ -39,9 +39,9 @@ router.post('/userevent', async (req, res) => {
   const { userId, eventId } = req.body;
 
   try {
-    const result = await client.query(
+    await client.query(
       'INSERT INTO userEvent(userId, eventId) VALUES ($1, $2)',
-      [userId, eventId]
+      [userId, eventId],
     );
 
     res.status(201).json({ message: 'User event created successfully' });
