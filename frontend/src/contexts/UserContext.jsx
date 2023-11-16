@@ -1,14 +1,16 @@
 // https://dev.to/eswaraprakash/react-usecontext-and-usereducer-hooks-2pkm
 import { createContext, useMemo, useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 export const Context = createContext();
 
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || {
-    name: '',
-    email: '',
-    accesstoken: '',
-    id: '',
+    userfirstname: '',
+    userlastname: '',
+    useremail: '',
+    useraccesstoken: '',
+    userid: '',
   },
 };
 
@@ -57,6 +59,9 @@ function Provider({ children }) {
 }
 
 export default Provider;
+Provider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 // EXAMPLE USAGE IN COMPONENT
 // import { useContext, useEffect } from 'react';

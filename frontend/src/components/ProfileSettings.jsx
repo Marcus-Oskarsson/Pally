@@ -191,6 +191,9 @@ const ProfileSettings = () => {
                   Delete Account
                 </button>
               </div>
+              <div className='buttonDiv'>
+                <button className='logOutButton'>Log out</button>
+              </div>
             </Form>
           )}
         </Formik>
