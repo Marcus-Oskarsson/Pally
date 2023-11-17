@@ -34,6 +34,34 @@ const SignUpForm = () => {
     password: Yup.string().required('Password is required'),
   });
 
+  const handleNewUser = (values) => {
+    console.log(values, 'Input values');
+
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        phone: values.phone,
+        personalNumber: values.personalNumber,
+        password: values.password,
+        street: values.street,
+        city: values.city,
+        zipCode: values.zipCode,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    fetch('/api/signup', options).then((res) => {
+      res.json().then((data) => {
+        console.log(data, 'New user added');
+      });
+    });
+  };
+
   return (
     <>
       <div className='bigContainer'>
@@ -41,6 +69,7 @@ const SignUpForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
+          onSubmit={handleNewUser}
         >
           {({ errors, touched }) => (
             <Form>
