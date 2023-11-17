@@ -69,7 +69,9 @@ const AttendingEvents = () => {
                     <p>{event.eventstreet}</p>
                     <p>{event.eventemail}</p>
                     <div>
-                      <p>{event.eventdate}</p>
+                      <p>
+                        {new Date(event.eventdate).toLocaleDateString('sv-SE')}
+                      </p>
                       <div className='icons-container'>
                         <img
                           src={TrashIcon}

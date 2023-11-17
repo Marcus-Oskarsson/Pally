@@ -1,24 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Context } from '../contexts/UserContext';
 import '../styles/profile.scss';
 import pallyLogo from '../assets/pallyLogo.png';
 
 const ProfileInfo = () => {
   const [profileUserInfo, setProfileUserInfo] = useState([]);
+  const { user } = useContext(Context);
 
   useEffect(() => {
-    fetch('/api/profile')
+    fetch(`/api/profile/${user.userid}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data, 'here is the data');
-        console.log(data[0].user);
+        console.log(data.user);
         //gets first user
-        setProfileUserInfo(data[0]);
+        setProfileUserInfo(data.user);
       })
       .catch((error) => {
         console.error('Error fetching events:', error);
       });
-  }, []);
+  }, [user.userid]);
 
   return (
     <>
@@ -26,10 +29,10 @@ const ProfileInfo = () => {
         <div className='div-column'>
           <img className='profile-picture' src={pallyLogo} alt='Logo' />
         </div>
-        <div key={profileUserInfo.userid}>
+        <div key={user.userid}>
           <div>
-            <p>{profileUserInfo.userfirstname}</p>
-            <p>{profileUserInfo.userlastname}</p>
+            <p>{user.userfirstname}</p>
+            <p>{user.userlastname}</p>
           </div>
         </div>
         <div className='button-container'>

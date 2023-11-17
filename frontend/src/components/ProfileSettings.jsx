@@ -1,35 +1,38 @@
 import { Formik, Form, Field } from 'formik';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
+import { useContext } from 'react';
+import { Context } from '../contexts/UserContext';
 // import '../styles/profile.scss';
 
 const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSetings] = useState([]);
+  const { user } = useContext(Context);
 
   useEffect(() => {
-    fetch('/api/profile')
+    fetch(`/api/profile/${user.userid}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data, 'here is the data');
-        console.log(data[0].user);
+        console.log(data.user);
         //gets first user
-        setProfileUserSetings(data[0]);
+        setProfileUserSetings(data.user);
       })
       .catch((error) => {
         console.error('Error fetching events:', error);
       });
-  }, []);
+  }, [user.userid]);
   //Formik från SignUpForm
   const initialValueSettings = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    personalNumber: '',
-    phone: '',
-    street: '',
-    zipCode: '',
-    city: '',
-    password: '',
+    firstName: user.userfirstname,
+    lastName: user.userlastname,
+    email: user.useremail,
+    personalNumber: user.userpersonalnumber,
+    phone: user.userphonenumber,
+    street: user.userstreet,
+    zipCode: user.userzipcode,
+    city: user.usercity,
+    password: user.userPassword,
   };
 
   const validationSchemaSettings = Yup.object().shape({
@@ -54,18 +57,6 @@ const ProfileSettings = () => {
 
   return (
     <>
-      <div key={profileUserSettings.userid}>
-        <ul>
-          <li>First name: {profileUserSettings.userfirstname}</li>
-          <li>Last name: {profileUserSettings.userlastname}</li>
-          <li>Email: {profileUserSettings.useremail}</li>
-          <li>Phone: {profileUserSettings.userphonenumber}</li>
-          <li>Street: {profileUserSettings.userstreet}</li>
-          <li>Zip code: {profileUserSettings.userzipcode}</li>
-          <li>City: {profileUserSettings.usercity}</li>
-          <li>Password: {profileUserSettings.userPassword}</li>
-        </ul>
-      </div>
       <div className='bigContainer'>
         <h1>Settings</h1>
 

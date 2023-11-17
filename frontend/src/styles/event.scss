@@ -60,10 +60,6 @@
         font-size: 12px;
       }
 
-      p:last-child {
-        font-style: italic;
-      }
-
       div {
         display: flex;
         align-items: center;
@@ -76,12 +72,12 @@
 
           img {
             width: 20px;
-
+            @include transition(all 0.2s ease);
             &:hover {
               cursor: pointer;
+              opacity: 0.5;
             }
           }
-
           button {
             padding: 5px 35px;
             color: #fff;
@@ -89,11 +85,14 @@
             background-color: #1fd419;
             border: none;
             border-radius: 50px;
-
             &:hover {
               cursor: pointer;
               opacity: 0.5;
             }
+          }
+          p {
+            padding: 6px;
+            font-style: italic;
           }
         }
       }
@@ -124,4 +123,8 @@
       cursor: pointer;
     }
   }
+}
+
+.button-container:last-child {
+  margin-bottom: 40px;
 }

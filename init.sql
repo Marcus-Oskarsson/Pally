@@ -50,7 +50,11 @@ INSERT INTO friend(user1Id, user2Id)
 VALUES (1, 2);
 
 INSERT INTO eventInfo(eventName, eventStreet, eventEmail, eventDate)
-VALUES('Party', 'Street 1', 'party@mail.info', '2023-11-18');
+VALUES('Party', 'Street 1', 'party@mail.info', '2023-11-18'),
+('Party 2', 'Street 2', 'party@mail.info', '2023-11-18'),
+('Party 3', 'Street 3', 'party@mail.info', '2023-11-18'),
+('Party 4', 'Street 4', 'party@mail.info', '2023-11-18'),
+('Party 5', 'Street 5', 'party@mail.info', '2023-11-18');
 
 INSERT INTO userEvent(userId, eventId)
 VALUES(2, 1);
