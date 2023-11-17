@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const client = require('../connection');
 
-router.get('/profile', async (req, res) => {
+router.get('/profile/:id', async (req, res) => {
   try {
     const profile = await client.query('SELECT * FROM userinfo');
 
