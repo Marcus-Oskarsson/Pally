@@ -17,7 +17,7 @@ const initialState = {
     useraccesstoken: '',
     userid: '',
   },
-  isAuthenticated: false,
+  isAuthenticated: true,
 };
 
 const actions = {
