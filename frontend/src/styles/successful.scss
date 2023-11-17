@@ -1,0 +1,21 @@
+@mixin transition($content) {
+  -webkit-transition: $content;
+  -moz-transition: $content;
+  -ms-transition: $content;
+  -o-transition: $content;
+  transition: $content;
+}
+
+.SuccessDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    color: green;
+    font-family: "Poppins", sans-serif;
+    width: 80%;
+    margin: 20px 0 20px 0;
+  }
+}

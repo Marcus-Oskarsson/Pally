@@ -1,7 +1,11 @@
 import { Formik, Form, Field } from 'formik';
+import { useState } from 'react';
 import * as Yup from 'yup';
+import SuccessfulSignUp from './SuccessfulSignUp';
 
 const SignUpForm = () => {
+  const [isPostSuccess, setIsPostSuccess] = useState(false);
+
   const initialValues = {
     firstName: '',
     lastName: '',
@@ -58,138 +62,144 @@ const SignUpForm = () => {
     fetch('/api/signup', options).then((res) => {
       res.json().then((data) => {
         console.log(data, 'New user added');
+        setIsPostSuccess(true);
+        console.log(isPostSuccess, 'Is post success?');
       });
     });
   };
 
   return (
     <>
-      <div className='bigContainer'>
-        {/* Lägg till onSubmit på Formik-taggen */}
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleNewUser}
-        >
-          {({ errors, touched }) => (
-            <Form>
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='firstName'
-                  placeholder='First Name'
-                ></Field>
-                {errors.firstName && touched.firstName && (
-                  <p className='fieldError'>{errors.firstName}</p>
-                )}
-              </div>
+      {!isPostSuccess && (
+        <div className='bigContainer'>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleNewUser}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <div>
+                  <label htmlFor='firstName'>First name</label>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='firstName'
+                    placeholder='First Name'
+                  ></Field>
+                  {errors.firstName && touched.firstName && (
+                    <p className='fieldError'>{errors.firstName}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='lastName'
-                  placeholder='Last Name'
-                ></Field>
-                {errors.lastName && touched.lastName && (
-                  <p className='fieldError'>{errors.lastName}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='lastName'
+                    placeholder='Last Name'
+                  ></Field>
+                  {errors.lastName && touched.lastName && (
+                    <p className='fieldError'>{errors.lastName}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='email'
-                  placeholder='Email'
-                ></Field>
-                {errors.email && touched.email && (
-                  <p className='fieldError'>{errors.email}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='email'
+                    placeholder='Email'
+                  ></Field>
+                  {errors.email && touched.email && (
+                    <p className='fieldError'>{errors.email}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='personalNumber'
-                  placeholder='YYYYMMDDXXXX'
-                ></Field>
-                {errors.personalNumber && touched.personalNumber && (
-                  <p className='fieldError'>{errors.personalNumber}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='personalNumber'
+                    placeholder='YYYYMMDDXXXX'
+                  ></Field>
+                  {errors.personalNumber && touched.personalNumber && (
+                    <p className='fieldError'>{errors.personalNumber}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='tel'
-                  name='phone'
-                  placeholder='Phone Number'
-                ></Field>
-                {errors.phone && touched.phone && (
-                  <p className='fieldError'>{errors.phone}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='tel'
+                    name='phone'
+                    placeholder='Phone Number'
+                  ></Field>
+                  {errors.phone && touched.phone && (
+                    <p className='fieldError'>{errors.phone}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='street'
-                  placeholder='Street'
-                ></Field>
-                {errors.street && touched.street && (
-                  <p className='fieldError'>{errors.street}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='street'
+                    placeholder='Street'
+                  ></Field>
+                  {errors.street && touched.street && (
+                    <p className='fieldError'>{errors.street}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='zipCode'
-                  placeholder='Zip Code'
-                ></Field>
-                {errors.zipCode && touched.zipCode && (
-                  <p className='fieldError'>{errors.zipCode}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='zipCode'
+                    placeholder='Zip Code'
+                  ></Field>
+                  {errors.zipCode && touched.zipCode && (
+                    <p className='fieldError'>{errors.zipCode}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='city'
-                  placeholder='City'
-                ></Field>
-                {errors.city && touched.city && (
-                  <p className='fieldError'>{errors.city}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='city'
+                    placeholder='City'
+                  ></Field>
+                  {errors.city && touched.city && (
+                    <p className='fieldError'>{errors.city}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                ></Field>
-                {errors.password && touched.password && (
-                  <p className='fieldError'>{errors.password}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                  ></Field>
+                  {errors.password && touched.password && (
+                    <p className='fieldError'>{errors.password}</p>
+                  )}
+                </div>
 
-              <div className='buttonDiv'>
-                <button className='signUpButton' type='submit'>
-                  Sign up
-                </button>
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </div>
+                <div className='buttonDiv'>
+                  <button className='signUpButton' type='submit'>
+                    Sign up
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      )}
+
+      {isPostSuccess && <SuccessfulSignUp />}
     </>
   );
 };
