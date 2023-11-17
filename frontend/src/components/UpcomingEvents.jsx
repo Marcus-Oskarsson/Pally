@@ -6,8 +6,10 @@ import { Context } from '../contexts/UserContext';
 
 const UpcomingEvents = () => {
   const [eventsArray, setEventsArray] = useState([]);
+  const [applicationsArray, setApplicationsArray] = useState([]);
   const { user } = useContext(Context);
 
+  //Hämtar alla events
   useEffect(() => {
     fetch('/api/events')
       .then((response) => response.json())
@@ -19,6 +21,7 @@ const UpcomingEvents = () => {
       });
   }, [user.userid]);
 
+  //Hanterar när man signar upp för ett event som användare
   const handleApply = async (eventId) => {
     try {
       const response = await fetch('/api/userevent', {
@@ -39,6 +42,26 @@ const UpcomingEvents = () => {
     }
   };
 
+  //Hämtar mellantabellen för user och signups.
+  useEffect(() => {
+    fetch(`/api/eventsignup`)
+      .then((response) => response.json())
+      .then((data) => {
+        setApplicationsArray(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user applications:', error);
+      });
+  }, [user.userid, applicationsArray]);
+
+  // Denna metod för att kontrollera om användaren redan sökt till ett event.
+  const applicationApplied = (eventId) => {
+    return applicationsArray.some(
+      (application) =>
+        application.userid === user.userid && application.eventid === eventId
+    );
+  };
+
   return (
     <div className='main-container'>
       <div>
@@ -51,11 +74,15 @@ const UpcomingEvents = () => {
               <p>{event.eventstreet}</p>
               <p>{event.eventemail}</p>
               <div>
-                <p>{event.eventdate}</p>
+                <p>{new Date(event.eventdate).toLocaleDateString('sv-SE')}</p>
                 <div className='icons-container'>
-                  <button onClick={() => handleApply(event.eventid)}>
-                    Apply
-                  </button>
+                  {applicationApplied(event.eventid) ? (
+                    <p>Ansökt!</p>
+                  ) : (
+                    <button onClick={() => handleApply(event.eventid)}>
+                      Apply
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
