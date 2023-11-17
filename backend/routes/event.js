@@ -2,10 +2,22 @@ const express = require('express');
 const router = express.Router();
 const client = require('../connection');
 
-//Denna renderar allt och används inte, men den är vacker
+//Renderar alla upcoming-events
 router.get('/events', async (req, res) => {
   try {
     const events = await client.query('SELECT * FROM eventinfo');
+
+    res.json(events.rows);
+  } catch (err) {
+    console.error('Error retrieving events:', err);
+    res.status(500).json({ error: 'Failed to retrieve events' });
+  }
+});
+
+//Hämtar alla signups till alla event
+router.get('/eventsignup', async (req, res) => {
+  try {
+    const events = await client.query('SELECT * FROM userevent');
 
     res.json(events.rows);
   } catch (err) {
