@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
 import '../styles/event.scss';
-import UpcomingEvents from './UpcomingEvents';
 import EventImage from '../assets/pallyLogo.png';
 import TrashIcon from '../assets/trashicon.png';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
+import { lazyWithPreload } from 'react-lazy-with-preload';
+
+const UpcomingEvents = lazyWithPreload(() => import('./UpcomingEvents'));
+setTimeout(() => {
+  UpcomingEvents.preload();
+}, 1000);
 
 const AttendingEvents = () => {
   const { user } = useContext(Context);
   const [userEvents, setUserEvents] = useState(null);
+  const [updateList, setUpdateList] = useState(false);
+  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
 
   const removeEventUser = async (eventid) => {
     try {
@@ -18,6 +25,7 @@ const AttendingEvents = () => {
 
       if (response.ok) {
         console.log('Application removed successfully');
+        setUpdateList(!updateList);
       } else {
         console.error('Failed to remove application');
       }
@@ -40,9 +48,7 @@ const AttendingEvents = () => {
     if (user && user.userid) {
       fetchUserEvents();
     }
-  }, [user, removeEventUser]);
-
-  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
+  }, [user, updateList, showUpcomingEvents]);
 
   const handleExploreEventsClick = () => {
     setShowUpcomingEvents(true);

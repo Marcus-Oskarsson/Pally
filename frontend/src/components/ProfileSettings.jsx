@@ -32,6 +32,7 @@ const ProfileSettings = () => {
     street: user.userstreet,
     zipCode: user.userzipcode,
     city: user.usercity,
+    img: user.userimgurl,
     password: user.userPassword,
   };
 
@@ -159,6 +160,18 @@ const ProfileSettings = () => {
                 ></Field>
                 {errors.city && touched.city && (
                   <p className='fieldError'>{errors.city}</p>
+                )}
+              </div>
+
+              <div>
+                <Field
+                  className='Field'
+                  type='text'
+                  name='profile img'
+                  placeholder='Profile picture'
+                ></Field>
+                {errors.password && touched.password && (
+                  <p className='fieldError'>{errors.password}</p>
                 )}
               </div>
 
