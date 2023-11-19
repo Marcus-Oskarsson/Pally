@@ -5,8 +5,11 @@ import PropTypes from 'prop-types';
 export const Context = createContext();
 
 function auth(token, id) {
-  console.log('auth', id == true);
-  return id == true;
+  console.log('auth', id);
+  if (id) {
+    return true;
+  }
+  return false;
 }
 
 const initialState = {
