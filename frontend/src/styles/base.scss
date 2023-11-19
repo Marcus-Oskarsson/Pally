@@ -16,6 +16,10 @@ a {
   text-decoration: underline;
 }
 
+main {
+  min-height: calc(100dvh - 67px - 227px); // 100dvh -header -footer
+}
+
 // Dessa behöver man inte använda, men kan vara god praxis :>
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -27,7 +31,6 @@ a {
 
 // Exempel:
 // @include border-radius(3px);
-
 @mixin transition($content) {
   -webkit-transition: $content;
   -moz-transition: $content;

@@ -4,14 +4,16 @@ import Proptypes from 'prop-types';
 
 import '../styles/navbar.scss';
 
-// En fantastiskt orimlig lösning på ett icke-problem men vill ha aktiva sidan först!
-const Navbar = ({ setIsOpen, isOpen }) => {
+const NavbarLoggedIn = ({ setIsOpen, isOpen }) => {
   let location = useLocation();
   let pages = [
+    { name: 'Home', path: '', restricted: true },
+    { name: 'Event', path: 'event', restricted: true },
+    { name: 'Friends', path: 'friends', restricted: true },
+    { name: 'Profile', path: 'profile', restricted: true },
     { name: 'About', path: 'about', restricted: false },
-    { name: 'Login', path: 'login', restricted: false },
+    { name: 'Logout', path: 'logout', restricted: false },
   ];
-
   useEffect(
     function hiddenOverflowWhenOpen() {
       document.body.style.overflow = isOpen ? 'hidden' : 'auto';
@@ -41,9 +43,9 @@ const Navbar = ({ setIsOpen, isOpen }) => {
   );
 };
 
-Navbar.propTypes = {
+NavbarLoggedIn.propTypes = {
   isOpen: Proptypes.bool.isRequired,
   setIsOpen: Proptypes.func.isRequired,
 };
 
-export default Navbar;
+export default NavbarLoggedIn;
