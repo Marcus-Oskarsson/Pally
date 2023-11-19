@@ -5,7 +5,7 @@ const router = express.Router();
 
 const client = require('../connection');
 
-//users
+// users
 router.get('/users', async (req, res) => {
   const { rows } = await client.query('SELECT * FROM userInfo');
   console.log('GET REQUEST ALL FROM USER INFO ');
