@@ -1,21 +1,20 @@
 import { useState, useEffect } from 'react';
 import '../styles/event.scss';
-import EventImage from '../assets/pallyLogo.png';
 import TrashIcon from '../assets/trashicon.png';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
 import { lazyWithPreload } from 'react-lazy-with-preload';
+import NewEvent from './NewEvent';
 
 const UpcomingEvents = lazyWithPreload(() => import('./UpcomingEvents'));
-setTimeout(() => {
-  UpcomingEvents.preload();
-}, 1000);
+UpcomingEvents.preload();
 
 const AttendingEvents = () => {
   const { user } = useContext(Context);
   const [userEvents, setUserEvents] = useState(null);
   const [updateList, setUpdateList] = useState(false);
   const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
+  const [showNewEvent, setShowNewEvent] = useState(false);
 
   const removeEventUser = async (eventid) => {
     try {
@@ -58,6 +57,10 @@ const AttendingEvents = () => {
     setShowUpcomingEvents(false);
   };
 
+  const handleNewEventClick = () => {
+    setShowNewEvent((prevState) => !prevState); // Visa NewEvent-komponenten när knappen klickas
+  };
+
   return (
     <div>
       {showUpcomingEvents ? (
@@ -69,7 +72,7 @@ const AttendingEvents = () => {
             {userEvents &&
               userEvents.map((event, index) => (
                 <div key={index} className='events-container'>
-                  <img src={EventImage} alt='Event picture' />
+                  <img src={event.eventimage} alt='Event picture' />
                   <div className='align-events'>
                     <h3>{event.eventname}</h3>
                     <p>{event.eventstreet}</p>
@@ -89,14 +92,21 @@ const AttendingEvents = () => {
                   </div>
                 </div>
               ))}
-            <div className='button-container'>
+            <div className='btn-container'>
               <button onClick={handleExploreEventsClick}>Explore Events</button>
             </div>
+            <div className='btn-container'>
+              <button onClick={handleNewEventClick}>
+                {showNewEvent ? 'Close' : 'Submit New Event'}
+              </button>
+            </div>
+            {}
+            {showNewEvent && <NewEvent />}
           </div>
         </>
       )}
       {showUpcomingEvents && (
-        <div className='button-container'>
+        <div className='btn-container'>
           <button onClick={handleAttendingEventsClick}>Attending Events</button>
         </div>
       )}

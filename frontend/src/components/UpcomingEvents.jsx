@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import '../styles/event.scss';
-import EventImage from '../assets/pallyLogo.png';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
 
@@ -73,7 +72,7 @@ const UpcomingEvents = () => {
         <h2>Upcoming Events</h2>
         {eventsArray.map((event) => (
           <div key={event.eventid} className='events-container'>
-            <img src={EventImage} alt='Event picture' />
+            <img src={event.eventimage} alt='Event picture' />
             <div className='align-events'>
               <h3>{event.eventname}</h3>
               <p>{event.eventstreet}</p>

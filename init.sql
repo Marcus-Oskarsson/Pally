@@ -29,6 +29,7 @@ CREATE TABLE friend (
 CREATE TABLE eventInfo(
   eventId SERIAL PRIMARY KEY,
   eventName TEXT NOT NULL,
+  eventImage TEXT NOT NULL,
   eventStreet TEXT NOT NULL,
   eventEmail TEXT NOT NULL,
   eventDate DATE NOT NULL
@@ -49,12 +50,12 @@ INSERT INTO userInfo (userFirstName, userLastName, userEmail, userPhoneNumber, u
 INSERT INTO friend(user1Id, user2Id)
 VALUES (1, 2);
 
-INSERT INTO eventInfo(eventName, eventStreet, eventEmail, eventDate)
-VALUES('Party', 'Street 1', 'party@mail.info', '2023-11-18'),
-('Party 2', 'Street 2', 'party@mail.info', '2023-11-18'),
-('Party 3', 'Street 3', 'party@mail.info', '2023-11-18'),
-('Party 4', 'Street 4', 'party@mail.info', '2023-11-18'),
-('Party 5', 'Street 5', 'party@mail.info', '2023-11-18');
+INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate)
+VALUES('Party', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 1', 'party@mail.info', '2023-11-18'),
+('Party 2', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 2', 'party@mail.info', '2023-11-18'),
+('Party 3', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 3', 'party@mail.info', '2023-11-18'),
+('Party 4', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 4', 'party@mail.info', '2023-11-18'),
+('Party 5', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 5', 'party@mail.info', '2023-11-18');
 
 INSERT INTO userEvent(userId, eventId)
 VALUES(2, 1);

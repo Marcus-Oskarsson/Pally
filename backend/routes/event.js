@@ -22,6 +22,25 @@ router.get('/events', async (req, res) => {
   }
 });
 
+//Skapa ett nytt event
+router.post('/events', async (req, res) => {
+  try {
+    const { eventName, eventImage, eventStreet, eventEmail, eventDate } = req.body;
+
+    const query = `
+      INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate)
+      VALUES($1, $2, $3, $4, $5) RETURNING * `;
+    const values = [eventName, eventImage, eventStreet, eventEmail, eventDate];
+
+    const newEvent = await client.query(query, values);
+
+    res.status(201).json({ success: true, event: newEvent.rows[0] });
+  } catch (err) {
+    console.error('Error adding event:', err);
+    res.status(500).json({ error: 'Failed to add event' });
+  }
+});
+
 //Hämtar alla signups till alla event
 router.get('/eventsignup', async (req, res) => {
   try {
@@ -34,6 +53,7 @@ router.get('/eventsignup', async (req, res) => {
   }
 });
 
+//Skapelse av index för userId
 pool.query(
   'CREATE INDEX IF NOT EXISTS idx_userEvent_userId ON userEvent(userId)',
 );
@@ -41,12 +61,12 @@ pool.query(
   'CREATE INDEX IF NOT EXISTS idx_userInfo_userId ON userInfo(userId)',
 );
 
-//Här hämtar den alla events baserat på användare
+//Här hämtar den alla events baserat på användare med index
 router.get('/events/:id', async (req, res) => {
   const id = req.params.id;
   try {
     const events = await pool.query(
-      `SELECT ei.eventId, ei.eventName, ei.eventStreet, ei.eventemail, ei.eventDate
+      `SELECT ei.eventId, ei.eventName, ei.eventImage, ei.eventStreet, ei.eventemail, ei.eventDate
       FROM userEvent ue
       INNER JOIN userInfo ui ON ue.userId = ui.userId
       INNER JOIN eventInfo ei ON ue.eventId = ei.eventId
