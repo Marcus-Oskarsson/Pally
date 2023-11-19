@@ -9,6 +9,8 @@ import { Context } from '../contexts/UserContext';
 const AttendingEvents = () => {
   const { user } = useContext(Context);
   const [userEvents, setUserEvents] = useState(null);
+  const [updateList, setUpdateList] = useState(false);
+  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
 
   const removeEventUser = async (eventid) => {
     try {
@@ -18,6 +20,7 @@ const AttendingEvents = () => {
 
       if (response.ok) {
         console.log('Application removed successfully');
+        setUpdateList(!updateList);
       } else {
         console.error('Failed to remove application');
       }
@@ -40,9 +43,7 @@ const AttendingEvents = () => {
     if (user && user.userid) {
       fetchUserEvents();
     }
-  }, [user, removeEventUser]);
-
-  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
+  }, [user, updateList, showUpcomingEvents]);
 
   const handleExploreEventsClick = () => {
     setShowUpcomingEvents(true);

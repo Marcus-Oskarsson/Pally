@@ -34,6 +34,7 @@ const UpcomingEvents = () => {
 
       if (response.ok) {
         console.log('Applied to event successfully');
+        fetchApplicationsArray();
       } else {
         console.error('Failed to apply to event');
       }
@@ -43,7 +44,7 @@ const UpcomingEvents = () => {
   };
 
   //Hämtar mellantabellen för user och signups.
-  useEffect(() => {
+  const fetchApplicationsArray = () => {
     fetch(`/api/eventsignup`)
       .then((response) => response.json())
       .then((data) => {
@@ -52,7 +53,11 @@ const UpcomingEvents = () => {
       .catch((error) => {
         console.error('Error fetching user applications:', error);
       });
-  }, [user.userid, applicationsArray]);
+  };
+
+  useEffect(() => {
+    fetchApplicationsArray();
+  }, [user]);
 
   // Denna metod för att kontrollera om användaren redan sökt till ett event.
   const applicationApplied = (eventId) => {
