@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react';
 import '../styles/event.scss';
-import UpcomingEvents from './UpcomingEvents';
 import EventImage from '../assets/pallyLogo.png';
 import TrashIcon from '../assets/trashicon.png';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
+import { lazyWithPreload } from 'react-lazy-with-preload';
+
+const UpcomingEvents = lazyWithPreload(() => import('./UpcomingEvents'));
+setTimeout(() => {
+  UpcomingEvents.preload();
+}, 1000);
 
 const AttendingEvents = () => {
   const { user } = useContext(Context);
