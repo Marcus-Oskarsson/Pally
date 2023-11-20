@@ -24,7 +24,7 @@ const NewEvent = () => {
   });
 
   // Submitta nytt event-metod via Formik
-  const submitEvent = async (values, { setSubmitting, setFieldValue }) => {
+  const submitEvent = async (values, { setSubmitting }) => {
     console.log('values:', values);
     try {
       const formData = new FormData();

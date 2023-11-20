@@ -8,7 +8,7 @@
 
 // @include transition(all 0.5s ease);
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     transform: translateY(10%);
     opacity: 0;
@@ -20,7 +20,7 @@
   }
 }
 
-@keyframes fadeIn2 {
+@keyframes fade-in2 {
   from {
     transform: translateY(40%);
     opacity: 0;
@@ -34,9 +34,9 @@
 
 .main-container {
   width: 90%;
-  margin: 40px auto; //Tillfällig
-  font-family: Poppins, sans-serif; //Tillfällig
-  animation: fadeIn 0.5s ease forwards;
+  margin: 40px auto; // Tillfällig
+  font-family: Poppins, sans-serif; // Tillfällig
+  animation: fade-in 0.5s ease forwards;
 
   h2 {
     padding-bottom: 15px;
@@ -85,12 +85,15 @@
 
           img {
             width: 20px;
+
             @include transition(all 0.2s ease);
+
             &:hover {
               cursor: pointer;
               opacity: 0.5;
             }
           }
+
           button {
             padding: 5px 35px;
             color: #fff;
@@ -98,11 +101,13 @@
             background-color: #1fd419;
             border: none;
             border-radius: 50px;
+
             &:hover {
               cursor: pointer;
               opacity: 0.5;
             }
           }
+
           p {
             padding: 6px;
             font-style: italic;
@@ -122,19 +127,21 @@
   button {
     width: 220px;
     padding: 10px 25px;
+    color: #fff;
     font-size: 14px;
     background-color: #f6a584;
-    color: #fff;
     border: 1px solid #f6a584;
     border-radius: 50px;
     box-shadow: 1px 5px 12px rgb(194 194 194);
-    animation: fadeIn 1s ease forwards;
+    animation: fade-in 1s ease forwards;
+
     @include transition(all 0.5s ease);
+
     &:hover {
-      color: #000000;
+      color: #000;
+      background-color: #fff;
       cursor: pointer;
       opacity: 0.5;
-      background-color: #fff;
     }
   }
 }
@@ -142,28 +149,32 @@
 .input-container {
   display: flex;
   flex-direction: column;
+
   h3 {
-    text-align: center;
     margin-bottom: 15px;
     font-size: 22px;
+    text-align: center;
   }
+
   input {
     width: 95%;
     height: 40px;
     margin-bottom: 20px;
     padding-left: 15px;
-    color: rgb(0, 0, 0);
+    color: rgb(0 0 0);
     font-size: 14px;
     border: 1px solid #000;
     border-radius: 50px;
   }
+
   button {
     margin-top: -20px;
   }
+
   .fieldError {
-    color: #ff0000;
-    font-size: 12px;
     margin: -15px 0 20px 10px;
+    color: #f00;
+    font-size: 12px;
   }
 }
 
@@ -171,5 +182,5 @@
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  animation: fadeIn2 1s ease forwards;
+  animation: fade-in2 1s ease forwards;
 }

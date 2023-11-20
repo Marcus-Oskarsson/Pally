@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
@@ -11,19 +11,6 @@ const ProfileSettings = () => {
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
-
-  // useEffect(() => {
-  //   fetch(`/api/profile/${user.userid}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data, 'here is the data');
-  //       console.log(data.user);
-  //       setProfileUserSetings(data.user);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching user:', error);
-  //     });
-  // }, [user.userid]);
 
   const removeUser = (userId) => {
     console.log({ userId });

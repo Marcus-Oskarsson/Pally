@@ -8,8 +8,8 @@
 
 .main-friends-container {
   width: 90%;
-  margin: 40px auto; //Tillfällig
-  font-family: Poppins, sans-serif; //Tillfällig
+  margin: 40px auto; // Tillfällig
+  font-family: Poppins, sans-serif; // Tillfällig
   animation: fadeIn 0.5s ease forwards;
 
   h2 {
@@ -36,6 +36,7 @@
     img {
       width: 100px;
     }
+
     .delete-friend {
       width: 25px;
       margin-right: 15px;

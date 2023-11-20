@@ -3,10 +3,11 @@ const router = express.Router();
 const client = require('../connection');
 
 router.get('/profile/:id', async (req, res) => {
+  const { id } = req.params;
   try {
     const profile = await client.query(
       'SELECT * FROM userinfo WHERE userId = $1',
-      [userId],
+      [id],
     );
 
     res.json(profile.rows);

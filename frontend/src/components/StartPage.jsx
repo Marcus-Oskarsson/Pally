@@ -15,7 +15,6 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => {
         setEventInfo(data);
-        console.log('eventInfo', eventInfo);
         console.log(data);
       })
       .catch((error) => {
@@ -46,7 +45,7 @@ const Home = () => {
       .catch((error) => {
         console.error('Error fetching friend:', error);
       });
-  }, []);
+  }, [user]);
 
   return (
     <div className='main-content'>

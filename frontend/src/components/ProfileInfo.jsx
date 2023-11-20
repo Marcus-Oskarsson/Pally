@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
@@ -6,22 +5,7 @@ import '../styles/profile.scss';
 import pallyLogo from '../assets/pallyLogo.png';
 
 const ProfileInfo = () => {
-  const [profileUserInfo, setProfileUserInfo] = useState([]);
   const { user } = useContext(Context);
-
-  // useEffect(() => {
-  //   fetch(`/api/profile/${user.userid}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data, 'here is the data');
-  //       console.log(data.user);
-  //       //gets first user
-  //       setProfileUserInfo(data.user);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching user:', error);
-  //     });
-  // }, [user.userid]);
 
   return (
     <>

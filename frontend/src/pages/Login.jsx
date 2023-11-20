@@ -7,7 +7,7 @@ import '../styles/login.scss';
 
 const Login = () => {
   const [togglePage, settogglePage] = useState(false);
-  const { user, setUser } = useContext(Context);
+  const { user } = useContext(Context);
   console.log(user, 'User');
 
   return (
