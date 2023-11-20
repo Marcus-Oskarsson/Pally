@@ -1,44 +1,82 @@
+import '../styles/policy.scss';
+
 const PrivacyText = () => {
   return (
     <>
-      <h1>Privacy Policy</h1>
+      <div className='policy-container'>
+        <h1>Privacy Policy</h1>
+        {/* Johan: */}
+        <h2>Rättslig grund </h2>
+        <p>
+          Vi hanterar säkerheten kring era personuppgifter med största respekt
+          och hänsyn. På denna sida beskriver vi hur insamling och användning av
+          data hanteras på vår hemsida för att följa gällande lagar och
+          förordningar GDPR (General Data Protection Regulation).
+        </p>
 
-      {/* Tatiana: */}
-      <h2>Contact Information</h2>
-      <p></p>
+        {/* Johan: */}
+        <h2>Vårt ändamål med insamlingen av uppgifterna</h2>
+        <p>
+          Vi på Polly värnar om din integritet och är dedikerade till att
+          säkerställa att all insamling och användning av dina personuppgifter
+          sker i enlighet med tillämpliga lagar och bestämmelser, inklusive EU:s
+          dataskyddsförordning (GDPR).
+        </p>
+        <p>
+          Syftet med insamlingen av dina personuppgifter är att möjliggöra och
+          förbättra din upplevelse när du använder våra tjänster. Vi samlar
+          endast in de uppgifter som är nödvändiga för att tillhandahålla och
+          förbättra våra tjänster samt för att uppfylla våra åtaganden gentemot
+          dig som användare.
+        </p>
+        <p>
+          Genom att använda våra tjänster samtycker du till insamlingen och
+          användningen av dina personuppgifter enligt beskrivningen ovan. Om du
+          har frågor eller önskar ytterligare information angående vår
+          dataskyddspolicy, vänligen kontakta oss.
+        </p>
 
-      {/* Tatiana: */}
-      <h2>Vilka uppgifter vi lagrar och hur länge</h2>
-      <p></p>
+        {/* Tatiana: */}
+        <h2>Vilka uppgifter vi lagrar och hur länge</h2>
+        <p></p>
 
-      {/* Johan: */}
-      <h2>Vårt ändamål med insamlingen av uppgifterna</h2>
-      <p></p>
+        {/* Stina: */}
+        <h2>Du har rätt att ändra/ta bort dina uppgifter</h2>
+        <p></p>
 
-      {/* Stina: */}
-      <h2>Du har rätt att ändra/ta bort dina uppgifter</h2>
-      <p></p>
+        {/* Marcus: */}
+        <h2>
+          Vem delar vi dina uppgifter med? Till eventansvariga, ingen tredje
+          part (företag)
+        </h2>
+        <p></p>
 
-      {/* Marcus: */}
-      <h2>
-        Vem delar vi dina uppgifter med? Till eventansvariga, ingen tredje part
-        (företag)
-      </h2>
-      <p></p>
+        {/* Marcus: */}
+        <h2>
+          Hur länge sparas mina uppgifter (Vi rensar varje år men vi mailar dig
+          )
+        </h2>
+        <p></p>
 
-      {/* Marcus: */}
-      <h2>
-        Hur länge sparas mina uppgifter (Vi rensar varje år men vi mailar dig )
-      </h2>
-      <p></p>
+        {/* Johan: */}
+        <h2>Säkerhetsåtgärder</h2>
+        <p>
+          Vid eventuella säkerhetsincidenter eller angrepp vidtar vi omedelbara
+          åtgärder för att begränsa skadorna och säkerställa att våra användares
+          information skyddas.
+        </p>
+        <p>
+          Vid upptäckt av ett säkerhetsangrepp agerar vi snabbt för att isolera
+          incidenten och begränsa eventuell skada. Vi informerar berörda parter,
+          inklusive berörda användare och myndigheter, om den pågående
+          incidenten, dess påverkan och de åtgärder som vidtas för att hantera
+          den.
+        </p>
 
-      {/* Johan: */}
-      <h2>Säkerhetsåtgärder</h2>
-      <p></p>
-
-      {/* Johan: */}
-      <h2>Rättslig grund </h2>
-      <p></p>
+        {/* Tatiana: */}
+        <h2>Contact Information</h2>
+        <p></p>
+      </div>
     </>
   );
 };
