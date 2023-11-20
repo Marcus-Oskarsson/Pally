@@ -41,8 +41,17 @@ const PrivacyText = () => {
         <p></p>
 
         {/* Stina: */}
-        <h2>Du har rätt att ändra/ta bort dina uppgifter</h2>
-        <p></p>
+        <h2>What are my rights?/What rights do you have?</h2>
+        <p>
+          You have the full right to access information about the data we have
+          stored regarding you. You can request corrections, transfers, ask us
+          to limit processing, or even request the deletion of your data. The
+          simplest method to do so is by updating your details in the Profile
+          section found in the menu. Additionally, you have the option to delete
+          your account, resulting in the removal of all your data.
+          Alternatively, you may contact us via (LÄGG IN LÄNK HÄR) to perform
+          these actions.
+        </p>
 
         {/* Marcus: */}
         <h2>
