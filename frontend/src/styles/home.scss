@@ -36,15 +36,20 @@
 
 
 .friends-container {
+  // display: flex;
+  // gap: 15px;
+  // justify-content: center;
+  // margin-top: 10px;
+  // margin-bottom: 25px;
   display: flex;
   gap: 15px;
   justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 25px;
+  flex-wrap: wrap;
 }
 
 .friend-box {
   text-align: center;
+  margin-bottom: 15px;
 }
 
 .friend-round-border {
