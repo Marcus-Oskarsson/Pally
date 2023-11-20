@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
+import { Modal } from './modal';
 // import '../styles/profile.scss';
 
 const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSettings] = useState([]);
   const { user, setUser } = useContext(Context);
+  const [isOpen, setIsOpen] = useState(false);
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
@@ -110,6 +112,20 @@ const ProfileSettings = () => {
 
   return (
     <>
+      <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
+        <p>{"you don't want an account with us anymore? :( buu"}</p>
+        <div className='button-container'>
+          <button
+            onClick={() => {
+              removeUser(user.userid);
+              setIsOpen(false);
+            }}
+          >
+            Yes
+          </button>
+          <button onClick={() => setIsOpen(false)}>No</button>
+        </div>
+      </Modal>
       <div className='bigContainer'>
         <h1>Settings</h1>
 
@@ -246,7 +262,7 @@ const ProfileSettings = () => {
                 <button
                   className='deleteAccountButton'
                   type='button'
-                  onClick={() => removeUser(user.userid)}
+                  onClick={() => setIsOpen(true)}
                 >
                   Delete Account
                 </button>
