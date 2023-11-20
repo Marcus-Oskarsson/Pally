@@ -12,7 +12,7 @@ router.get('/profile/:id', async (req, res) => {
     res.json(profile.rows);
   } catch (err) {
     console.error('Error retrieving events:', err);
-    res.status(500).json({ error: 'Failed to retrieve events' });
+    res.status(500).json({ error: 'Failed to retrieve user' });
   }
 });
 
