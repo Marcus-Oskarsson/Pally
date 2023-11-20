@@ -32,6 +32,7 @@ const LoginForm = () => {
     fetch('/api/login', options).then((res) => {
       res.json().then((data) => {
         setUser(data);
+        window.location.replace('/');
       });
     });
   };
