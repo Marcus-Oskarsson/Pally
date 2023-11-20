@@ -54,18 +54,30 @@ const PrivacyText = () => {
         </p>
 
         {/* Marcus: */}
-        <h2>
-          Vem delar vi dina uppgifter med? Till eventansvariga, ingen tredje
-          part (företag)
-        </h2>
-        <p></p>
+        <h2>Who do we share your information with?</h2>
+        <p>
+          We do not share your personal information with any third party or
+          company. We handle your data with utmost confidentiality and respect
+          for your privacy. Only our event organizers have access to your
+          information in order to administer and conduct events in a secure
+          manner.
+        </p>
+        <p>
+          However, please note that other users of our platform may be able to
+          see your name and profile image when you participate in events or
+          interact with other users. We recommend being mindful of the
+          information you choose to share and ensuring that it aligns with your
+          privacy preferences.
+        </p>
 
         {/* Marcus: */}
-        <h2>
-          Hur länge sparas mina uppgifter (Vi rensar varje år men vi mailar dig
-          )
-        </h2>
-        <p></p>
+        <h2>How long are my data stored?</h2>
+        <p>
+          Your data will be stored for a period of one year. However, we will
+          send you an email before clearing your data to provide you with an
+          opportunity to request the retention of your information for a longer
+          period if needed.
+        </p>
 
         {/* Johan: */}
         <h2>Säkerhetsåtgärder</h2>
