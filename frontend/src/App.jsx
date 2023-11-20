@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Logout from './pages/Logout';
 import PrivateRoutes from './components/PrivateRoutes';
 import Profile from './pages/Profile';
+import Privacy from './pages/Privacy';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -39,6 +40,7 @@ const App = () => {
             { element: <Friends />, path: '/friends' },
             { element: <Home />, path: '/' },
             { element: <Logout />, path: '/logout' },
+            { element: <Privacy />, path: '/privacy' },
           ],
         },
         { element: <Event />, path: '/event' },
