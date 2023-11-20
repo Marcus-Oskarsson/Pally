@@ -9,19 +9,19 @@ const ProfileInfo = () => {
   const [profileUserInfo, setProfileUserInfo] = useState([]);
   const { user } = useContext(Context);
 
-  useEffect(() => {
-    fetch(`/api/profile/${user.userid}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data, 'here is the data');
-        console.log(data.user);
-        //gets first user
-        setProfileUserInfo(data.user);
-      })
-      .catch((error) => {
-        console.error('Error fetching events:', error);
-      });
-  }, [user.userid]);
+  // useEffect(() => {
+  //   fetch(`/api/profile/${user.userid}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data, 'here is the data');
+  //       console.log(data.user);
+  //       //gets first user
+  //       setProfileUserInfo(data.user);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching user:', error);
+  //     });
+  // }, [user.userid]);
 
   return (
     <>
