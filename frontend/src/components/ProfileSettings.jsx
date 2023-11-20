@@ -12,18 +12,18 @@ const ProfileSettings = () => {
   console.log(user, 'user');
   console.log(user.userid, 'userid');
 
-  // useEffect(() => {
-  //   fetch(`/api/profile/${user.userid}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data, 'here is the data');
-  //       console.log(data.user);
-  //       setProfileUserSetings(data.user);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching user:', error);
-  //     });
-  // }, [user.userid]);
+  useEffect(() => {
+    fetch(`/api/profile/${user.userid}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data, 'here is the data');
+        console.log(data.user);
+        setProfileUserSetings(data.user);
+      })
+      .catch((error) => {
+        console.error('Error fetching user:', error);
+      });
+  }, [user.userid]);
 
   const removeUser = (userId) => {
     console.log({ userId });
