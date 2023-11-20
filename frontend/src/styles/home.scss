@@ -3,10 +3,6 @@
   margin: 0 auto;
   padding: 5px;
   padding-bottom: 20px;
-  //  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
 
 }
 
@@ -14,26 +10,13 @@
   width: 90%;
   margin: 0 auto;
   padding: 5px;
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: center;
   margin-left: 30px;
-
-
-
-
 }
 
 .active-event-title {
-  // display: flex;
-  // justify-content: center;
-
-  // margin-bottom: 10px;
   color: #000;
   font-size: 25px;
   margin-left: 42px;
-
-
 }
 
 .event-description {
@@ -45,22 +28,12 @@
 }
 
 .BoxContainerActive {
-  // display: flex;
-  // flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  // margin-left: 20px;
   background-color: red;
 
 }
 
-// .BoxContainerUpcoming {
-//   // display: flex;
-//   // flex-direction: row;
-//   margin-top: 20px;
-//   background-color: blue;
-
-// }
 
 .friends-container {
   display: flex;
@@ -68,7 +41,6 @@
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 25px;
-
 }
 
 .friend-box {
@@ -83,7 +55,19 @@
   background-color: #ffd3b8;
   border: 1px solid #fff;
   border-radius: 50%;
+  overflow: hidden;
+}
 
+.picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.picture-one{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .friend-name {
@@ -93,72 +77,54 @@
 
 .box {
   display: flex;
-  // flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 150px;
+  width: 180px;
   height: 100px;
   margin: 4px;
-  color: #fff;
-  background: #ffd3b8;
+  color: #000;
   border: 1px solid #fff;
   border-radius: 10px;
   box-shadow: 1px 6px 12px rgb(194 194 194);
   transition: transform 0.3s ease-in-out;
   margin-left: 40px;
-  text-decoration: none;
-
 }
 
-.Box:hover {
+.box:hover {
   transform: scale(1.05);
 }
 
-.EventTitle {
-  color: #000;
-  font-size: 10px;
-}
 
-.EventPlace {
-  color: #000;
-  font-size: 10px;
-}
-
-.titles {
-  margin-bottom: 10px;
-}
-
-// .EventInfo {
-//   display: flex;
-//   font-size: 10px;
+// .event-info {
+//   // display: flex;
+//   // flex-direction: column;
+//   font-size: 12px;
+//   margin-top: 5px;
 
 
-//   span {
-//     margin-left: 50px;
+//   div {
+//     font-weight: bold;
+//     margin-bottom: 5px;
 //   }
 
-//   h3 {
-//     font-size: 13px;
-//   }
 // }
 
 .no-active-events{
-  background-color: #ffd3b8;
 display: flex;
 justify-content: center;
 margin-right: 75px;
 margin-top: 10px;
-
 }
 
 .upcoming-event-title {
-  // display: flex;
-  // justify-content: center;
-  // margin-top: 10px;
   margin-bottom: 10px;
   color: #000;
   font-size: 25px;
   margin-left: 42px;
   margin-top: 60px;
+}
 
+.event-name{
+  display: flex;
+  justify-content: center;
 }
