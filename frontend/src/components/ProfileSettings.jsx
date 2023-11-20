@@ -6,8 +6,8 @@ import { Context } from '../contexts/UserContext';
 // import '../styles/profile.scss';
 
 const ProfileSettings = () => {
-  const [profileUserSettings, setProfileUserSetings] = useState([]);
-  const { user } = useContext(Context);
+  const [profileUserSettings, setProfileUserSettings] = useState([]);
+  const { user, setUser } = useContext(Context);
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
@@ -33,10 +33,42 @@ const ProfileSettings = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data, 'here is the data');
-        setProfileUserSetings([]);
+        setProfileUserSettings(user);
+        setUser('');
       })
       .catch((error) => {
         console.error('Failed to delete user', error);
+      });
+  };
+  const updateUser = (userId, payload) => {
+    console.log('usser, ', user);
+    console.log('payload', payload);
+    fetch(`/api/profile/${userId}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setUser({
+          userid: userId,
+          userfirstname: payload.firstName,
+          userlastname: payload.lastName,
+          useremail: payload.email,
+          userphonenumber: payload.phone,
+          userpersonalnumber: payload.personalNumber,
+          userpassword: payload.password,
+          userstreet: payload.street,
+          usercity: payload.city,
+          userimgurl: payload.img,
+          userzipcode: payload.zipCode,
+        });
+
+        console.log(data);
+        // setProfileUserSettings([]);
+      })
+      .catch((error) => {
+        console.error('Failed to update user', error);
       });
   };
 
@@ -53,7 +85,7 @@ const ProfileSettings = () => {
     zipCode: user.userzipcode,
     city: user.usercity,
     img: user.userimgurl,
-    password: user.userPassword,
+    password: user.userpassword,
   };
 
   const validationSchemaSettings = Yup.object().shape({
@@ -73,7 +105,7 @@ const ProfileSettings = () => {
       .matches(/^[0-9]{5}$/, 'Invalid zip code')
       .required('Zip code is required'),
     city: Yup.string().required('City is required'),
-    // password: Yup.string().required('Password is required'),
+    password: Yup.string().required('Password is required'),
   });
 
   return (
@@ -84,6 +116,9 @@ const ProfileSettings = () => {
         <Formik
           initialValues={initialValueSettings}
           validationSchema={validationSchemaSettings}
+          onSubmit={(values) => {
+            updateUser(user.userid, values);
+          }}
         >
           {({ errors, touched }) => (
             <Form>
@@ -190,12 +225,9 @@ const ProfileSettings = () => {
                   name='profile img'
                   placeholder='Profile picture'
                 ></Field>
-                {errors.password && touched.password && (
-                  <p className='fieldError'>{errors.password}</p>
-                )}
               </div>
 
-              {/* <div>
+              <div>
                 <Field
                   className='Field'
                   type='password'
@@ -205,10 +237,10 @@ const ProfileSettings = () => {
                 {errors.password && touched.password && (
                   <p className='fieldError'>{errors.password}</p>
                 )}
-              </div> */}
+              </div>
 
               <div className='buttonDiv'>
-                <button className='changeSettingsButton' type='button'>
+                <button className='changeSettingsButton' type='submit'>
                   Uppdate settings
                 </button>
                 <button

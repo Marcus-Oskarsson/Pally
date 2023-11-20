@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import '../styles/event.scss';
-// import { useContext } from 'react';
 
 const NewEvent = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -12,7 +11,7 @@ const NewEvent = () => {
     eventStreet: '',
     eventEmail: '',
     eventDate: '',
-    eventImage: '',
+    eventImage: null,
   };
 
   const validationSchemaSettings = Yup.object().shape({
@@ -22,18 +21,22 @@ const NewEvent = () => {
       .email('Invalid email address')
       .required('Email is required'),
     eventDate: Yup.string().required('Date is required'),
-    eventImage: Yup.string().required('Image is required'),
   });
 
-  //Submitta nytt event-metod via Formik
-  const submitEvent = async (values, { setSubmitting }) => {
+  // Submitta nytt event-metod via Formik
+  const submitEvent = async (values, { setSubmitting, setFieldValue }) => {
+    console.log('values:', values);
     try {
+      const formData = new FormData();
+      formData.append('eventName', values.eventName);
+      formData.append('eventStreet', values.eventStreet);
+      formData.append('eventEmail', values.eventEmail);
+      formData.append('eventDate', values.eventDate);
+      formData.append('eventImage', values.eventImage);
+
       const response = await fetch('/api/events', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
+        body: formData,
       });
 
       console.log('Response:', response);
@@ -58,8 +61,8 @@ const NewEvent = () => {
           validationSchema={validationSchemaSettings}
           onSubmit={submitEvent}
         >
-          {({ errors, touched }) => (
-            <Form>
+          {({ errors, touched, setFieldValue }) => (
+            <Form encType='multipart/form-data'>
               {!submitted ? (
                 <>
                   <div>
@@ -74,12 +77,18 @@ const NewEvent = () => {
                     )}
                   </div>
                   <div>
-                    <Field
-                      className='Field'
-                      type='text'
+                    <input
+                      type='file'
+                      className='form-control-file'
                       name='eventImage'
-                      placeholder='Event Image * (URL)'
-                    ></Field>
+                      multiple={false}
+                      onChange={(event) => {
+                        setFieldValue(
+                          'eventImage',
+                          event.currentTarget.files[0]
+                        );
+                      }}
+                    ></input>
                     {errors.eventImage && touched.eventImage && (
                       <p className='fieldError'>{errors.eventImage}</p>
                     )}
