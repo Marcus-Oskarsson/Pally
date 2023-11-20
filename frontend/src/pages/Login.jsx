@@ -24,7 +24,7 @@ const Login = () => {
           }}
         >
           {togglePage
-            ? 'Click here to login'
+            ? 'Already have an account? Click here to login!'
             : 'Not a member yet? Click here to sign up!'}
         </span>
       </div>
