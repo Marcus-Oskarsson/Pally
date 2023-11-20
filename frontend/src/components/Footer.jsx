@@ -24,16 +24,16 @@ const Footer = () => {
               {/* TODO Lägg till korrekta länkar */}
               <Link to='#'>Terms and conditions</Link>
             </li>
-            <li>
-              {/* TODO Lägg till korrekta länkar */}
-              <Link to='/privacy'>Privacy policy</Link>
-            </li>
           </ul>
         </nav>
         <div className='footer-other-links'>
           <ul>
             <li>Annan länk</li>
             <li>Annan länk</li>
+            <li>
+              {/* TODO Lägg till korrekta länkar */}
+              <Link to='/privacy'>Privacy policy</Link>
+            </li>
           </ul>
         </div>
       </div>
