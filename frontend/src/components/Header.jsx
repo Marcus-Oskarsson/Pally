@@ -12,15 +12,13 @@ import '../styles/header.scss';
 
 const ProfileImage = () => {
   const { user } = useContext(Context);
+  console.log('user', user);
 
   return (
     <NavLink className='profile-image-container' to='/profile'>
       <img
         className='profile-image'
-        src={
-          user?.userImgUrl ??
-          'https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_960_720.png'
-        }
+        src={user?.userimgurl ?? ''}
         alt='Profile'
       />
     </NavLink>
@@ -30,6 +28,8 @@ const ProfileImage = () => {
 const Header = () => {
   const { isAuthenticated } = useContext(Context);
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log('isAuthenticated', isAuthenticated);
 
   return (
     <header className='header'>
