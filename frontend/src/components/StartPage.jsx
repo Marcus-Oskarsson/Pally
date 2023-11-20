@@ -5,28 +5,12 @@ import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
 
 const Home = () => {
-  // const [userInfo, setUserInfo] = useState([]);
   const [eventInfo, setEventInfo] = useState([]);
+  const [eventUpcoming, setEventUpcoming] = useState([]);
   const [friendInfo, setFriendInfo] = useState([]);
-  // const [userEvent, setUserEvent] = useState([]);
   const { user } = useContext(Context);
 
-  // useEffect(() => {
-  //   console.log('user', user.userid);
-
-  //   fetch('api/users/friend/${user.userid}')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setUserInfo(data);
-  //       console.log(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching users:', error);
-  //     });
-  // }, []);
-
   useEffect(() => {
-    // console.log('user', user.userid);
     fetch(`api/events/${user.userid}`)
       .then((response) => response.json())
       .then((data) => {
@@ -37,16 +21,27 @@ const Home = () => {
       .catch((error) => {
         console.error('Error fetching event:', error);
       });
+  }, [user]);
+
+  useEffect(() => {
+    fetch('api/events/')
+      .then((response) => response.json())
+      .then((data) => {
+        setEventUpcoming(data);
+        console.log('eventUpcoming', data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching event:', error);
+      });
   }, []);
 
   useEffect(() => {
-    // console.log('user', user.userid);
     fetch(`api/friends/${user.userid}`)
       .then((response) => response.json())
       .then((data) => {
         setFriendInfo(data);
-        console.log('friendInfo', friendInfo);
-        console.log(data);
+        console.log('friendInfo', data);
       })
       .catch((error) => {
         console.error('Error fetching friend:', error);
@@ -57,8 +52,13 @@ const Home = () => {
     <div className='main-content'>
       <div className='friends-container'>
         {friendInfo.map((friends) => (
-          <div key={friends.id} className='friend-box'>
-            <div className='friend-round-border'></div>
+          <div key={friends.friendid} className='friend-box'>
+            <div className='friend-round-border'>
+              <img
+                className='picture'
+                src='https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_960_720.png'
+              />
+            </div>
             <div className='friend-name'>
               {friends.firstname} {friends.lastname}
             </div>
@@ -68,18 +68,21 @@ const Home = () => {
 
       {/*Active Events */}
       <div className='event-main'>
-        {/* <div className='BoxContainerActive'> */}
         <h2 className='active-event-title'>Active Events</h2>
         {eventInfo.length > 0 ? (
           eventInfo.map((event) => (
-            <div key={event.eventId} className='titles'>
-              <Link to={`/event/${event.eventId}`} className='box'>
-                {event.eventname}
-              </Link>
-              {/* <div className='EventInfo'>
-                <h3 className='EventPlace'>{event.eventstreet}</h3>
-                <span>{event.eventdate}</span>
-              </div> */}
+            <div key={'eventInfo-' + event.eventid}>
+              <div className='box'>
+                <img
+                  className='picture-one'
+                  src={event.eventimage}
+                  alt='Event'
+                />
+              </div>
+              <div className='event-name'>
+                <div>{event.eventname}</div>
+                {/* <span>{event.eventstreet}</span> */}
+              </div>
             </div>
           ))
         ) : (
@@ -91,16 +94,20 @@ const Home = () => {
         <p className='event-description'>
           Discover exciting events and create memorable experiences.
         </p>
-
-        {/* <div className='BoxContainerUpcoming'> */}
-        <Link to='/event'>
-          <div className='box'>Events</div>
-          {/* <div className='Box'>Sport</div>
-            <div className='Box'>Restaurant</div>
-            <div className='Box'>Activities</div> */}
-        </Link>
-        {/* </div> */}
-        {/* </div> */}
+        {eventUpcoming.map((event) => (
+          <div key={'eventUpcoming-' + event.eventid}>
+            <Link to='/event'>
+              <div className='box'>
+                <img
+                  className='picture-one'
+                  src={event.eventimage}
+                  alt='Event'
+                />
+              </div>
+              <div className='event-name'>{event.eventname}</div>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -14,6 +14,32 @@ const PrivacyText = () => {
           förordningar GDPR (General Data Protection Regulation).
         </p>
 
+        {/* Tatiana: */}
+        <h2>What data do we store and for how long?</h2>
+        <p>
+          We collect contact information to distinguish users from each other.
+          We gather contact details to communicate with users regarding events.
+          We store the information in a safe way so our users can use our
+          service. The personal data is stored for as long the user is a member.
+        </p>
+        <p>Name: We gather your first name to uniquely identify users.</p>
+        <p>
+          Lastname: We collect your surname for the purpose of user distinction.
+        </p>
+        <p>
+          Email:The collection of email addresses is intended for communication
+          with users regarding events.
+        </p>
+        <p>
+          Address: Addresses are collected to facilitate the mailing of event
+          related correspondence.
+        </p>
+        <p>
+          Securitynumber- At all events alcohol is served, so we need to ensure
+          that you are over 18 years old. We require your full social security
+          number so we can verify that you are of legal age.
+        </p>
+
         {/* Johan: */}
         <h2>Vårt ändamål med insamlingen av uppgifterna</h2>
         <p>
@@ -41,22 +67,43 @@ const PrivacyText = () => {
         <p></p>
 
         {/* Stina: */}
-        <h2>Du har rätt att ändra/ta bort dina uppgifter</h2>
-        <p></p>
+        <h2>What are my rights?/What rights do you have?</h2>
+        <p>
+          You have the full right to access information about the data we have
+          stored regarding you. You can request corrections, transfers, ask us
+          to limit processing, or even request the deletion of your data. The
+          simplest method to do so is by updating your details in the Profile
+          section found in the menu. Additionally, you have the option to delete
+          your account, resulting in the removal of all your data.
+          Alternatively, you may contact us via (LÄGG IN LÄNK HÄR) to perform
+          these actions.
+        </p>
 
         {/* Marcus: */}
-        <h2>
-          Vem delar vi dina uppgifter med? Till eventansvariga, ingen tredje
-          part (företag)
-        </h2>
-        <p></p>
+        <h2>Who do we share your information with?</h2>
+        <p>
+          We do not share your personal information with any third party or
+          company. We handle your data with utmost confidentiality and respect
+          for your privacy. Only our event organizers have access to your
+          information in order to administer and conduct events in a secure
+          manner.
+        </p>
+        <p>
+          However, please note that other users of our platform may be able to
+          see your name and profile image when you participate in events or
+          interact with other users. We recommend being mindful of the
+          information you choose to share and ensuring that it aligns with your
+          privacy preferences.
+        </p>
 
         {/* Marcus: */}
-        <h2>
-          Hur länge sparas mina uppgifter (Vi rensar varje år men vi mailar dig
-          )
-        </h2>
-        <p></p>
+        <h2>How long are my data stored?</h2>
+        <p>
+          Your data will be stored for a period of one year. However, we will
+          send you an email before clearing your data to provide you with an
+          opportunity to request the retention of your information for a longer
+          period if needed.
+        </p>
 
         {/* Johan: */}
         <h2>Säkerhetsåtgärder</h2>
@@ -75,7 +122,10 @@ const PrivacyText = () => {
 
         {/* Tatiana: */}
         <h2>Contact Information</h2>
-        <p></p>
+        <p>
+          Namn: Pally AB E-post: info@Pally.se Telefon: 031-123456 Varbergsgatan
+          1, 123 45 Mölndal
+        </p>
       </div>
     </>
   );

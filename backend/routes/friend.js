@@ -8,6 +8,7 @@ router.get('/friends', async (req, res) => {
     SELECT f.friendId, u2.userFirstName AS firstName, u2.userLastName AS lastName
     FROM friend f
     INNER JOIN userInfo u2 ON f.user2Id = u2.userId`);
+    console.log(friends.rows);
     res.json(friends.rows);
   } catch (error) {
     console.error('failed', error);
