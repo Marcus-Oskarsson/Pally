@@ -1,6 +1,12 @@
 const express = require('express');
-const router = express.Router();
+const fs = require('file-system');
+const multer = require('multer');
+const path = require('path');
+
 const client = require('../connection');
+
+const router = express.Router();
+const upload = multer({ dest: 'uploads/' });
 
 //Renderar alla upcoming-events
 router.get('/events', async (req, res) => {
@@ -15,18 +21,37 @@ router.get('/events', async (req, res) => {
 });
 
 //Skapa ett nytt event
-router.post('/events', async (req, res) => {
+router.post('/events', upload.single('eventImage'), async (req, res) => {
+  const file = req.file;
+  let destinationPath;
+  if (file) {
+    const img = fs.readFileSync(req.file.path);
+
+    // Define the destination path
+    destinationPath = `uploads/${req.file.originalname}`;
+
+    // Move the file to the destination folder
+    fs.writeFileSync(destinationPath, img);
+    destinationPath = `/api/events/${destinationPath}`;
+
+    // Remove the file from the temporary location
+    fs.unlinkSync(req.file.path);
+  }
   try {
-    const { eventName, eventImage, eventStreet, eventEmail, eventDate } =
-      req.body;
+    const { eventName, eventStreet, eventEmail, eventDate } = req.body;
 
     const query = `
       INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate)
       VALUES($1, $2, $3, $4, $5) RETURNING * `;
-    const values = [eventName, eventImage, eventStreet, eventEmail, eventDate];
+    const values = [
+      eventName,
+      destinationPath,
+      eventStreet,
+      eventEmail,
+      eventDate,
+    ];
 
     const newEvent = await client.query(query, values);
-
     res.status(201).json({ success: true, event: newEvent.rows[0] });
   } catch (err) {
     console.error('Error adding event:', err);
@@ -95,6 +120,18 @@ router.delete('/events/:eventid', async (req, res) => {
   } catch (err) {
     console.error('Error removing application:', err);
     res.status(500).json({ error: 'Failed to remove application' });
+  }
+});
+
+router.get('/events/uploads/:filename', (req, res) => {
+  try {
+    const filename = req.params.filename;
+    const imagePath = path.join(__dirname, '..', 'uploads', filename);
+
+    res.sendFile(imagePath);
+  } catch (error) {
+    console.error('Error retrieving image:', error);
+    res.status(500).json({ error: 'Failed to retrieve image' });
   }
 });
 
