@@ -9,19 +9,42 @@ const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSetings] = useState([]);
   const { user } = useContext(Context);
 
-  useEffect(() => {
-    fetch(`/api/profile/${user.userid}`)
+  console.log(user, 'user');
+  console.log(user.userid, 'userid');
+
+  // useEffect(() => {
+  //   fetch(`/api/profile/${user.userid}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data, 'here is the data');
+  //       console.log(data.user);
+  //       setProfileUserSetings(data.user);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching user:', error);
+  //     });
+  // }, [user.userid]);
+
+  const removeUser = (userId) => {
+    console.log({ userId });
+    fetch(`/api/profile/remove/${userId}`, {
+      method: 'DELETE',
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data, 'here is the data');
-        console.log(data.user);
-        //gets first user
-        setProfileUserSetings(data.user);
+        console.log(data.user, 'data.user');
+        console.log(user.userId, 'user.userId');
+        console.group(userId, 'userid');
+        setProfileUserSetings([]);
       })
       .catch((error) => {
-        console.error('Error fetching events:', error);
+        console.error('Failed to delete user', error);
       });
-  }, [user.userid]);
+  };
+
+  console.log({ profileUserSettings });
+
   //Formik från SignUpForm
   const initialValueSettings = {
     firstName: user.userfirstname,
@@ -53,7 +76,7 @@ const ProfileSettings = () => {
       .matches(/^[0-9]{5}$/, 'Invalid zip code')
       .required('Zip code is required'),
     city: Yup.string().required('City is required'),
-    password: Yup.string().required('Password is required'),
+    // password: Yup.string().required('Password is required'),
   });
 
   return (
@@ -188,10 +211,14 @@ const ProfileSettings = () => {
               </div>
 
               <div className='buttonDiv'>
-                <button className='changeSettingsButton' type='submit'>
+                <button className='changeSettingsButton' type='button'>
                   Uppdate settings
                 </button>
-                <button className='deleteAccountButton' type='submit'>
+                <button
+                  className='deleteAccountButton'
+                  type='button'
+                  onClick={() => removeUser(user.userId)}
+                >
                   Delete Account
                 </button>
               </div>
