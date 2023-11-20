@@ -22,7 +22,7 @@ router.post('/login', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  const sql = `SELECT * FROM userInfo WHERE userEmail = $1`;
+  const sql = `SELECT * FROM userInfo WHERE LOWER(userEmail) = $1`;
 
   // const newAccesstoken = crypto.randomBytes(128).toString('hex');
   // const hashedPassword = bcrypt.hashSync(password, salt);
