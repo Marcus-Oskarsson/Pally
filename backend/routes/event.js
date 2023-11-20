@@ -109,6 +109,20 @@ router.post('/userevent', async (req, res) => {
   }
 });
 
+//Här tar man bort ett event man har skapat
+router.delete('/creatorevent/:eventid', async (req, res) => {
+  const eventid = req.params.eventid;
+
+  try {
+    await client.query('DELETE FROM eventInfo WHERE eventid = $1', [eventid]);
+
+    res.json({ message: '123' });
+  } catch (err) {
+    console.error('Error removing application:', err);
+    res.status(500).json({ error: 'Failed to remove application' });
+  }
+});
+
 //Här tar man bort ett event man har applyat till som användare
 router.delete('/events/:eventid', async (req, res) => {
   const eventid = req.params.eventid;

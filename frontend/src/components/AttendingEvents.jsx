@@ -72,7 +72,11 @@ const AttendingEvents = () => {
             {userEvents &&
               userEvents.map((event, index) => (
                 <div key={index} className='events-container'>
-                  <img src={event.eventimage} alt='Event picture' />
+                  <img
+                    id='event-image'
+                    src={event.eventimage}
+                    alt='Event picture'
+                  />
                   <div className='align-events'>
                     <h3>{event.eventname}</h3>
                     <p>{event.eventstreet}</p>
