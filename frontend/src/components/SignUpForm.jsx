@@ -16,6 +16,7 @@ const SignUpForm = () => {
     zipCode: '',
     city: '',
     password: '',
+    privacy: false,
   };
 
   const validationSchema = Yup.object().shape({
@@ -36,6 +37,10 @@ const SignUpForm = () => {
       .required('Zip code is required'),
     city: Yup.string().required('City is required'),
     password: Yup.string().required('Password is required'),
+    privacy: Yup.bool().oneOf(
+      [true],
+      'You need to accept the terms and conditions'
+    ),
   });
 
   const handleNewUser = (values) => {
@@ -186,6 +191,18 @@ const SignUpForm = () => {
                   {errors.password && touched.password && (
                     <p className='fieldError'>{errors.password}</p>
                   )}
+                </div>
+
+                <div>
+                  <label htmlFor='privacy'>
+                    <Field type='checkbox' name='privacy' />
+                    By checking this box, you consent to the storage and
+                    processing of your information in accordance with our
+                    privacy policy and GDPR guidelines.
+                    {errors.privacy && touched.privacy && (
+                      <p className='fieldError'>{errors.privacy}</p>
+                    )}
+                  </label>
                 </div>
 
                 <div className='buttonDiv'>
