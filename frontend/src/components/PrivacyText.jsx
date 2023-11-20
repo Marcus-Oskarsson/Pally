@@ -8,36 +8,36 @@ const PrivacyText = () => {
       <p></p>
 
       {/* Tatiana: */}
-      <h1>Vilka uppgifter vi lagrar och hur länge</h1>
+      <h2>Vilka uppgifter vi lagrar och hur länge</h2>
       <p></p>
 
       {/* Johan: */}
-      <h1>Vårt ändamål med insamlingen av uppgifterna</h1>
+      <h2>Vårt ändamål med insamlingen av uppgifterna</h2>
       <p></p>
 
       {/* Stina: */}
-      <h1>Du har rätt att ändra/ta bort dina uppgifter</h1>
+      <h2>Du har rätt att ändra/ta bort dina uppgifter</h2>
       <p></p>
 
       {/* Marcus: */}
-      <h1>
+      <h2>
         Vem delar vi dina uppgifter med? Till eventansvariga, ingen tredje part
         (företag)
-      </h1>
+      </h2>
       <p></p>
 
       {/* Marcus: */}
-      <h1>
+      <h2>
         Hur länge sparas mina uppgifter (Vi rensar varje år men vi mailar dig )
-      </h1>
+      </h2>
       <p></p>
 
       {/* Johan: */}
-      <h1>Säkerhetsåtgärder</h1>
+      <h2>Säkerhetsåtgärder</h2>
       <p></p>
 
       {/* Johan: */}
-      <h1>Rättslig grund </h1>
+      <h2>Rättslig grund </h2>
       <p></p>
     </>
   );
