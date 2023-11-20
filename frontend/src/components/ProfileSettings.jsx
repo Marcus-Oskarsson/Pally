@@ -7,7 +7,7 @@ import { Context } from '../contexts/UserContext';
 
 const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSetings] = useState([]);
-  const { user } = useContext(Context);
+  const { user, setUser } = useContext(Context);
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
@@ -33,12 +33,27 @@ const ProfileSettings = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data, 'here is the data');
-        setProfileUserSetings([]);
+        setProfileUserSetings(user);
+        setUser('');
       })
       .catch((error) => {
         console.error('Failed to delete user', error);
       });
   };
+  // const updateUser = (userId) => {
+  //   console.log({ userId });
+  //   fetch(`/api/profile/${userId}`, {
+  //     method: 'PUT',
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setProfileUserSetings([]);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Failed to update user', error);
+  //     });
+  // };
 
   console.log({ profileUserSettings });
 
@@ -73,7 +88,6 @@ const ProfileSettings = () => {
       .matches(/^[0-9]{5}$/, 'Invalid zip code')
       .required('Zip code is required'),
     city: Yup.string().required('City is required'),
-    // password: Yup.string().required('Password is required'),
   });
 
   return (
@@ -195,20 +209,12 @@ const ProfileSettings = () => {
                 )}
               </div>
 
-              {/* <div>
-                <Field
-                  className='Field'
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                ></Field>
-                {errors.password && touched.password && (
-                  <p className='fieldError'>{errors.password}</p>
-                )}
-              </div> */}
-
               <div className='buttonDiv'>
-                <button className='changeSettingsButton' type='button'>
+                <button
+                  className='changeSettingsButton'
+                  type='button'
+                  // onClick={() => updateUser(user.userId)}
+                >
                   Uppdate settings
                 </button>
                 <button

@@ -48,5 +48,37 @@ router.delete('/profile/remove/:userId', async (req, res) => {
     res.status(500).json({ error: 'failed to delete user' });
   }
 });
+// router.put('/profile/:userId', async (req, res) => {
+//   const { userId } = req.params;
+//   try {
+//     await client.query(
+//       `
+//       UPDATE FROM userEvent
+//       WHERE userId = $1
+//       `,
+//       [userId],
+//     );
+//     await client.query(
+//       `
+//       UPDATE FROM friend
+//       WHERE user1Id = $1 OR user2Id = $1
+//       `,
+//       [userId],
+//     );
+//     await client.query(
+//       `
+//       UPDATE FROM userinfo
+//       WHERE userId = $1
+//       `,
+//       [userId],
+//     );
+//     res.status(200).json({
+//       message: 'you have successfully updated your user settings',
+//     });
+//   } catch (error) {
+//     console.error('nope, not removed yet', error);
+//     res.status(500).json({ error: 'failed to uppdate user settings' });
+//   }
+// });
 
 module.exports = router;
