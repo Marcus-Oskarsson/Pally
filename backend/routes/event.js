@@ -1,14 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const client = require('../connection');
-const { Pool } = require('pg');
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: '',
-  password: process.env.PG_PASSWORD,
-  port: 5432,
-});
 
 //Renderar alla upcoming-events
 router.get('/events', async (req, res) => {
@@ -25,7 +17,8 @@ router.get('/events', async (req, res) => {
 //Skapa ett nytt event
 router.post('/events', async (req, res) => {
   try {
-    const { eventName, eventImage, eventStreet, eventEmail, eventDate } = req.body;
+    const { eventName, eventImage, eventStreet, eventEmail, eventDate } =
+      req.body;
 
     const query = `
       INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate)
@@ -53,19 +46,11 @@ router.get('/eventsignup', async (req, res) => {
   }
 });
 
-//Skapelse av index för userId
-pool.query(
-  'CREATE INDEX IF NOT EXISTS idx_userEvent_userId ON userEvent(userId)',
-);
-pool.query(
-  'CREATE INDEX IF NOT EXISTS idx_userInfo_userId ON userInfo(userId)',
-);
-
 //Här hämtar den alla events baserat på användare med index
 router.get('/events/:id', async (req, res) => {
   const id = req.params.id;
   try {
-    const events = await pool.query(
+    const events = await client.query(
       `SELECT ei.eventId, ei.eventName, ei.eventImage, ei.eventStreet, ei.eventemail, ei.eventDate
       FROM userEvent ue
       INNER JOIN userInfo ui ON ue.userId = ui.userId
@@ -73,6 +58,7 @@ router.get('/events/:id', async (req, res) => {
       WHERE ue.userId = $1`,
       [id],
     );
+    console.log(events.rows);
 
     res.json(events.rows);
   } catch (err) {

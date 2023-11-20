@@ -2,6 +2,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 import UserProvider from './contexts/UserContext';
 
+import Error from './pages/Error';
 import Event from './pages/Event';
 import Friends from './pages/Friends';
 import Home from './pages/Home';
@@ -15,15 +16,6 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 
 import './styles/reset.scss';
-
-const ErrorPage = () => {
-  return (
-    <div>
-      <h1>404</h1>
-      <p>Page not found 🐊</p>
-    </div>
-  );
-};
 
 function Root() {
   return (
@@ -53,7 +45,7 @@ const App = () => {
         },
         { element: <Event />, path: '/event' },
         { element: <Login />, path: '/login' },
-        { element: <ErrorPage />, path: '*' },
+        { element: <Error />, path: '*' },
       ],
       element: <Root />,
     },
