@@ -22,13 +22,10 @@ router.get('/friends/:userId', async (req, res) => {
   try {
     const friends = await client.query(
       `
-      SELECT f.friendId,
-             CASE WHEN f.user1Id = $1 THEN u2.userFirstName ELSE u1.userFirstName END AS firstName,
-             CASE WHEN f.user1Id = $1 THEN u2.userLastName ELSE u1.userLastName END AS lastName
-      FROM friend f
-      INNER JOIN userInfo u1 ON f.user1Id = u1.userId
-      INNER JOIN userInfo u2 ON f.user2Id = u2.userId
-      WHERE f.user1Id = $1 OR f.user2Id = $1
+      SELECT f.friendId, u.userFirstName AS firstName, u.userLastName AS lastName, u.userimgurl AS userimgUrl
+      FROM userInfo u
+      INNER JOIN friend f ON (u.userId = f.user1Id OR u.userId = f.user2Id)
+      WHERE (f.user1Id = $1 OR f.user2Id = $1) AND u.userId != $1;
       `,
       [userId],
     );
