@@ -42,6 +42,7 @@ const LoginForm = () => {
   return (
     <>
       <div className='bigContainer'>
+        <h1>Log in</h1>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -49,6 +50,7 @@ const LoginForm = () => {
         >
           {({ errors, touched }) => (
             <Form>
+              <label htmlFor='email'>Email</label>
               <div>
                 <Field
                   className='Field'
@@ -61,6 +63,7 @@ const LoginForm = () => {
                 )}
               </div>
 
+              <label htmlFor='password'>Password</label>
               <div>
                 <Field
                   className='Field'

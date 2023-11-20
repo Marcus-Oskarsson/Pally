@@ -39,7 +39,7 @@ const SignUpForm = () => {
     password: Yup.string().required('Password is required'),
     privacy: Yup.bool().oneOf(
       [true],
-      'You need to accept the terms and conditions'
+      'You need to consent to our privacy policy to create an account'
     ),
   });
 
@@ -77,6 +77,7 @@ const SignUpForm = () => {
     <>
       {!isPostSuccess && (
         <div className='bigContainer'>
+          <h1>Sign up</h1>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -84,8 +85,8 @@ const SignUpForm = () => {
           >
             {({ errors, touched }) => (
               <Form>
+                <label htmlFor='firstName'>First name</label>
                 <div>
-                  <label htmlFor='firstName'>First name</label>
                   <Field
                     className='Field'
                     type='text'
@@ -97,6 +98,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='lastName'>Last name</label>
                 <div>
                   <Field
                     className='Field'
@@ -109,6 +111,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='email'>Email</label>
                 <div>
                   <Field
                     className='Field'
@@ -121,6 +124,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='personalNumber'>Personal Identity Number</label>
                 <div>
                   <Field
                     className='Field'
@@ -133,6 +137,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='phone'>Phone</label>
                 <div>
                   <Field
                     className='Field'
@@ -145,6 +150,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='street'>Street</label>
                 <div>
                   <Field
                     className='Field'
@@ -157,6 +163,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='zipCode'>Zip Code</label>
                 <div>
                   <Field
                     className='Field'
@@ -169,6 +176,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='city'>City</label>
                 <div>
                   <Field
                     className='Field'
@@ -181,6 +189,7 @@ const SignUpForm = () => {
                   )}
                 </div>
 
+                <label htmlFor='password'>Password</label>
                 <div>
                   <Field
                     className='Field'
@@ -193,16 +202,22 @@ const SignUpForm = () => {
                   )}
                 </div>
 
-                <div>
-                  <label htmlFor='privacy'>
-                    <Field type='checkbox' name='privacy' />
+                <div className='checkBoxDiv'>
+                  <Field
+                    type='checkbox'
+                    className='checkBoxItem'
+                    name='privacy'
+                  />
+                  <p className='checkBoxText'>
                     By checking this box, you consent to the storage and
                     processing of your information in accordance with our
                     privacy policy and GDPR guidelines.
-                    {errors.privacy && touched.privacy && (
-                      <p className='fieldError'>{errors.privacy}</p>
-                    )}
-                  </label>
+                  </p>
+                </div>
+                <div className='checkBoxErrorDiv'>
+                  {errors.privacy && touched.privacy && (
+                    <p className='checkBoxError'>{errors.privacy}</p>
+                  )}
                 </div>
 
                 <div className='buttonDiv'>

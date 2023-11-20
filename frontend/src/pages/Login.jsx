@@ -15,16 +15,18 @@ const Login = () => {
       {togglePage ? <SignUpForm /> : <LoginForm />}
       <div className='button-container'>
         <span
+          className='loginText'
           onClick={() => settogglePage(!togglePage)}
-          style={{ cursor: 'pointer', textDecoration: 'underline' }}
+          style={{
+            cursor: 'pointer',
+            fontFamily: 'Poppins, sans-serif',
+            fontSize: '15px',
+          }}
         >
           {togglePage
             ? 'Click here to login'
             : 'Not a member yet? Click here to sign up!'}
         </span>
-      </div>
-      <div className='buttonDiv'>
-        <button onClick={() => setUser('')}>Log out</button>
       </div>
     </>
   );

@@ -7,6 +7,7 @@
 }
 
 .bigContainer {
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,10 +15,21 @@
   width: 100%;
   font-family: Poppins, sans-serif;
 
+  h1 {
+    font-size: 23px;
+    margin-bottom: 35px;
+  }
+
+  label {
+    margin-left: 15px;
+    font-size: 15px;
+  }
+
   div {
     align-items: center;
     width: 300px;
-    height: 5em;
+    height: 4.5em;
+    margin-top: 5px;
 
     .Field {
       width: 95%;
@@ -39,6 +51,31 @@
       color: rgb(255 39 39);
       font-size: 12px;
     }
+
+  }
+
+  .checkBoxDiv {
+    display: flex;
+    margin: 0 10px 10px 10px;
+    width: 17em;
+    height: 5em;
+    justify-content: center;
+    align-items: center;
+
+    .checkBoxText{
+      height: 4em;
+      width: 20em;
+      color: #000;
+      font-size: 15px;
+    }
+  }
+
+  .checkBoxErrorDiv {
+    height: 15px;
+    width: 15em;
+    margin: 15px 0 0 31px;
+    display: flex;
+    justify-content: center;
   }
 
   .buttonDiv {
@@ -48,7 +85,7 @@
     button {
       width: 10em;
       padding: 10px 25px;
-      font-size: 14px;
+      font-size: 15px;
       background-color: #fff;
       border: 1px solid #000;
       border-radius: 50px;
@@ -64,4 +101,9 @@
       }
     }
   }
+}
+
+.loginText {
+  margin-bottom: 20px;
+  margin-top: -20px;
 }
