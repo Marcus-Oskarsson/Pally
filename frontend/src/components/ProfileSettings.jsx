@@ -10,6 +10,7 @@ const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSettings] = useState([]);
   const { user, setUser } = useContext(Context);
   const [isOpen, setIsOpen] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
@@ -119,6 +120,8 @@ const ProfileSettings = () => {
             onClick={() => {
               removeUser(user.userid);
               setIsOpen(false);
+              setIsDeleted(true);
+              // window.location.replace('/login');
             }}
           >
             Yes
@@ -126,151 +129,158 @@ const ProfileSettings = () => {
           <button onClick={() => setIsOpen(false)}>No</button>
         </div>
       </Modal>
-      <div className='bigContainer'>
-        <h1>Settings</h1>
 
-        <Formik
-          initialValues={initialValueSettings}
-          validationSchema={validationSchemaSettings}
-          onSubmit={(values) => {
-            updateUser(user.userid, values);
-          }}
-        >
-          {({ errors, touched }) => (
-            <Form>
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='firstName'
-                  placeholder='First Name'
-                ></Field>
-                {errors.firstName && touched.firstName && (
-                  <p className='fieldError'>{errors.firstName}</p>
-                )}
-              </div>
+      {isDeleted ? (
+        <div>
+          <p>you deleted your account</p>
+        </div>
+      ) : (
+        <div className='bigContainer'>
+          <h1>Settings</h1>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='lastName'
-                  placeholder='Last Name'
-                ></Field>
-                {errors.lastName && touched.lastName && (
-                  <p className='fieldError'>{errors.lastName}</p>
-                )}
-              </div>
+          <Formik
+            initialValues={initialValueSettings}
+            validationSchema={validationSchemaSettings}
+            onSubmit={(values) => {
+              updateUser(user.userid, values);
+            }}
+          >
+            {({ errors, touched }) => (
+              <Form>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='firstName'
+                    placeholder='First Name'
+                  ></Field>
+                  {errors.firstName && touched.firstName && (
+                    <p className='fieldError'>{errors.firstName}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='email'
-                  placeholder='Email'
-                ></Field>
-                {errors.email && touched.email && (
-                  <p className='fieldError'>{errors.email}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='lastName'
+                    placeholder='Last Name'
+                  ></Field>
+                  {errors.lastName && touched.lastName && (
+                    <p className='fieldError'>{errors.lastName}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='personalNumber'
-                  placeholder='YYYYMMDDXXXX'
-                ></Field>
-                {errors.personalNumber && touched.personalNumber && (
-                  <p className='fieldError'>{errors.personalNumber}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='email'
+                    placeholder='Email'
+                  ></Field>
+                  {errors.email && touched.email && (
+                    <p className='fieldError'>{errors.email}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='tel'
-                  name='phone'
-                  placeholder='Phone Number'
-                ></Field>
-                {errors.phone && touched.phone && (
-                  <p className='fieldError'>{errors.phone}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='personalNumber'
+                    placeholder='YYYYMMDDXXXX'
+                  ></Field>
+                  {errors.personalNumber && touched.personalNumber && (
+                    <p className='fieldError'>{errors.personalNumber}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='street'
-                  placeholder='Street'
-                ></Field>
-                {errors.street && touched.street && (
-                  <p className='fieldError'>{errors.street}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='tel'
+                    name='phone'
+                    placeholder='Phone Number'
+                  ></Field>
+                  {errors.phone && touched.phone && (
+                    <p className='fieldError'>{errors.phone}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='zipCode'
-                  placeholder='Zip Code'
-                ></Field>
-                {errors.zipCode && touched.zipCode && (
-                  <p className='fieldError'>{errors.zipCode}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='street'
+                    placeholder='Street'
+                  ></Field>
+                  {errors.street && touched.street && (
+                    <p className='fieldError'>{errors.street}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='city'
-                  placeholder='City'
-                ></Field>
-                {errors.city && touched.city && (
-                  <p className='fieldError'>{errors.city}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='zipCode'
+                    placeholder='Zip Code'
+                  ></Field>
+                  {errors.zipCode && touched.zipCode && (
+                    <p className='fieldError'>{errors.zipCode}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='text'
-                  name='profile img'
-                  placeholder='Profile picture'
-                ></Field>
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='city'
+                    placeholder='City'
+                  ></Field>
+                  {errors.city && touched.city && (
+                    <p className='fieldError'>{errors.city}</p>
+                  )}
+                </div>
 
-              <div>
-                <Field
-                  className='Field'
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                ></Field>
-                {errors.password && touched.password && (
-                  <p className='fieldError'>{errors.password}</p>
-                )}
-              </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='text'
+                    name='profile img'
+                    placeholder='Profile picture'
+                  ></Field>
+                </div>
 
-              <div className='buttonDiv'>
-                <button className='changeSettingsButton' type='submit'>
-                  Uppdate settings
-                </button>
-                <button
-                  className='deleteAccountButton'
-                  type='button'
-                  onClick={() => setIsOpen(true)}
-                >
-                  Delete Account
-                </button>
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </div>
+                <div>
+                  <Field
+                    className='Field'
+                    type='password'
+                    name='password'
+                    placeholder='Password'
+                  ></Field>
+                  {errors.password && touched.password && (
+                    <p className='fieldError'>{errors.password}</p>
+                  )}
+                </div>
+
+                <div className='buttonDiv'>
+                  <button className='changeSettingsButton' type='submit'>
+                    Uppdate settings
+                  </button>
+                  <button
+                    className='deleteAccountButton'
+                    type='button'
+                    onClick={() => setIsOpen(true)}
+                  >
+                    Delete Account
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      )}
     </>
   );
 };
