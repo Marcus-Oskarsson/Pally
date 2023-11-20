@@ -8,6 +8,7 @@ const Logo = ({ width = 24, height = 24 }) => {
       viewBox={`0 0 ${width} ${height}`}
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      alt='Home'
     >
       <rect width={width} height={height} fill='url(#pattern0)' />
       <defs>
