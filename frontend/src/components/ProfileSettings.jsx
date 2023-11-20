@@ -198,7 +198,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
-              <div>
+              {/* <div>
                 <Field
                   className='Field'
                   type='password'
@@ -208,7 +208,7 @@ const ProfileSettings = () => {
                 {errors.password && touched.password && (
                   <p className='fieldError'>{errors.password}</p>
                 )}
-              </div>
+              </div> */}
 
               <div className='buttonDiv'>
                 <button className='changeSettingsButton' type='button'>
