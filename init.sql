@@ -44,6 +44,9 @@ CREATE TABLE userEvent(
   FOREIGN KEY (eventId) REFERENCES eventInfo(eventId)
 );
 
+CREATE INDEX IF NOT EXISTS idx_userEvent_userId ON userEvent(userId);
+CREATE INDEX IF NOT EXISTS idx_userInfo_userId ON userInfo(userId);
+
 INSERT INTO userInfo (userFirstName, userLastName, userEmail, userPhoneNumber, userPersonalNumber, userPassword, userStreet, userCity, userImgUrl, userZipCode)
 VALUES
 ('John', 'Doe', 'John.Doe@mail.com', '070-1234567', '19900101-1234', 'password123', 'Street 1', 'City', NULL, 12345),
