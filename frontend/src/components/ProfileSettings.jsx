@@ -9,21 +9,21 @@ const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSetings] = useState([]);
   const { user } = useContext(Context);
 
-  console.log(user, 'user');
-  console.log(user.userid, 'userid');
+  console.log({ user });
+  console.log(user.userid, 'useriDDDDDDd');
 
-  useEffect(() => {
-    fetch(`/api/profile/${user.userid}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data, 'here is the data');
-        console.log(data.user);
-        setProfileUserSetings(data.user);
-      })
-      .catch((error) => {
-        console.error('Error fetching user:', error);
-      });
-  }, [user.userid]);
+  // useEffect(() => {
+  //   fetch(`/api/profile/${user.userid}`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data, 'here is the data');
+  //       console.log(data.user);
+  //       setProfileUserSetings(data.user);
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error fetching user:', error);
+  //     });
+  // }, [user.userid]);
 
   const removeUser = (userId) => {
     console.log({ userId });
@@ -33,9 +33,6 @@ const ProfileSettings = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data, 'here is the data');
-        console.log(data.user, 'data.user');
-        console.log(user.userId, 'user.userId');
-        console.group(userId, 'userid');
         setProfileUserSetings([]);
       })
       .catch((error) => {
@@ -217,7 +214,7 @@ const ProfileSettings = () => {
                 <button
                   className='deleteAccountButton'
                   type='button'
-                  onClick={() => removeUser(user.userId)}
+                  onClick={() => removeUser(user.userid)}
                 >
                   Delete Account
                 </button>

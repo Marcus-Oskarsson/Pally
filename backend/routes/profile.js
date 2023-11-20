@@ -21,6 +21,20 @@ router.delete('/profile/remove/:userId', async (req, res) => {
   try {
     await client.query(
       `
+      DELETE FROM userEvent
+      WHERE userId = $1
+      `,
+      [userId],
+    );
+    await client.query(
+      `
+      DELETE FROM friend
+      WHERE user1Id = $1 OR user2Id = $1
+      `,
+      [userId],
+    );
+    await client.query(
+      `
       DELETE FROM userinfo
       WHERE userId = $1
       `,
