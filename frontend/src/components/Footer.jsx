@@ -26,7 +26,7 @@ const Footer = () => {
             </li>
             <li>
               {/* TODO Lägg till korrekta länkar */}
-              <Link to='#'>Policy</Link>
+              <Link to='/privacy'>Privacy policy</Link>
             </li>
           </ul>
         </nav>
