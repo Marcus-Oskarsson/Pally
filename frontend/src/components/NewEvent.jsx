@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import '../styles/event.scss';
 
+import { Context } from '../contexts/UserContext';
+
 const NewEvent = () => {
   const [submitted, setSubmitted] = useState(false);
+  const { user } = useContext(Context);
 
   const initialValueSettings = {
     eventName: '',
@@ -33,6 +36,7 @@ const NewEvent = () => {
       formData.append('eventEmail', values.eventEmail);
       formData.append('eventDate', values.eventDate);
       formData.append('eventImage', values.eventImage);
+      formData.append('eventCreator', user.userid);
 
       const response = await fetch('/api/events', {
         method: 'POST',
@@ -111,18 +115,26 @@ const NewEvent = () => {
                   </div>
                   <div className='form-control-file'>
                     <label>Event Image</label>
-                    <input
-                      type='file'
-
+                    <Field
                       name='eventImage'
-                      multiple={false}
-                      onChange={(event) => {
-                        setFieldValue(
-                          'eventImage',
-                          event.currentTarget.files[0]
-                        );
-                      }}
-                    ></input>
+                      render={({ field }) => (
+                        <input
+                          type='file'
+                          onChange={(event) => {
+                            const file = event.currentTarget.files[0];
+                            const reader = new FileReader();
+
+                            reader.onload = () => {
+                              field.onChange({
+                                target: { name: field.name, value: file },
+                              });
+                            };
+
+                            reader.readAsDataURL(file);
+                          }}
+                        />
+                      )}
+                    ></Field>
                     {errors.eventImage && touched.eventImage && (
                       <p className='fieldError'>{errors.eventImage}</p>
                     )}

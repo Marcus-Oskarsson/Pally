@@ -1,14 +1,10 @@
 import LoginForm from '../components/LoginForm';
 import SignUpForm from '../components/SignUpForm';
 import { useState } from 'react';
-import { useContext } from 'react';
-import { Context } from '../contexts/UserContext';
 import '../styles/login.scss';
 
 const Login = () => {
   const [togglePage, settogglePage] = useState(false);
-  const { user, setUser } = useContext(Context);
-  console.log(user, 'User');
 
   return (
     <>

@@ -45,10 +45,22 @@ const ProfileSettings = () => {
   const updateUser = (userId, payload) => {
     console.log('usser, ', user);
     console.log('payload', payload);
+
+    const formData = new FormData();
+    formData.append('firstName', payload.firstName);
+    formData.append('lastName', payload.lastName);
+    formData.append('email', payload.email);
+    formData.append('personalNumber', payload.personalNumber);
+    formData.append('phone', payload.phone);
+    formData.append('street', payload.street);
+    formData.append('zipCode', payload.zipCode);
+    formData.append('city', payload.city);
+    formData.append('img', payload.img);
+    formData.append('password', payload.password);
+
     fetch(`/api/profile/${userId}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
@@ -62,7 +74,7 @@ const ProfileSettings = () => {
           userpassword: payload.password,
           userstreet: payload.street,
           usercity: payload.city,
-          userimgurl: payload.img,
+          userimgurl: data.destinationPath,
           userzipcode: payload.zipCode,
         });
 
@@ -143,7 +155,8 @@ const ProfileSettings = () => {
           }}
         >
           {({ errors, touched }) => (
-            <Form>
+            <Form encType='multipart/form-data'>
+              <label htmlFor='firstName'>First name</label>
               <div>
                 <Field
                   className='Field'
@@ -156,6 +169,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='lastName'>Last name</label>
               <div>
                 <Field
                   className='Field'
@@ -168,6 +182,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='email'>Email</label>
               <div>
                 <Field
                   className='Field'
@@ -180,6 +195,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='personalNumber'>Personal Identity Number</label>
               <div>
                 <Field
                   className='Field'
@@ -192,6 +208,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='phone'>Phone</label>
               <div>
                 <Field
                   className='Field'
@@ -204,6 +221,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='street'>Street</label>
               <div>
                 <Field
                   className='Field'
@@ -216,6 +234,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='zipCode'>Zip Code</label>
               <div>
                 <Field
                   className='Field'
@@ -228,6 +247,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='city'>City</label>
               <div>
                 <Field
                   className='Field'
@@ -240,12 +260,28 @@ const ProfileSettings = () => {
                 )}
               </div>
 
-              <div>
+              <label htmlFor='img'>Profile Image</label>
+              <div className='form-control-file'>
                 <Field
-                  className='Field'
-                  type='text'
-                  name='profile img'
-                  placeholder='Profile picture'
+                  id='img'
+                  name='img'
+                  render={({ field }) => (
+                    <input
+                      type='file'
+                      onChange={(event) => {
+                        const file = event.currentTarget.files[0];
+                        const reader = new FileReader();
+
+                        reader.onload = () => {
+                          field.onChange({
+                            target: { name: field.name, value: file },
+                          });
+                        };
+
+                        reader.readAsDataURL(file);
+                      }}
+                    />
+                  )}
                 ></Field>
               </div>
 

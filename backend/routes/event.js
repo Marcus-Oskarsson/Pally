@@ -22,33 +22,39 @@ router.get('/events', async (req, res) => {
 
 //Skapa ett nytt event
 router.post('/events', upload.single('eventImage'), async (req, res) => {
-  const file = req.file;
-  let destinationPath;
-  if (file) {
-    const img = fs.readFileSync(req.file.path);
-
-    // Define the destination path
-    destinationPath = `uploads/${req.file.originalname}`;
-
-    // Move the file to the destination folder
-    fs.writeFileSync(destinationPath, img);
-    destinationPath = `/api/events/${destinationPath}`;
-
-    // Remove the file from the temporary location
-    fs.unlinkSync(req.file.path);
-  }
+  console.log('req.file', req.file);
   try {
-    const { eventName, eventStreet, eventEmail, eventDate } = req.body;
+    // Save image
+    const file = req.file;
+    let destinationPath;
+    if (file) {
+      const img = fs.readFileSync(req.file.path);
+
+      // Define the destination path
+      destinationPath = `uploads/${req.file.originalname}`;
+
+      // Move the file to the destination folder
+      fs.writeFileSync(destinationPath, img);
+      destinationPath = `/api/events/${destinationPath}`;
+
+      // Remove the file from the temporary location
+      fs.unlinkSync(req.file.path);
+    }
+
+    // Create database entry
+    const { eventName, eventStreet, eventEmail, eventDate, eventCreator } =
+      req.body;
 
     const query = `
-      INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate)
-      VALUES($1, $2, $3, $4, $5) RETURNING * `;
+      INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate, eventCreator)
+      VALUES($1, $2, $3, $4, $5, $6) RETURNING * `;
     const values = [
       eventName,
       destinationPath,
       eventStreet,
       eventEmail,
       eventDate,
+      eventCreator,
     ];
 
     const newEvent = await client.query(query, values);
