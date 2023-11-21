@@ -27,10 +27,13 @@ const SignUpForm = () => {
       .email('Invalid email address')
       .required('Email is required'),
     personalNumber: Yup.string()
-      .matches(/^[0-9]{12}$/, 'Invalid personal number')
+      .matches(
+        /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4})$/,
+        'Invalid personal number'
+      )
       .required('Personal number is required'),
     phone: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Invalid phone number')
+      .matches(/^(\d{10}|\d{4}-\d{6}|\d{3}-\d{7})$/, 'Invalid phone number')
       .required('Phone number is required'),
     street: Yup.string().required('Street is required'),
     zipCode: Yup.string()
