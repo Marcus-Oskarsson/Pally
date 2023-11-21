@@ -115,7 +115,9 @@ const ProfileSettings = () => {
       <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
         <p>
           <span>Are you sure you want to delete your account?</span>
-          <span>This will also delete all the collected data of you.</span>
+          <span>
+            This will result in the removal of all your data from Pally.
+          </span>
         </p>
         <div className='button-container-modal'>
           <button
