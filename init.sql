@@ -32,7 +32,9 @@ CREATE TABLE eventInfo(
   eventImage TEXT NOT NULL,
   eventStreet TEXT NOT NULL,
   eventEmail TEXT NOT NULL,
-  eventDate DATE NOT NULL
+  eventDate DATE NOT NULL,
+  eventCreator INT NOT NULL,
+  FOREIGN KEY (eventCreator) REFERENCES userInfo(userId)
 );
 
 CREATE TABLE userEvent(
@@ -79,12 +81,12 @@ VALUES
 (2, 6),
 (2, 7);
 
-INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate)
-VALUES('Party', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 1', 'party@mail.info', '2023-11-18'),
-('Party 2', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 2', 'party@mail.info', '2023-11-18'),
-('Party 3', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 3', 'party@mail.info', '2023-11-18'),
-('Party 4', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 4', 'party@mail.info', '2023-11-18'),
-('Party 5', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 5', 'party@mail.info', '2023-11-18');
+INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate, eventCreator)
+VALUES('Summer Music Fest', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Slottsskogen, Gothenburg', 'info@summermusicfest.com', '2024-06-15', 15),
+('Tech Startup Workshop', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Stockholm Exhibition Center', 'info@technewbs.com', '2023-12-05', 15),
+('Food Truck Rally', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Malmo Harborfront Market', 'hello@foodtrucksweden.com', '2024-04-11', 15),
+('Party 4', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 4', 'party@mail.info', '2023-11-18', 1),
+('Party 5', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 5', 'party@mail.info', '2023-11-18', 1);
 
 INSERT INTO userEvent(userId, eventId)
 VALUES(2, 1);
