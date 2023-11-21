@@ -6,12 +6,12 @@ const PrivacyText = () => {
       <div className='policy-container'>
         <h1>Privacy Policy</h1>
         {/* Johan: */}
-        <h2>Rättslig grund </h2>
+        <h2>Legal Basis</h2>
         <p>
-          Vi hanterar säkerheten kring era personuppgifter med största respekt
-          och hänsyn. På denna sida beskriver vi hur insamling och användning av
-          data hanteras på vår hemsida för att följa gällande lagar och
-          förordningar GDPR (General Data Protection Regulation).
+          We handle the security of your personal data with the utmost respect
+          and consideration. On this page, we describe how the collection and
+          use of data are managed on our website to comply with applicable laws
+          and regulations, such as GDPR (General Data Protection Regulation).
         </p>
 
         {/* Tatiana: */}
@@ -41,25 +41,24 @@ const PrivacyText = () => {
         </p>
 
         {/* Johan: */}
-        <h2>Vårt ändamål med insamlingen av uppgifterna</h2>
+        <h2>Our Purpose for Collecting Data</h2>
         <p>
-          Vi på Polly värnar om din integritet och är dedikerade till att
-          säkerställa att all insamling och användning av dina personuppgifter
-          sker i enlighet med tillämpliga lagar och bestämmelser, inklusive EU:s
-          dataskyddsförordning (GDPR).
+          At Polly, we prioritize your privacy and are dedicated to ensuring
+          that all collection and use of your personal data comply with
+          applicable laws and regulations, including the EUs General Data
+          Protection Regulation (GDPR).
         </p>
         <p>
-          Syftet med insamlingen av dina personuppgifter är att möjliggöra och
-          förbättra din upplevelse när du använder våra tjänster. Vi samlar
-          endast in de uppgifter som är nödvändiga för att tillhandahålla och
-          förbättra våra tjänster samt för att uppfylla våra åtaganden gentemot
-          dig som användare.
+          The purpose of collecting your personal data is to enable and enhance
+          your experience when using our services. We only collect data that is
+          necessary to provide and improve our services and to fulfill our
+          commitments to you as a user.
         </p>
         <p>
-          Genom att använda våra tjänster samtycker du till insamlingen och
-          användningen av dina personuppgifter enligt beskrivningen ovan. Om du
-          har frågor eller önskar ytterligare information angående vår
-          dataskyddspolicy, vänligen kontakta oss.
+          By using our services, you consent to the collection and use of your
+          personal data as described above. If you have any questions or require
+          further information regarding our data protection policy, please
+          contact us.
         </p>
 
         {/* Tatiana: */}
@@ -106,24 +105,23 @@ const PrivacyText = () => {
         </p>
 
         {/* Johan: */}
-        <h2>Säkerhetsåtgärder</h2>
+        <h2>Security Measures</h2>
         <p>
-          Vid eventuella säkerhetsincidenter eller angrepp vidtar vi omedelbara
-          åtgärder för att begränsa skadorna och säkerställa att våra användares
-          information skyddas.
+          In case of any security incidents or attacks, we take immediate
+          measures to limit damages and ensure the protection of our users
+          information.
         </p>
         <p>
-          Vid upptäckt av ett säkerhetsangrepp agerar vi snabbt för att isolera
-          incidenten och begränsa eventuell skada. Vi informerar berörda parter,
-          inklusive berörda användare och myndigheter, om den pågående
-          incidenten, dess påverkan och de åtgärder som vidtas för att hantera
-          den.
+          Upon detecting a security breach, we act swiftly to isolate the
+          incident and minimize any potential harm. We inform relevant parties,
+          including affected users and authorities, about the ongoing incident,
+          its impact, and the actions being taken to address it.
         </p>
 
         {/* Tatiana: */}
         <h2>Contact Information</h2>
         <p>
-          Namn: Pally AB E-post: info@Pally.se Telefon: 031-123456 Varbergsgatan
+          Name: Pally AB E-post: info@Pally.se Telefon: 031-123456 Varbergsgatan
           1, 123 45 Mölndal
         </p>
       </div>

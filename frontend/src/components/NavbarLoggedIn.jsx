@@ -12,6 +12,7 @@ const NavbarLoggedIn = ({ setIsOpen, isOpen }) => {
     { name: 'Friends', path: 'friends', restricted: true },
     { name: 'Profile', path: 'profile', restricted: true },
     { name: 'About', path: 'about', restricted: false },
+    { name: 'Privacy', path: 'privacy', restricted: false },
     { name: 'Logout', path: 'logout', restricted: false },
   ];
   useEffect(
