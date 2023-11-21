@@ -1,50 +1,32 @@
-.main-content{
-  width: 90%;
-  margin: 0 auto;
-  padding: 5px;
-  padding-bottom: 20px;
 
-}
 
 .event-main {
-  width: 90%;
-  margin: 0 auto;
-  padding: 5px;
-  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 5px;
 }
 
 .active-event-title {
   color: #000;
   font-size: 25px;
-  margin-left: 42px;
 }
 
 .event-description {
   font-size: 11px;
   color: #000;
   margin-bottom: 10px;
-  margin-right: 2%;
-
-}
-
-.BoxContainerActive {
-  align-items: center;
-  margin-top: 20px;
-  background-color: red;
-
 }
 
 
 .friends-container {
-  // display: flex;
-  // gap: 15px;
-  // justify-content: center;
-  // margin-top: 10px;
-  // margin-bottom: 25px;
   display: flex;
   gap: 15px;
   justify-content: center;
-  flex-wrap: wrap;
+  margin-top: 5px;
+  margin-bottom: 25px;
+
 }
 
 .friend-box {
@@ -66,13 +48,12 @@
 .picture {
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .picture-one{
   width: 100%;
   height: 100%;
-  object-fit: cover;
+
 }
 
 .friend-name {
@@ -81,11 +62,15 @@
 }
 
 .box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 180px;
-  height: 100px;
+width: 90%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+.box-img {
+  width: 90%;
   margin: 4px;
   color: #000;
   border: 1px solid #fff;
@@ -100,20 +85,6 @@
 }
 
 
-// .event-info {
-//   // display: flex;
-//   // flex-direction: column;
-//   font-size: 12px;
-//   margin-top: 5px;
-
-
-//   div {
-//     font-weight: bold;
-//     margin-bottom: 5px;
-//   }
-
-// }
-
 .no-active-events{
 display: flex;
 justify-content: center;
@@ -125,11 +96,9 @@ margin-top: 10px;
   margin-bottom: 10px;
   color: #000;
   font-size: 25px;
-  margin-left: 42px;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .event-name{
-  display: flex;
-  justify-content: center;
+  margin: 10px;
 }
