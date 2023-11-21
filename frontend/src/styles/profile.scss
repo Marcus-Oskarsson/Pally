@@ -27,6 +27,9 @@
     .profile-picture {
       width: 100px;
       height: 100px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+
     }
   }
 
@@ -37,6 +40,7 @@
     justify-content: center;
     width: 100%;
     height: auto;
+    margin: 20px 0;
   }
 
   .button-choices {
@@ -72,4 +76,20 @@
   display: flex;
   justify-content: center;
   margin-top: 35px;
+}
+
+.buttonDiv {
+  gap: 5px;
+}
+
+.flex-row{
+  display: flex;
+
+  p{
+    margin: 20px 3px;
+  }
+}
+
+.settings-button{
+  margin: 30px 0;
 }

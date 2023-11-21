@@ -19,6 +19,7 @@
     width: 100%;
     height: 100%;
     cursor: pointer;
+    font-family: "Poppins", sans-serif;
   }
 
   span {
@@ -27,7 +28,7 @@
     display: block;
     width: 100%;
     height: 4px;
-    background: #efefef;
+    background: $color-1-text;
     border-radius: 8px;
     transform: rotate(0deg);
     cursor: pointer;

@@ -31,6 +31,13 @@
     .result-friends {
       display: flex;
       align-items: center;
+
+      img{
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        margin-right: 50px;
+      }
     }
 
     img {

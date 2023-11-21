@@ -1,4 +1,5 @@
 import { Formik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import SuccessfulSignUp from './SuccessfulSignUp';
@@ -26,10 +27,13 @@ const SignUpForm = () => {
       .email('Invalid email address')
       .required('Email is required'),
     personalNumber: Yup.string()
-      .matches(/^[0-9]{12}$/, 'Invalid personal number')
+      .matches(
+        /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4})$/,
+        'Invalid personal number'
+      )
       .required('Personal number is required'),
     phone: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Invalid phone number')
+      .matches(/^(\d{10}|\d{4}-\d{6}|\d{3}-\d{7})$/, 'Invalid phone number')
       .required('Phone number is required'),
     street: Yup.string().required('Street is required'),
     zipCode: Yup.string()
@@ -211,7 +215,10 @@ const SignUpForm = () => {
                   <p className='checkBoxText'>
                     By checking this box, you consent to the storage and
                     processing of your information in accordance with our
-                    privacy policy and GDPR guidelines.
+                    <span> </span>
+                    <Link to='/privacy'>
+                      privacy policy and GDPR guidelines.
+                    </Link>
                   </p>
                 </div>
                 <div className='checkBoxErrorDiv'>

@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
+import { Modal } from './modal';
 // import '../styles/profile.scss';
 
 const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSettings] = useState([]);
   const { user, setUser } = useContext(Context);
+  const [isOpen, setIsOpen] = useState(false);
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
@@ -72,7 +74,7 @@ const ProfileSettings = () => {
           userpassword: payload.password,
           userstreet: payload.street,
           usercity: payload.city,
-          userimgurl: payload.img,
+          userimgurl: data.destinationPath,
           userzipcode: payload.zipCode,
         });
 
@@ -107,10 +109,13 @@ const ProfileSettings = () => {
       .email('Invalid email address')
       .required('Email is required'),
     personalNumber: Yup.string()
-      .matches(/^[0-9]{12}$/, 'Invalid personal number')
+      .matches(
+        /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4})$/,
+        'Invalid personal number'
+      )
       .required('Personal number is required'),
     phone: Yup.string()
-      .matches(/^[0-9]{10}$/, 'Invalid phone number')
+      .matches(/^(\d{10}|\d{4}-\d{6}|\d{3}-\d{7})$/, 'Invalid phone number')
       .required('Phone number is required'),
     street: Yup.string().required('Street is required'),
     zipCode: Yup.string()
@@ -122,6 +127,26 @@ const ProfileSettings = () => {
 
   return (
     <>
+      <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
+        <p>
+          <span>Are you sure you want to delete your account?</span>
+          <span>
+            This will result in the removal of all your data from Pally.
+          </span>
+        </p>
+        <div className='button-container-modal'>
+          <button
+            onClick={() => {
+              removeUser(user.userid);
+              setIsOpen(false);
+              // window.location.replace('/login');
+            }}
+          >
+            Yes
+          </button>
+          <button onClick={() => setIsOpen(false)}>No</button>
+        </div>
+      </Modal>
       <div className='bigContainer'>
         <h1>Settings</h1>
 
@@ -134,6 +159,7 @@ const ProfileSettings = () => {
         >
           {({ errors, touched }) => (
             <Form encType='multipart/form-data'>
+              <label htmlFor='firstName'>First name</label>
               <div>
                 <Field
                   className='Field'
@@ -146,6 +172,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='lastName'>Last name</label>
               <div>
                 <Field
                   className='Field'
@@ -158,6 +185,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='email'>Email</label>
               <div>
                 <Field
                   className='Field'
@@ -170,6 +198,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='personalNumber'>Personal Identity Number</label>
               <div>
                 <Field
                   className='Field'
@@ -182,6 +211,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='phone'>Phone</label>
               <div>
                 <Field
                   className='Field'
@@ -194,6 +224,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='street'>Street</label>
               <div>
                 <Field
                   className='Field'
@@ -206,6 +237,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='zipCode'>Zip Code</label>
               <div>
                 <Field
                   className='Field'
@@ -218,6 +250,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='city'>City</label>
               <div>
                 <Field
                   className='Field'
@@ -230,8 +263,8 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='img'>Profile Image</label>
               <div className='form-control-file'>
-                <label htmlFor='img'>Event Image</label>
                 <Field
                   id='img'
                   name='img'
@@ -274,7 +307,7 @@ const ProfileSettings = () => {
                 <button
                   className='deleteAccountButton'
                   type='button'
-                  onClick={() => removeUser(user.userid)}
+                  onClick={() => setIsOpen(true)}
                 >
                   Delete Account
                 </button>

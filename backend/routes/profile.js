@@ -97,6 +97,7 @@ router.put('/profile/:userId', upload.single('img'), async (req, res) => {
     );
     res.status(200).json({
       message: 'you have successfully updated your user settings',
+      destinationPath,
     });
   } catch (error) {
     console.error('nope, not updated yet', error);

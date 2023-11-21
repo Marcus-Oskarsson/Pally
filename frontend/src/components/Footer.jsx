@@ -1,43 +1,38 @@
 import { Link } from 'react-router-dom';
-
-import Logo from './icons/Logo';
-
 import '../styles/footer.scss';
+import { House } from '../components/icons/House';
+import { Friends } from '../components/icons/Friends';
+import { Calender } from './icons/Calender';
+import { useContext } from 'react';
+import { Context } from '../contexts/UserContext';
 
 const Footer = () => {
+  const { isAuthenticated } = useContext(Context);
+
   return (
-    <footer className='page-footer'>
-      <div className='logo-container'>
-        <Link to='/'>
-          <Logo width={32} height={32} />
-        </Link>
-        <span>© 2023 Pally</span>
-      </div>
-      <div className='link-container'>
-        <nav className='footer-nav'>
+    <>
+      {isAuthenticated && (
+        <div className='footerContainer'>
           <ul>
             <li>
-              {/* TODO Lägg till korrekta länkar */}
-              <Link to='#'>Privacy</Link>
+              <Link to='/'>
+                <House />
+              </Link>
             </li>
             <li>
-              {/* TODO Lägg till korrekta länkar */}
-              <Link to='#'>Terms and conditions</Link>
+              <Link to='/event'>
+                <Calender />
+              </Link>
             </li>
-          </ul>
-        </nav>
-        <div className='footer-other-links'>
-          <ul>
-            <li>Annan länk</li>
-            <li>Annan länk</li>
             <li>
-              {/* TODO Lägg till korrekta länkar */}
-              <Link to='/privacy'>Privacy policy</Link>
+              <Link to='/friends'>
+                <Friends />
+              </Link>
             </li>
           </ul>
         </div>
-      </div>
-    </footer>
+      )}
+    </>
   );
 };
 

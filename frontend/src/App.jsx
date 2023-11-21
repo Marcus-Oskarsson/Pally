@@ -52,6 +52,7 @@ const App = () => {
           ],
         },
         { element: <Login />, path: '/login' },
+        { element: <Privacy />, path: '/privacy' },
         { element: <Error />, path: '*' },
       ],
       element: <Root />,
