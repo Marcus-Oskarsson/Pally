@@ -186,3 +186,14 @@
     }
   }
 }
+
+.form-control-file {
+  padding: 0px 0 0 10px;
+  input {
+    border: none;
+    padding-left: 0px;
+    border-radius: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+}

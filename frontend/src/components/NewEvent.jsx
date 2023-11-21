@@ -77,23 +77,6 @@ const NewEvent = () => {
                     )}
                   </div>
                   <div>
-                    <input
-                      type='file'
-                      className='form-control-file'
-                      name='eventImage'
-                      multiple={false}
-                      onChange={(event) => {
-                        setFieldValue(
-                          'eventImage',
-                          event.currentTarget.files[0]
-                        );
-                      }}
-                    ></input>
-                    {errors.eventImage && touched.eventImage && (
-                      <p className='fieldError'>{errors.eventImage}</p>
-                    )}
-                  </div>
-                  <div>
                     <Field
                       className='Field'
                       type='text'
@@ -124,6 +107,24 @@ const NewEvent = () => {
                     ></Field>
                     {errors.eventDate && touched.eventDate && (
                       <p className='fieldError'>{errors.eventDate}</p>
+                    )}
+                  </div>
+                  <div className='form-control-file'>
+                    <label>Event Image</label>
+                    <input
+                      type='file'
+
+                      name='eventImage'
+                      multiple={false}
+                      onChange={(event) => {
+                        setFieldValue(
+                          'eventImage',
+                          event.currentTarget.files[0]
+                        );
+                      }}
+                    ></input>
+                    {errors.eventImage && touched.eventImage && (
+                      <p className='fieldError'>{errors.eventImage}</p>
                     )}
                   </div>
                   <div className='btn-container'>
