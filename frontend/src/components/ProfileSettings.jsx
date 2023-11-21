@@ -114,8 +114,11 @@ const ProfileSettings = () => {
   return (
     <>
       <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
-        <p>{"you don't want an account with us anymore? :( buu"}</p>
-        <div className='button-container'>
+        <p>
+          <span>Are you sure you want to delete your account?</span>
+          <span>This will also delete all the collected data of you.</span>
+        </p>
+        <div className='button-container-modal'>
           <button
             onClick={() => {
               removeUser(user.userid);

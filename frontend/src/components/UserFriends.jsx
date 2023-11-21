@@ -48,8 +48,8 @@ export const UserFriends = () => {
     <>
       <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
         <div>
-          <p>You sure you want to delite this frriend?</p>
-          <div className='button-container'>
+          <p>Are you sure you want to delete this friend?</p>
+          <div className='button-container-modal'>
             <button
               onClick={() => {
                 removeFriend(friendId);
