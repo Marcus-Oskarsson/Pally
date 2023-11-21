@@ -1,4 +1,5 @@
 import { Formik, Form, Field } from 'formik';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import SuccessfulSignUp from './SuccessfulSignUp';
@@ -211,7 +212,10 @@ const SignUpForm = () => {
                   <p className='checkBoxText'>
                     By checking this box, you consent to the storage and
                     processing of your information in accordance with our
-                    privacy policy and GDPR guidelines.
+                    <span> </span>
+                    <Link to='/privacy'>
+                      privacy policy and GDPR guidelines.
+                    </Link>
                   </p>
                 </div>
                 <div className='checkBoxErrorDiv'>

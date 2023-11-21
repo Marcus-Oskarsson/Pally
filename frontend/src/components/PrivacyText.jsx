@@ -75,8 +75,8 @@ const PrivacyText = () => {
           simplest method to do so is by updating your details in the Profile
           section found in the menu. Additionally, you have the option to delete
           your account, resulting in the removal of all your data.
-          Alternatively, you may contact us via (LÄGG IN LÄNK HÄR) to perform
-          these actions.
+          Alternatively, you may contact us via our contact information to
+          perform these actions.
         </p>
 
         {/* Marcus: */}

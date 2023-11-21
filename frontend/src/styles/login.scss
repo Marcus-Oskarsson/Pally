@@ -21,14 +21,14 @@
   }
 
   label {
-    margin-left: 15px;
+    margin-left: 5px;
     font-size: 15px;
   }
 
   div {
     align-items: center;
     width: 300px;
-    height: 4.5em;
+    height: 4em;
     margin-top: 5px;
 
     .Field {
@@ -81,7 +81,7 @@
   .buttonDiv {
     display: flex;
     justify-content: center;
-    height: 5em;
+    height: 3em;
     margin-bottom: 1em;
 
     button {
