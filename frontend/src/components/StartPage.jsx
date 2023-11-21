@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import '../styles/home.scss';
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
 
@@ -56,35 +55,34 @@ const Home = () => {
             <div className='friend-round-border'>
               <img className='picture' src={friends.userimgurl} />
             </div>
-            <div className='friend-name'>
-              {friends.firstname} {friends.lastname}
-            </div>
+            <div className='friend-name'>{friends.firstname}</div>
           </div>
         ))}
       </div>
 
       {/*Active Events */}
       <div className='event-main'>
-        <h2 className='active-event-title'>Active Events</h2>
-        {eventInfo.length > 0 ? (
-          eventInfo.map((event) => (
-            <div key={'eventInfo-' + event.eventid}>
-              <div className='box'>
+        <div className='active-events-container'>
+          <h2 className='active-event-title'>Active Events</h2>
+          {eventInfo.length > 0 ? (
+            eventInfo.map((event) => (
+              <div key={'eventInfo-' + event.eventid} className='box'>
                 <img
                   className='picture-one'
                   src={event.eventimage}
                   alt='Event'
                 />
+
+                <div className='event-name'>
+                  <div>{event.eventname}</div>
+                  {/* <span>{event.eventstreet}</span> */}
+                </div>
               </div>
-              <div className='event-name'>
-                <div>{event.eventname}</div>
-                {/* <span>{event.eventstreet}</span> */}
-              </div>
-            </div>
-          ))
-        ) : (
-          <div className='no-active-events'>No active events</div>
-        )}
+            ))
+          ) : (
+            <div className='no-active-events'>No active events</div>
+          )}
+        </div>
 
         {/*Upcoming Events */}
         <h3 className='upcoming-event-title'>Upcoming Events</h3>
@@ -92,17 +90,9 @@ const Home = () => {
           Discover exciting events and create memorable experiences.
         </p>
         {eventUpcoming.map((event) => (
-          <div key={'eventUpcoming-' + event.eventid}>
-            <Link to='/event'>
-              <div className='box'>
-                <img
-                  className='picture-one'
-                  src={event.eventimage}
-                  alt='Event'
-                />
-              </div>
-              <div className='event-name'>{event.eventname}</div>
-            </Link>
+          <div key={'eventUpcoming-' + event.eventid} className='box'>
+            <img className='picture-one' src={event.eventimage} alt='Event' />
+            <div className='event-name'>{event.eventname}</div>
           </div>
         ))}
       </div>
