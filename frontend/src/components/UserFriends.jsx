@@ -67,7 +67,7 @@ export const UserFriends = () => {
         {friendsList.map((friends) => (
           <div key={friends.friendid} className='friends-container'>
             <div className='result-friends'>
-              <img src={FriendImage} alt='friend image' />
+              <img src={friends.userimgurl} alt='friend image' />
               <p>
                 {friends.firstname} {friends.lastname}
               </p>
