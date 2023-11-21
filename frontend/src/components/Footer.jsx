@@ -20,13 +20,13 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to='/friends'>
-                <Friends />
+              <Link to='/event'>
+                <Calender />
               </Link>
             </li>
             <li>
-              <Link to='/event'>
-                <Calender />
+              <Link to='/friends'>
+                <Friends />
               </Link>
             </li>
           </ul>
