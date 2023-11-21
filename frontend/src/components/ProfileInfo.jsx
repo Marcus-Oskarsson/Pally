@@ -30,7 +30,7 @@ const ProfileInfo = () => {
           {/* <img className='profile-picture' src={pallyLogo} alt='Logo' /> */}
           <img
             className='profile-picture'
-            src={user?.userimgurl ?? ''}
+            src={user.userimgurl}
             alt='Profile'
           />
         </div>

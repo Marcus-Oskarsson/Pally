@@ -72,7 +72,7 @@ const ProfileSettings = () => {
           userpassword: payload.password,
           userstreet: payload.street,
           usercity: payload.city,
-          userimgurl: payload.img,
+          userimgurl: data.destinationPath,
           userzipcode: payload.zipCode,
         });
 
@@ -134,6 +134,7 @@ const ProfileSettings = () => {
         >
           {({ errors, touched }) => (
             <Form encType='multipart/form-data'>
+              <label htmlFor='firstName'>First name</label>
               <div>
                 <Field
                   className='Field'
@@ -146,6 +147,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='lastName'>Last name</label>
               <div>
                 <Field
                   className='Field'
@@ -158,6 +160,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='email'>Email</label>
               <div>
                 <Field
                   className='Field'
@@ -170,6 +173,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='personalNumber'>Personal Identity Number</label>
               <div>
                 <Field
                   className='Field'
@@ -182,6 +186,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='phone'>Phone</label>
               <div>
                 <Field
                   className='Field'
@@ -194,6 +199,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='street'>Street</label>
               <div>
                 <Field
                   className='Field'
@@ -206,6 +212,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='zipCode'>Zip Code</label>
               <div>
                 <Field
                   className='Field'
@@ -218,6 +225,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='city'>City</label>
               <div>
                 <Field
                   className='Field'
@@ -230,8 +238,8 @@ const ProfileSettings = () => {
                 )}
               </div>
 
+              <label htmlFor='img'>Profile Image</label>
               <div className='form-control-file'>
-                <label htmlFor='img'>Event Image</label>
                 <Field
                   id='img'
                   name='img'

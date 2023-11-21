@@ -59,21 +59,6 @@ router.put('/profile/:userId', upload.single('img'), async (req, res) => {
   console.log('INGEN FIL: ', req.file);
   console.log(req.body);
   try {
-    // await client.query(
-    //   `
-    //   UPDATE FROM userEvent
-    //   WHERE userId = $1
-    //   `,
-    //   [userId],
-    // );
-    // await client.query(
-    //   `
-    //   UPDATE FROM friend
-    //   WHERE user1Id = $1 OR user2Id = $1
-    //   `,
-    //   [userId],
-    // );
-
     // Save image
     const file = req.file;
     let destinationPath;
@@ -117,6 +102,7 @@ router.put('/profile/:userId', upload.single('img'), async (req, res) => {
     );
     res.status(200).json({
       message: 'you have successfully updated your user settings',
+      destinationPath,
     });
   } catch (error) {
     console.error('nope, not updated yet', error);
