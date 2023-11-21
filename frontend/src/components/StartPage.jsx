@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import '../styles/home.scss';
 import { useContext } from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Context } from '../contexts/UserContext';
+import { Carousel } from 'react-responsive-carousel';
 
 const Home = () => {
   const [eventInfo, setEventInfo] = useState([]);
@@ -65,36 +67,58 @@ const Home = () => {
         <div className='active-events-container'>
           <h2 className='active-event-title'>Active Events</h2>
           {eventInfo.length > 0 ? (
-            eventInfo.map((event) => (
-              <div key={'eventInfo-' + event.eventid} className='box'>
-                <img
-                  className='picture-one'
-                  src={event.eventimage}
-                  alt='Event'
-                />
-
-                <div className='event-name'>
-                  <div>{event.eventname}</div>
-                  {/* <span>{event.eventstreet}</span> */}
+            <Carousel
+              showArrows={true}
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={3000}
+            >
+              {eventInfo.map((event) => (
+                <div key={'eventInfo-' + event.eventid} className='box'>
+                  <img
+                    className='picture-one'
+                    src={event.eventimage}
+                    alt='Event'
+                  />
+                  <div className='event-name'>
+                    <div>{event.eventname}</div>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))}
+            </Carousel>
           ) : (
             <div className='no-active-events'>No active events</div>
           )}
         </div>
 
         {/*Upcoming Events */}
-        <h3 className='upcoming-event-title'>Upcoming Events</h3>
-        <p className='event-description'>
-          Discover exciting events and create memorable experiences.
-        </p>
-        {eventUpcoming.map((event) => (
-          <div key={'eventUpcoming-' + event.eventid} className='box'>
-            <img className='picture-one' src={event.eventimage} alt='Event' />
-            <div className='event-name'>{event.eventname}</div>
-          </div>
-        ))}
+        <div className='active-events-container'>
+          <h3 className='upcoming-event-title'>Upcoming Events</h3>
+          <p className='event-description'>
+            Discover exciting events and create memorable experiences.
+          </p>
+          {eventUpcoming.length > 0 ? (
+            <Carousel
+              showArrows={true}
+              infiniteLoop={true}
+              autoPlay={true}
+              interval={3000}
+            >
+              {eventUpcoming.map((event) => (
+                <div key={'eventUpcoming-' + event.eventid} className='box'>
+                  <img
+                    className='picture-one'
+                    src={event.eventimage}
+                    alt='Event'
+                  />
+                  <div className='event-name'>{event.eventname}</div>
+                </div>
+              ))}
+            </Carousel>
+          ) : (
+            <div className='no-upcoming-events'>No upcoming events</div>
+          )}
+        </div>
       </div>
     </div>
   );
