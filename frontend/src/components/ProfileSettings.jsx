@@ -76,7 +76,7 @@ const ProfileSettings = () => {
           userzipcode: payload.zipCode,
         });
 
-        console.log(data);
+        console.log('data: ', data);
         // setProfileUserSettings([]);
       })
       .catch((error) => {
