@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
+import { Modal } from './modal';
 // import '../styles/profile.scss';
 
 const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSettings] = useState([]);
   const { user, setUser } = useContext(Context);
+  const [isOpen, setIsOpen] = useState(false);
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
@@ -122,6 +124,26 @@ const ProfileSettings = () => {
 
   return (
     <>
+      <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
+        <p>
+          <span>Are you sure you want to delete your account?</span>
+          <span>
+            This will result in the removal of all your data from Pally.
+          </span>
+        </p>
+        <div className='button-container-modal'>
+          <button
+            onClick={() => {
+              removeUser(user.userid);
+              setIsOpen(false);
+              // window.location.replace('/login');
+            }}
+          >
+            Yes
+          </button>
+          <button onClick={() => setIsOpen(false)}>No</button>
+        </div>
+      </Modal>
       <div className='bigContainer'>
         <h1>Settings</h1>
 
@@ -282,7 +304,7 @@ const ProfileSettings = () => {
                 <button
                   className='deleteAccountButton'
                   type='button'
-                  onClick={() => removeUser(user.userid)}
+                  onClick={() => setIsOpen(true)}
                 >
                   Delete Account
                 </button>

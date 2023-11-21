@@ -1,0 +1,79 @@
+@mixin transition($content) {
+  -webkit-transition: $content;
+  -moz-transition: $content;
+  -ms-transition: $content;
+  -o-transition: $content;
+  transition: $content;
+}
+
+.modal-Container {
+  font-family: Poppins, sans-serif;
+  position: fixed;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -106px;
+  backdrop-filter: blur(1px);
+
+  .modal-Children-Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -70px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 1px 6px 12px rgb(194 194 194);
+    height: 30vh;
+    width: 85vw;
+    position: relative;
+
+    .modal-button-container {
+      position: absolute;
+      padding: 5px;
+      display: block;
+      right: 0;
+      top: 0;
+    }
+    .modal-Children {
+      width: 80%;
+      p {
+        text-align: center;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+}
+
+.button-container-modal {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  gap: 7px;
+
+  button {
+    width: 90px;
+    padding: 10px 25px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50px;
+    animation: fadeIn 1s ease forwards;
+
+    @include transition(all 0.5s ease);
+
+    &:hover {
+      color: #fff;
+      background-color: #000;
+      border: 1px solid #fff;
+      cursor: pointer;
+    }
+  }
+}

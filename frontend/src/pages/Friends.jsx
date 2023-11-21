@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SearchFriends } from '../components/SearchFriends';
 import { UserFriends } from '../components/UserFriends';
 import '../styles/friends.scss';
+import '../styles/modal.scss';
 const Friends = () => {
   const [toggleSearch, setToggleSearch] = useState(false);
   return (
