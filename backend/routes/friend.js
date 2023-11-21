@@ -22,7 +22,7 @@ router.get('/friends/:userId', async (req, res) => {
   try {
     const friends = await client.query(
       `
-      SELECT f.friendId, u.userFirstName AS firstName, u.userLastName AS lastName, u.userimgurl AS userimgUrl
+      SELECT u.userId, f.friendId, u.userFirstName AS firstName, u.userLastName AS lastName, u.userimgurl AS userimgUrl
       FROM userInfo u
       INNER JOIN friend f ON (u.userId = f.user1Id OR u.userId = f.user2Id)
       WHERE (f.user1Id = $1 OR f.user2Id = $1) AND u.userId != $1;
