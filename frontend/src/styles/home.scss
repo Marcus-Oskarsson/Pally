@@ -1,5 +1,16 @@
+@keyframes fadeIn {
+  from {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
 .main-content {
-  width: 90%;
   margin: 0 auto;
   padding: 5px;
   padding-bottom: 20px;
@@ -7,25 +18,26 @@
 }
 
 .event-main {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
-  padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 .active-event-title {
   color: #000;
-  font-size: 25px;
+  font-size: 26px;
   text-align: center;
-  margin: 15px 0;
+  margin: 25px;
 }
 
 .event-description {
   font-size: 12px;
+  width: 90%;
   color: #000;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
   text-align: center;
 }
 
@@ -73,7 +85,7 @@
 
 .picture-one {
   width: 100%;
-  height: 80%;
+  height: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
@@ -87,20 +99,26 @@
 .box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+  width: 90%;
   height: 200px;
   color: #000;
-  border: 1px solid #fff;
+  background-color: #fafafa;
   border-radius: 10px;
-  margin-bottom: 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.double-box-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .active-events-container {
   width: 100%;
   border-bottom: 1px solid #d1d1d1;
   margin-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 // .event-info {
@@ -119,19 +137,28 @@
 .no-active-events {
   display: flex;
   justify-content: center;
-  margin-right: 75px;
-  margin-top: 10px;
+  text-align: center;
 }
 
 .upcoming-event-title {
   margin-bottom: 10px;
   color: #000;
   font-size: 25px;
+  margin-top: 15px;
 }
 
 .event-name {
+  font-size: 13px;
   display: flex;
-  justify-content: center;
-  font-size: 18px;
-  margin-top: 15px;
+  align-items: center;
+  margin-top: 10px;
+  p:first-child {
+    width: 80%;
+    font-size: 18px;
+  }
+  p:last-child {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+  }
 }
