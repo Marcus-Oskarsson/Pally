@@ -27,10 +27,15 @@ const ProfileInfo = () => {
     <>
       <div className='flex-container'>
         <div className='div-column'>
-          <img className='profile-picture' src={pallyLogo} alt='Logo' />
+          {/* <img className='profile-picture' src={pallyLogo} alt='Logo' /> */}
+          <img
+            className='profile-picture'
+            src={user?.userimgurl ?? ''}
+            alt='Profile'
+          />
         </div>
         <div key={user.userid}>
-          <div>
+          <div className='flex-row'>
             <p>{user.userfirstname}</p>
             <p>{user.userlastname}</p>
           </div>

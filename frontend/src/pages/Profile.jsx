@@ -7,11 +7,15 @@ const Profile = () => {
   const [toggleProfileSetting, setToggleProfileSettings] = useState(false);
   return (
     <>
-      {toggleProfileSetting ? <ProfileSettings /> : <ProfileInfo />}
-      <div className='button-container'>
-        <button onClick={() => setToggleProfileSettings(!toggleProfileSetting)}>
-          {toggleProfileSetting ? 'Profile info' : 'Profile settings'}
-        </button>
+      <div className='settings-button'>
+        {toggleProfileSetting ? <ProfileSettings /> : <ProfileInfo />}
+        <div className='button-container'>
+          <button
+            onClick={() => setToggleProfileSettings(!toggleProfileSetting)}
+          >
+            {toggleProfileSetting ? 'Profile info' : 'Profile settings'}
+          </button>
+        </div>
       </div>
     </>
   );
