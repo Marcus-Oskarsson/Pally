@@ -3,6 +3,7 @@ const fs = require('file-system');
 const multer = require('multer');
 const router = express.Router();
 const client = require('../connection');
+const Jimp = require('jimp');
 
 const upload = multer({ dest: 'uploads/' });
 
@@ -57,8 +58,6 @@ router.delete('/profile/remove/:userId', async (req, res) => {
 router.put('/profile/:userId', upload.single('img'), async (req, res) => {
   const { userId } = req.params;
 
-  console.log('INGEN FIL: ', req.file);
-  console.log(req.body);
   try {
     // Save image
     const file = req.file;
@@ -66,14 +65,14 @@ router.put('/profile/:userId', upload.single('img'), async (req, res) => {
     if (file) {
       const img = fs.readFileSync(req.file.path);
 
-      // Define the destination path
       destinationPath = `uploads/${req.file.originalname}`;
 
-      // Move the file to the destination folder
+      const image = await Jimp.read(destinationPath);
+      await image.resize(100, 100).write(destinationPath);
+
       fs.writeFileSync(destinationPath, img);
       destinationPath = `/api/events/${destinationPath}`;
-
-      // Remove the file from the temporary location
+      console.log('bild2: ', image);
       fs.unlinkSync(req.file.path);
     }
 

@@ -143,6 +143,51 @@ router.delete('/events/:eventid', async (req, res) => {
   }
 });
 
+// Hämtar ett event och alla dess deltagare
+router.get('/events/participants/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const eventQuery = `
+      SELECT ei.eventId, ei.eventName, ei.eventImage, ei.eventStreet, ei.eventEmail, ei.eventDate, ei.eventCreator, CONCAT(ec.userFirstName, ' ', ec.userLastName) as eventCreatorName,
+      (
+        SELECT MAX(eventId)
+        FROM eventInfo
+        WHERE eventId < $1
+      ) as previousEventId,
+      (
+        SELECT MIN(eventId)
+        FROM eventInfo
+        WHERE eventId > $1
+      ) as nextEventId
+      FROM eventInfo ei
+      INNER JOIN userInfo ec ON ei.eventCreator = ec.userId
+      WHERE ei.eventId = $1`;
+
+    const participantsQuery = `
+      SELECT ui.userId, ui.userImgUrl, CONCAT(ui.userFirstName, ' ', ui.userLastName) as userName
+      FROM userEvent ue
+      INNER JOIN userInfo ui ON ue.userId = ui.userId
+      WHERE ue.eventId = $1`;
+
+    const event = await client.query(eventQuery, [id]);
+    const participants = await client.query(participantsQuery, [id]);
+
+    if (event.rows.length === 0) {
+      res.status(404).json({ error: 'Event not found' });
+      return;
+    }
+
+    res.json({
+      event: event.rows[0],
+      participants: participants.rows,
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve event' });
+  }
+});
+
+// Servar alla bilder för event (och just nu också för profilbilder)
 router.get('/events/uploads/:filename', (req, res) => {
   try {
     const filename = req.params.filename;
