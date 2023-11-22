@@ -2,7 +2,6 @@
 // Klassisk men roligare font om vi vill använda
 @import 'variables';
 
-
 .color-1 {
   color: $color-1-text;
   background-color: $color-1;
@@ -18,9 +17,10 @@ a {
 }
 
 main {
-  // min-height: calc(120dvh - 67px - 227px); // 100dvh -header -footer
   margin-bottom: 4em;
-  font-family: "Poppins", sans-serif;
+  font-family: Poppins, sans-serif;
+
+  // background-color: $color-1-background;
 }
 
 // Dessa behöver man inte använda, men kan vara god praxis :>

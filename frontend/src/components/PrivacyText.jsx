@@ -22,12 +22,11 @@ const PrivacyText = () => {
           We store the information in a safe way so our users can use our
           service. The personal data is stored for as long the user is a member.
         </p>
-        <p>Name: We gather your first name to uniquely identify users.</p>
         <p>
-          Lastname: We collect your surname for the purpose of user distinction.
+          Name: We gather your first and last name to uniquely identify users.
         </p>
         <p>
-          Email:The collection of email addresses is intended for communication
+          Email: The collection of email addresses is intended for communication
           with users regarding events.
         </p>
         <p>
@@ -35,7 +34,7 @@ const PrivacyText = () => {
           related correspondence.
         </p>
         <p>
-          Securitynumber- At all events alcohol is served, so we need to ensure
+          Securitynumber: At all events alcohol is served, so we need to ensure
           that you are over 18 years old. We require your full social security
           number so we can verify that you are of legal age.
         </p>
@@ -43,7 +42,7 @@ const PrivacyText = () => {
         {/* Johan: */}
         <h2>Our Purpose for Collecting Data</h2>
         <p>
-          At Polly, we prioritize your privacy and are dedicated to ensuring
+          At Pally, we prioritize your privacy and are dedicated to ensuring
           that all collection and use of your personal data comply with
           applicable laws and regulations, including the EUs General Data
           Protection Regulation (GDPR).
@@ -61,20 +60,16 @@ const PrivacyText = () => {
           contact us.
         </p>
 
-        {/* Tatiana: */}
-        <h2>Vilka uppgifter vi lagrar och hur länge</h2>
-        <p></p>
-
         {/* Stina: */}
-        <h2>What are my rights?/What rights do you have?</h2>
+        <h2>What rights do you have?</h2>
         <p>
           You have the full right to access information about the data we have
           stored regarding you. You can request corrections, transfers, ask us
-          to limit processing, or even request the deletion of your data. The
+          to limit processing, or request the deletion of your data. The
           simplest method to do so is by updating your details in the Profile
           section found in the menu. Additionally, you have the option to delete
           your account, resulting in the removal of all your data.
-          Alternatively, you may contact us via our contact information to
+          Alternatively, you can contact us via our contact information to
           perform these actions.
         </p>
 
@@ -96,7 +91,7 @@ const PrivacyText = () => {
         </p>
 
         {/* Marcus: */}
-        <h2>How long are my data stored?</h2>
+        <h2>How long is my data stored?</h2>
         <p>
           Your data will be stored for a period of one year. However, we will
           send you an email before clearing your data to provide you with an
@@ -121,8 +116,13 @@ const PrivacyText = () => {
         {/* Tatiana: */}
         <h2>Contact Information</h2>
         <p>
-          Name: Pally AB E-post: info@Pally.se Telefon: 031-123456 Varbergsgatan
-          1, 123 45 Mölndal
+          Name: Pally AB
+          <br />
+          Email: info@Pally.se
+          <br />
+          Phone: 031-123456
+          <br />
+          Address: Varbergsgatan 1, 123 45 Mölndal
         </p>
       </div>
     </>

@@ -7,10 +7,7 @@ import '../styles/navbar.scss';
 // En fantastiskt orimlig lösning på ett icke-problem men vill ha aktiva sidan först!
 const Navbar = ({ setIsOpen, isOpen }) => {
   let location = useLocation();
-  let pages = [
-    { name: 'About', path: 'about', restricted: false },
-    { name: 'Login', path: 'login', restricted: false },
-  ];
+  let pages = [{ name: 'Login', path: 'login', restricted: false }];
 
   useEffect(
     function hiddenOverflowWhenOpen() {
