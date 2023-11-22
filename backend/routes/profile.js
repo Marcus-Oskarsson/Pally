@@ -57,8 +57,6 @@ router.delete('/profile/remove/:userId', async (req, res) => {
 router.put('/profile/:userId', upload.single('img'), async (req, res) => {
   const { userId } = req.params;
 
-  console.log('INGEN FIL: ', req.file);
-  console.log(req.body);
   try {
     // Save image
     const file = req.file;
@@ -66,14 +64,11 @@ router.put('/profile/:userId', upload.single('img'), async (req, res) => {
     if (file) {
       const img = fs.readFileSync(req.file.path);
 
-      // Define the destination path
       destinationPath = `uploads/${req.file.originalname}`;
 
-      // Move the file to the destination folder
       fs.writeFileSync(destinationPath, img);
       destinationPath = `/api/events/${destinationPath}`;
 
-      // Remove the file from the temporary location
       fs.unlinkSync(req.file.path);
     }
 

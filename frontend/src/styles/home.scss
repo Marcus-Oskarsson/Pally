@@ -58,11 +58,11 @@
   width: 40px;
   height: 40px;
   margin-bottom: 2px;
+  overflow: hidden;
   color: black;
   background-color: #ffd3b8;
   border: 1px solid #fff;
   border-radius: 50%;
-  overflow: hidden;
 }
 
 .picture {
@@ -71,6 +71,7 @@
   object-fit: cover;
 }
 
+.picture-one {
 .picture-one {
   width: 100%;
   height: 80%;
@@ -124,6 +125,7 @@
 }
 
 .upcoming-event-title {
+  margin-top: 30px;
   margin-bottom: 10px;
   color: #000;
   font-size: 25px;

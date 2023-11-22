@@ -65,7 +65,8 @@ const ProfileSettings = () => {
           userzipcode: payload.zipCode,
         });
 
-        console.log(data);
+        console.log('data: ', data);
+        // setProfileUserSettings([]);
       })
       .catch((error) => {
         console.error('Failed to update user', error);

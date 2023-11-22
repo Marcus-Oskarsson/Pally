@@ -17,6 +17,7 @@ import Logout from './pages/Logout';
 import PrivateRoutes from './components/PrivateRoutes';
 import Profile from './pages/Profile';
 import Privacy from './pages/Privacy';
+import SingleEvent from './pages/SingleEvent';
 
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -24,13 +25,17 @@ import Header from './components/Header';
 import './styles/reset.scss';
 
 function Root() {
+  const queryClient = new QueryClient();
+
   return (
     <UserProvider>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </QueryClientProvider>
     </UserProvider>
   );
 }
@@ -46,12 +51,14 @@ const App = () => {
             { element: <Friends />, path: '/friends/:id?' },
             { element: <Home />, path: '/' },
             { element: <Logout />, path: '/logout' },
+            { element: <Privacy />, path: '/privacy' },
+            { element: <Event />, path: '/event' },
+            { element: <SingleEvent />, path: '/event/:eventId' },
           ],
         },
-        { element: <Event />, path: '/event' },
         { element: <Login />, path: '/login' },
-        { element: <Error />, path: '*' },
         { element: <Privacy />, path: '/privacy' },
+        { element: <Error />, path: '*' },
       ],
       element: <Root />,
     },
