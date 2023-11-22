@@ -1,4 +1,10 @@
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  useLocation,
+} from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import UserProvider from './contexts/UserContext';
 

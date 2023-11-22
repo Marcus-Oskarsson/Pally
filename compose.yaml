@@ -6,24 +6,27 @@ services:
         condition: service_healthy
     env_file:
       - ./backend/.env
+    healthcheck:
+      interval: 2s
+      test: "curl -f http://localhost:3000"
     ports:
       - "3000:3000"
-    restart: always
+    restart: unless-stopped
   database:
     env_file:
       - ./backend/.env
     healthcheck:
-      interval: 1s
+      interval: 2s
       test: "pg_isready --username=postgres"
     image: postgres
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./data:/var/lib/postgresql/data
-    restart: always
+    restart: unless-stopped
   frontend:
     build: frontend
     ports:
       - "80:80"
-    restart: always
+    restart: unless-stopped
     depends_on:
       - backend
