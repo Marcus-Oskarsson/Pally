@@ -82,11 +82,12 @@ VALUES
 (2, 7);
 
 INSERT INTO eventInfo(eventName, eventImage, eventStreet, eventEmail, eventDate, eventCreator)
-VALUES('Summer Music Fest', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Slottsskogen, Gothenburg', 'info@summermusicfest.com', '2024-06-15', 1),
-('Tech Startup Workshop', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Stockholm Exhibition Center', 'info@technewbs.com', '2023-12-05', 2),
-('Food Truck Rally', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Malmo Harborfront Market', 'hello@foodtrucksweden.com', '2024-04-11', 3),
-('Party 4', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 4', 'party@mail.info', '2023-11-18', 4),
-('Party 5', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Street 5', 'party@mail.info', '2023-11-18', 5);
+VALUES('Summer Music Fest', 'https://cms.goteborg.com/uploads/2021/06/Olstugan-tullen-majorna-43-1-scaled.jpg', 'Slottsskogen, Gothenburg', 'info@summermusicfest.com', '2024-06-15', 15),
+('Tech Startup Workshop', 'https://selected.sesamers.com/content/images/2020/11/October---Image-by-Dan-Taylor---dan@dantaylorphotography.com-1.jpg', 'Stockholm Exhibition Center', 'info@technewbs.com', '2023-12-05', 15),
+('Food Truck Rally', 'https://images.squarespace-cdn.com/content/v1/56a551ed5dc6de5c96035a74/147f4fe9-abce-42f4-b1e0-d4d6a3dd780b/AFM+305+FOCO_FTR_avatar_2023_960x960.jpg', 'Malmo Harborfront Market', 'hello@foodtrucksweden.com', '2024-04-11', 15),
+('Craft Beer Festival', 'https://www.mashed.com/img/gallery/the-best-beer-festivals-in-america/l-intro-1652450986.jpg', 'Helsingborg Brewery Square', 'brew@craftbeerfest.com', '2024-03-18', 1),
+('Outdoor Movie Night', 'https://blog.realmanage.com/hubfs/outdoor%20movie%20night.jpg', 'Visby Botanical Gardens', 'info@visbygarden.se', '2024-06-28', 1),
+('Comedy Night', 'https://resources.mynewsdesk.com/image/upload/ar_16:9,c_fill,dpr_auto,f_auto,g_auto,q_auto:good,w_746/urkxovvyjajdmwze4r4a', 'Gothenburg Comedy Club', 'hello@rawcomedyclub.se', '2023-12-16', 1);
 
 INSERT INTO userEvent(userId, eventId)
 VALUES(2, 1);
