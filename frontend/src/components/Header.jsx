@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 import { Context } from '../contexts/UserContext';
 
-import Logo from './icons/Logo';
+// import Logo from './icons/Logo';
+import { Confetti } from './icons/Confetti';
 import Hamburger from './Hamburger';
 import Navbar from './Navbar';
 import NavbarLoggedIn from './NavbarLoggedIn';
@@ -34,7 +35,7 @@ const Header = () => {
   return (
     <header className='header'>
       <NavLink className='logo' to='/'>
-        <Logo width={30} height={30} />
+        <Confetti />
       </NavLink>
       {isAuthenticated && <ProfileImage />}
       {isAuthenticated ? (
