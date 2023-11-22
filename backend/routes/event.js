@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('file-system');
 const multer = require('multer');
 const path = require('path');
+const Jimp = require('jimp');
 
 const client = require('../connection');
 
@@ -32,6 +33,10 @@ router.post('/events', upload.single('eventImage'), async (req, res) => {
 
       // Define the destination path
       destinationPath = `uploads/${req.file.originalname}`;
+      const image = await Jimp.read(destinationPath);
+      await image.resize(300, 300).write(destinationPath);
+
+      console.log('bild2: ', image);
 
       // Move the file to the destination folder
       fs.writeFileSync(destinationPath, img);

@@ -28,7 +28,7 @@ const ProfileInfo = () => {
         <div className='div-column'>
           <img
             className='profile-picture'
-            src={user.userimgurl}
+            src={user?.userimgurl ?? ''}
             alt='Profile'
           />
         </div>
