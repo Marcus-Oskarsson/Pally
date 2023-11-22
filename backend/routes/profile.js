@@ -68,11 +68,13 @@ router.put('/profile/:userId', upload.single('img'), async (req, res) => {
       destinationPath = `uploads/${req.file.originalname}`;
 
       const image = await Jimp.read(destinationPath);
-      await image.resize(100, 100).write(destinationPath);
+      await image.resize(300, 300).write(destinationPath);
+
+      console.log('bild2: ', image);
 
       fs.writeFileSync(destinationPath, img);
       destinationPath = `/api/events/${destinationPath}`;
-      console.log('bild2: ', image);
+
       fs.unlinkSync(req.file.path);
     }
 
