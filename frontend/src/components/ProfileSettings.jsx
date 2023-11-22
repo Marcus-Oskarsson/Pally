@@ -14,19 +14,6 @@ const ProfileSettings = () => {
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
 
-  // useEffect(() => {
-  //   fetch(`/api/profile/${user.userid}`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data, 'here is the data');
-  //       console.log(data.user);
-  //       setProfileUserSetings(data.user);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching user:', error);
-  //     });
-  // }, [user.userid]);
-
   const removeUser = (userId) => {
     console.log({ userId });
     fetch(`/api/profile/remove/${userId}`, {
@@ -79,7 +66,6 @@ const ProfileSettings = () => {
         });
 
         console.log(data);
-        // setProfileUserSettings([]);
       })
       .catch((error) => {
         console.error('Failed to update user', error);

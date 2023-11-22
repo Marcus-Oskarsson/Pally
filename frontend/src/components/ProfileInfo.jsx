@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
 import '../styles/profile.scss';
-import pallyLogo from '../assets/pallyLogo.png';
 
 const ProfileInfo = () => {
   const [profileUserInfo, setProfileUserInfo] = useState([]);
@@ -16,7 +15,6 @@ const ProfileInfo = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data, 'here is the data');
-        //gets first user
         setProfileUserInfo(data);
       })
       .catch((error) => {
@@ -28,7 +26,6 @@ const ProfileInfo = () => {
     <>
       <div className='flex-container'>
         <div className='div-column'>
-          {/* <img className='profile-picture' src={pallyLogo} alt='Logo' /> */}
           <img
             className='profile-picture'
             src={user.userimgurl}
