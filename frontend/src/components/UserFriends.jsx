@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import FriendImage from '../assets/pallyLogo.png';
+import { Link, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
 import DeleteFriend from '../assets/PersonX.png';
@@ -10,12 +10,14 @@ export const UserFriends = () => {
   const { user } = useContext(Context);
   const [isOpen, setIsOpen] = useState(false);
   const [friendId, setFriendId] = useState('');
+  const { id } = useParams();
 
   console.log(user, 'user');
   console.log(user.userid), 'userid';
 
   useEffect(() => {
-    fetch(`/api/friends/${user.userid}`)
+    const userId = id || user.userid;
+    fetch(`/api/friends/${userId}`)
       .then((response) => response.json())
       .then((data) => {
         setFriendsList(data);
@@ -66,12 +68,14 @@ export const UserFriends = () => {
         <h2>Your Friends</h2>
         {friendsList.map((friends) => (
           <div key={friends.friendid} className='friends-container'>
-            <div className='result-friends'>
-              <img src={friends.userimgurl} alt='friend image' />
-              <p>
-                {friends.firstname} {friends.lastname}
-              </p>
-            </div>
+            <Link to={`/profile/${friends.userid}`}>
+              <div className='result-friends'>
+                <img src={friends.userimgurl} alt='friend image' />
+                <p>
+                  {friends.firstname} {friends.lastname}
+                </p>
+              </div>
+            </Link>
             <img
               className='delete-friend'
               src={DeleteFriend}

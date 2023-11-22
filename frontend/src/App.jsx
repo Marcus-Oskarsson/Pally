@@ -36,8 +36,8 @@ const App = () => {
         {
           element: <PrivateRoutes />,
           children: [
-            { element: <Profile />, path: '/profile' },
-            { element: <Friends />, path: '/friends' },
+            { element: <Profile />, path: '/profile/:id?' },
+            { element: <Friends />, path: '/friends/:id?' },
             { element: <Home />, path: '/' },
             { element: <Logout />, path: '/logout' },
           ],

@@ -6,7 +6,8 @@ const client = require('../connection');
 
 const upload = multer({ dest: 'uploads/' });
 
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:userId', async (req, res) => {
+  const { userId } = req.params;
   try {
     const profile = await client.query(
       'SELECT * FROM userinfo WHERE userId = $1',
