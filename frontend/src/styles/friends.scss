@@ -13,6 +13,9 @@
   animation: fadeIn 0.5s ease forwards;
   .friends-link {
     text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
   }
   h2 {
     padding-bottom: 15px;
@@ -49,6 +52,9 @@
     .delete-friend {
       width: 25px;
       margin-right: 15px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -99,6 +105,9 @@
     .add-friend {
       width: 25px;
       margin-right: 15px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

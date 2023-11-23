@@ -65,7 +65,7 @@ export const UserFriends = () => {
         </div>
       </Modal>
       <div className='main-friends-container'>
-        <h2>Your Friends</h2>
+        <h2>{!isNaN(id) ? 'Friends' : 'Your Friends'}</h2>
         {friendsList.map((friends) => (
           <div key={friends.friendid} className='friends-container'>
             <Link className='friends-link' to={`/profile/${friends.userid}`}>
