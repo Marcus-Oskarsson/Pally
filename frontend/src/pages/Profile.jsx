@@ -9,7 +9,7 @@ const Profile = () => {
     <>
       <div className='settings-button'>
         {toggleProfileSetting ? <ProfileSettings /> : <ProfileInfo />}
-        <div className='button-container'>
+        <div className='btn-container'>
           <button
             onClick={() => setToggleProfileSettings(!toggleProfileSetting)}
           >
