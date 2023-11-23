@@ -25,28 +25,32 @@ const ProfileInfo = () => {
   return (
     <>
       <div className='flex-container'>
-        <div className='div-column'>
-          <img
-            className='profile-picture'
-            src={user?.userimgurl ?? ''}
-            alt='Profile'
-          />
-        </div>
         {profileUserInfo.map((user) => (
-          <div key={user.userid}>
-            <div className='flex-row'>
-              <p>{user.userfirstname}</p>
-              <p>{user.userlastname}</p>
+          <>
+            <div className='div-column' key={user.userid}>
+              <img
+                className='profile-picture'
+                src={user?.userimgurl ?? ''}
+                alt='Profile'
+              />
             </div>
-          </div>
+            <div>
+              <div className='flex-row'>
+                <p>{user.userfirstname}</p>
+                <p>{user.userlastname}</p>
+              </div>
+            </div>
+          </>
         ))}
         <div className='events-container'>
           <div className='btn-container button-column'>
-            <Link to='/event'>
-              <button className='button-choices'>
-                <p>Attending events</p>
-              </button>
-            </Link>
+            {!isNaN(id) ? null : (
+              <Link to='/event'>
+                <button className='button-choices'>
+                  <p>Attending events</p>
+                </button>
+              </Link>
+            )}
             <Link to={`/friends/${id || user.userid}`}>
               <button className='button-choices'>
                 <p>Friends</p>

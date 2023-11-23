@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/event.scss';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
@@ -99,7 +100,11 @@ const UpcomingEvents = () => {
       <div>
         <h2>Upcoming Events</h2>
         {eventsArray.map((event) => (
-          <div key={event.eventid} className='events-container'>
+          <Link
+            to={`/event/${event.eventid}`}
+            key={event.eventid}
+            className='events-container'
+          >
             <img id='event-image' src={event.eventimage} alt='Event picture' />
             <div className='align-events'>
               <div className='align-trashcan'>
@@ -128,7 +133,7 @@ const UpcomingEvents = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

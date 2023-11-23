@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/event.scss';
 import TrashIcon from '../assets/trashicon.png';
 import { useContext } from 'react';
@@ -100,7 +101,11 @@ const AttendingEvents = () => {
             <h2>Attending Events</h2>
             {userEvents &&
               userEvents.map((event, index) => (
-                <div key={index} className='events-container'>
+                <Link
+                  to={`/event/${event.eventid}`}
+                  key={index}
+                  className='events-container'
+                >
                   <img
                     id='event-image'
                     src={event.eventimage}
@@ -126,7 +131,7 @@ const AttendingEvents = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             <div className='btn-container'>
               <button onClick={handleExploreEventsClick}>Explore Events</button>

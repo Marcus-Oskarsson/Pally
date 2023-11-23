@@ -1,5 +1,5 @@
 import { Formik, Form, Field } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import * as Yup from 'yup';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
@@ -9,7 +9,8 @@ import { Modal } from './modal';
 const ProfileSettings = () => {
   const [profileUserSettings, setProfileUserSettings] = useState([]);
   const { user, setUser } = useContext(Context);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   console.log({ user });
   console.log(user.userid, 'useriDDDDDDd');
@@ -114,7 +115,7 @@ const ProfileSettings = () => {
 
   return (
     <>
-      <Modal open={isOpen} closeModal={() => setIsOpen(false)}>
+      <Modal open={isDeleted} closeModal={() => setIsDeleted(false)}>
         <p>
           <span>Are you sure you want to delete your account?</span>
           <span>
@@ -125,14 +126,17 @@ const ProfileSettings = () => {
           <button
             onClick={() => {
               removeUser(user.userid);
-              setIsOpen(false);
+              setIsDeleted(false);
               // window.location.replace('/login');
             }}
           >
             Yes
           </button>
-          <button onClick={() => setIsOpen(false)}>No</button>
+          <button onClick={() => setIsDeleted(false)}>No</button>
         </div>
+      </Modal>
+      <Modal open={isUpdated} closeModal={() => setIsUpdated(false)}>
+        <p>Your profile is now updated!</p>
       </Modal>
       <div className='bigContainer'>
         <h1>Settings</h1>
@@ -142,6 +146,7 @@ const ProfileSettings = () => {
           validationSchema={validationSchemaSettings}
           onSubmit={(values) => {
             updateUser(user.userid, values);
+            setIsUpdated(true);
           }}
         >
           {({ errors, touched }) => (
@@ -294,7 +299,7 @@ const ProfileSettings = () => {
                 <button
                   className='deleteAccountButton'
                   type='button'
-                  onClick={() => setIsOpen(true)}
+                  onClick={() => setIsDeleted(true)}
                 >
                   Delete Account
                 </button>

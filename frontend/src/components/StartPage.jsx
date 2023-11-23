@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import '../styles/home.scss';
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Context } from '../contexts/UserContext';
@@ -55,11 +56,13 @@ const Home = () => {
         {friendInfo.slice(0, 6).map((friends) => (
           <div key={friends.friendid} className='friend-box'>
             <div className='friend-round-border'>
-              <img
-                className='picture'
-                src={friends.userimgurl}
-                alt={friends.firstname}
-              />
+              <Link className='friends-link' to={`/profile/${friends.userid}`}>
+                <img
+                  className='picture'
+                  src={friends.userimgurl}
+                  alt={friends.firstname}
+                />
+              </Link>
             </div>
             <div className='friend-name'>{friends.firstname}</div>
           </div>
