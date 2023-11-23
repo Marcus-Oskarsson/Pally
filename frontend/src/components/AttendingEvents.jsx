@@ -57,9 +57,7 @@ const AttendingEvents = () => {
 
   //Filtrerar mellantabellen för att räkna hur många på respektive event
   const countUsersAttending = (eventId) => {
-    return (
-      usersAttending.filter((entry) => entry.eventid === eventId).length + 1
-    );
+    return usersAttending.filter((entry) => entry.eventid === eventId).length;
   };
 
   //Hämtar event baserat på inloggad användare
