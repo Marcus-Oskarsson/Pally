@@ -81,20 +81,24 @@
     border: 1px solid #000;
     border-radius: 50px;
     animation: fadeIn 1s ease forwards;
-    padding: 5px 35px;
     color: #fff;
     font-size: 12px;
     background-color: #5900ff;
-    border: none;
-    border-radius: 50px;
+    border: 1px solid #5900ff;
+    box-shadow: 1px 5px 12px rgb(194 194 194);
+    animation: fadeIn 1s ease forwards;
 
     @include transition(all 0.3s ease);
 
     &:hover {
+      color: #000;
+      background-color: #fff;
       cursor: pointer;
       opacity: 0.5;
     }
   }
+
+
 }
 
 .flex-row {
