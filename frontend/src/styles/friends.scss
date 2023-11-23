@@ -11,7 +11,9 @@
   margin: 40px auto; //Tillfällig
   font-family: Poppins, sans-serif; //Tillfällig
   animation: fadeIn 0.5s ease forwards;
-
+  .friends-link {
+    text-decoration: none;
+  }
   h2 {
     padding-bottom: 15px;
     font-size: 26px;
@@ -76,6 +78,7 @@
 
   .result-friends-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 95%;
     margin: auto;
@@ -87,7 +90,15 @@
     }
 
     img {
-      width: 15%;
+      width: 75px;
+      height: 75px;
+      margin-right: 50px;
+      border-radius: 50%;
+    }
+
+    .add-friend {
+      width: 25px;
+      margin-right: 15px;
     }
   }
 }
