@@ -5,8 +5,6 @@
   width: 90%;
   margin: 40px auto;
 
-  // background-color: #f7f2f1;
-
   h1 {
     font-size: 30px;
   }
@@ -32,31 +30,14 @@
     }
   }
 
-  .button-container {
+  .button-column{
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    margin: 20px 0;
+    flex-direction: column;
   }
 
   .button-choices {
-    width: 250px;
-    margin: 10px 0;
-    padding: 10px 35px;
-    color: #fff;
-    font-size: 12px;
-    background-color: #ffd3b8;
-    border: none;
-    border-radius: 50px;
-
-    &:hover {
-      cursor: pointer;
-      opacity: 0.5;
+    margin: 17px 0;
     }
-  }
 }
 
 .div-flex-right {
