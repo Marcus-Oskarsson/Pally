@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
-import DeleteFriend from '../assets/PersonX.png';
+import DeleteFriend from '../assets/deleteFriend.svg';
 import { Modal } from './modal';
 
 export const UserFriends = () => {
@@ -26,11 +26,11 @@ export const UserFriends = () => {
       .catch((error) => {
         console.error('failed', error);
       });
-  }, [user.userid]);
+  }, [id, user.userid]);
 
   const removeFriend = (friendId) => {
     console.log({ friendId });
-    fetch(`/api/friends/remove/${friendId}`, {
+    fetch(`/api/friends/${friendId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -65,10 +65,10 @@ export const UserFriends = () => {
         </div>
       </Modal>
       <div className='main-friends-container'>
-        <h2>Your Friends</h2>
+        <h2>{!isNaN(id) ? 'Friends' : 'Your Friends'}</h2>
         {friendsList.map((friends) => (
           <div key={friends.friendid} className='friends-container'>
-            <Link to={`/profile/${friends.userid}`}>
+            <Link className='friends-link' to={`/profile/${friends.userid}`}>
               <div className='result-friends'>
                 <img src={friends.userimgurl} alt='friend image' />
                 <p>
@@ -76,15 +76,17 @@ export const UserFriends = () => {
                 </p>
               </div>
             </Link>
-            <img
-              className='delete-friend'
-              src={DeleteFriend}
-              alt='add friend image'
-              onClick={() => {
-                setFriendId(friends.friendid);
-                setIsOpen(true);
-              }}
-            />
+            {!isNaN(id) ? null : (
+              <img
+                className='delete-friend'
+                src={DeleteFriend}
+                alt='add friend image'
+                onClick={() => {
+                  setFriendId(friends.friendid);
+                  setIsOpen(true);
+                }}
+              />
+            )}
           </div>
         ))}
       </div>

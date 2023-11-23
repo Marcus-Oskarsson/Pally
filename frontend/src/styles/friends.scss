@@ -11,7 +11,12 @@
   margin: 40px auto; //Tillfällig
   font-family: Poppins, sans-serif; //Tillfällig
   animation: fadeIn 0.5s ease forwards;
-
+  .friends-link {
+    text-decoration: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
   h2 {
     padding-bottom: 15px;
     font-size: 26px;
@@ -47,6 +52,9 @@
     .delete-friend {
       width: 25px;
       margin-right: 15px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -76,6 +84,7 @@
 
   .result-friends-container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     width: 95%;
     margin: auto;
@@ -87,7 +96,18 @@
     }
 
     img {
-      width: 15%;
+      width: 75px;
+      height: 75px;
+      margin-right: 50px;
+      border-radius: 50%;
+    }
+
+    .add-friend {
+      width: 25px;
+      margin-right: 15px;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -100,19 +120,21 @@
   button {
     width: 220px;
     padding: 10px 25px;
+    color: #fff;
     font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: #5900ff;
+    border: 1px solid #5900ff;
     border-radius: 50px;
+    box-shadow: 1px 5px 12px rgb(194 194 194);
     animation: fadeIn 1s ease forwards;
 
     @include transition(all 0.5s ease);
 
     &:hover {
-      color: #fff;
-      background-color: #000;
-      border: 1px solid #fff;
+      color: #000;
+      background-color: #fff;
       cursor: pointer;
+      opacity: 0.5;
     }
   }
 }
