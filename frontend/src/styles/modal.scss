@@ -61,21 +61,23 @@
   margin-top: 35px;
 
   button {
-    width: 90px;
+    width: 90;
     padding: 10px 25px;
+    color: #fff;
     font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #000;
+    background-color: #5900ff;
+    border: 1px solid #5900ff;
     border-radius: 50px;
+    box-shadow: 1px 5px 12px rgb(194 194 194);
     animation: fadeIn 1s ease forwards;
 
     @include transition(all 0.5s ease);
 
     &:hover {
-      color: #fff;
-      background-color: #000;
-      border: 1px solid #fff;
+      color: #000;
+      background-color: #fff;
       cursor: pointer;
+      opacity: 0.5;
     }
   }
 }
