@@ -41,7 +41,7 @@ router.get('/friends/search/:userId', async (req, res) => {
   const { search } = req.query;
   try {
     const query = `
-    SELECT u.userId, u.userFirstName AS firstName, u.userLastName AS lastName
+    SELECT u.userId, u.userFirstName AS firstName, u.userLastName AS lastName, u.userimgurl AS userimgUrl
     FROM userInfo u
     WHERE u.userId NOT IN (
       SELECT f.user2Id FROM friend f WHERE f.user1Id = $1
@@ -60,7 +60,7 @@ router.get('/friends/search/:userId', async (req, res) => {
   }
 });
 
-router.post('/friends/add', async (req, res) => {
+router.post('/friends', async (req, res) => {
   const { userId, friendId } = req.body;
 
   try {
@@ -78,7 +78,7 @@ router.post('/friends/add', async (req, res) => {
   }
 });
 
-router.delete('/friends/remove/:friendId', async (req, res) => {
+router.delete('/friends/:friendId', async (req, res) => {
   const { friendId } = req.params;
 
   try {

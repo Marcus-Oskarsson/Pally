@@ -1,6 +1,7 @@
 import SearchIcon from '../assets/search.png';
 import FriendImage from '../assets/pallyLogo.png';
-import AddFriendIcon from '../assets/PersonPlus.png';
+import { Link } from 'react-router-dom';
+import AddFriendIcon from '../assets/addFriend.svg';
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 import { Context } from '../contexts/UserContext';
@@ -24,7 +25,7 @@ export const SearchFriends = () => {
 
   const addFriend = (friendId) => {
     console.log(friendId, user.userid);
-    fetch('/api/friends/add', {
+    fetch('/api/friends', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -62,13 +63,16 @@ export const SearchFriends = () => {
         </div>
         {results.map((friends) => (
           <div key={friends.userid} className='result-friends-container'>
-            <div className='result-friends'>
-              <img src={FriendImage} alt='friend image' />
-              <p>
-                {friends.firstname} {friends.lastname}
-              </p>
-            </div>
+            <Link className='friends-link' to={`/profile/${friends.userid}`}>
+              <div className='result-friends'>
+                <img src={friends.userimgurl} alt='friend image' />
+                <p>
+                  {friends.firstname} {friends.lastname}
+                </p>
+              </div>
+            </Link>
             <img
+              className='add-friend'
               src={AddFriendIcon}
               alt='add friend image'
               onClick={() => addFriend(friends.userid)}
