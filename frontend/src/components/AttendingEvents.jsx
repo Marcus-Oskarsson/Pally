@@ -99,18 +99,18 @@ const AttendingEvents = () => {
             <h2>Attending Events</h2>
             {userEvents &&
               userEvents.map((event, index) => (
-                <Link
-                  to={`/event/${event.eventid}`}
-                  key={index}
-                  className='events-container'
-                >
-                  <img
-                    id='event-image'
-                    src={event.eventimage}
-                    alt='Event picture'
-                  />
+                <div className='events-container' key={index}>
+                  <Link to={`/event/${event.eventid}`}>
+                    <img
+                      id='event-image'
+                      src={event.eventimage}
+                      alt='Event picture'
+                    />
+                  </Link>
                   <div className='align-events'>
-                    <h3>{event.eventname}</h3>
+                    <Link to={`/event/${event.eventid}`}>
+                      <h3>{event.eventname}</h3>
+                    </Link>
                     <p>{event.eventstreet}</p>
                     <p>{event.eventemail}</p>
                     <p>
@@ -129,7 +129,7 @@ const AttendingEvents = () => {
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             <div className='btn-container'>
               <button onClick={handleExploreEventsClick}>Explore Events</button>

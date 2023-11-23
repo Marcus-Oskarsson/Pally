@@ -100,15 +100,19 @@ const UpcomingEvents = () => {
       <div>
         <h2>Upcoming Events</h2>
         {eventsArray.map((event) => (
-          <Link
-            to={`/event/${event.eventid}`}
-            key={event.eventid}
-            className='events-container'
-          >
-            <img id='event-image' src={event.eventimage} alt='Event picture' />
+          <div className='events-container' key={event.eventid}>
+            <Link to={`/event/${event.eventid}`}>
+              <img
+                id='event-image'
+                src={event.eventimage}
+                alt='Event picture'
+              />
+            </Link>
             <div className='align-events'>
               <div className='align-trashcan'>
-                <h3>{event.eventname}</h3>
+                <Link to={`/event/${event.eventid}`}>
+                  <h3>{event.eventname}</h3>
+                </Link>
                 {eventCreatorCheck(event.eventcreator) &&
                   !applicationApplied(event.eventid) && (
                     <img
@@ -133,7 +137,7 @@ const UpcomingEvents = () => {
                 </div>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
     </div>
