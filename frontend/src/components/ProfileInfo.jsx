@@ -42,11 +42,13 @@ const ProfileInfo = () => {
         ))}
         <div className='events-container'>
           <div className='btn-container button-column'>
-            <Link to='/event'>
-              <button className='button-choices'>
-                <p>Attending events</p>
-              </button>
-            </Link>
+            {!isNaN(id) ? null : (
+              <Link to='/event'>
+                <button className='button-choices'>
+                  <p>Attending events</p>
+                </button>
+              </Link>
+            )}
             <Link to={`/friends/${id || user.userid}`}>
               <button className='button-choices'>
                 <p>Friends</p>

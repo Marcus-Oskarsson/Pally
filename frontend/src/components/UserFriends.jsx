@@ -76,15 +76,17 @@ export const UserFriends = () => {
                 </p>
               </div>
             </Link>
-            <img
-              className='delete-friend'
-              src={DeleteFriend}
-              alt='add friend image'
-              onClick={() => {
-                setFriendId(friends.friendid);
-                setIsOpen(true);
-              }}
-            />
+            {!isNaN(id) ? null : (
+              <img
+                className='delete-friend'
+                src={DeleteFriend}
+                alt='add friend image'
+                onClick={() => {
+                  setFriendId(friends.friendid);
+                  setIsOpen(true);
+                }}
+              />
+            )}
           </div>
         ))}
       </div>
