@@ -42,7 +42,7 @@ const AttendingEvents = () => {
 
   // Hämtar hela mellantabellen för användare som har signat upp
   useEffect(() => {
-    const fetchTest = async () => {
+    const fetchUserEvents = async () => {
       try {
         const response = await fetch(`/api/eventsignup`);
         const data = await response.json();
@@ -52,7 +52,7 @@ const AttendingEvents = () => {
       }
     };
 
-    fetchTest();
+    fetchUserEvents();
   }, [user]);
 
   //Filtrerar mellantabellen för att räkna hur många på respektive event

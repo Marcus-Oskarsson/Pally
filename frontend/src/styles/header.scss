@@ -14,11 +14,12 @@
   .profile-image-container {
     justify-self: flex-end;
     justify-self: end;
-    margin-right: 32px;
+    margin-right: 20px;
+    margin-top: 5px;
     cursor: pointer;
 
     .profile-image {
-      height: 32px;
+      height: 40px;
       aspect-ratio: 1/1;
       border-radius: 50%;
       box-shadow: 0 0 5px rgb(0 0 0 / 40%);
