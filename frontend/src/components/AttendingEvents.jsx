@@ -15,11 +15,17 @@ const AttendingEvents = () => {
   const [updateList, setUpdateList] = useState(false);
   const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
   const [showNewEvent, setShowNewEvent] = useState(false);
+  const [usersAttending, setUsersAttending] = useState([]);
 
+  //Avregistrera sig från event
   const removeEventUser = async (eventid) => {
     try {
       const response = await fetch(`/api/events/${eventid}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userid: user.userid }),
       });
 
       if (response.ok) {
@@ -33,6 +39,29 @@ const AttendingEvents = () => {
     }
   };
 
+  // Hämtar hela mellantabellen för användare som har signat upp
+  useEffect(() => {
+    const fetchTest = async () => {
+      try {
+        const response = await fetch(`/api/eventsignup`);
+        const data = await response.json();
+        setUsersAttending(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchTest();
+  }, [user]);
+
+  //Filtrerar mellantabellen för att räkna hur många på respektive event
+  const countUsersAttending = (eventId) => {
+    return (
+      usersAttending.filter((entry) => entry.eventid === eventId).length + 1
+    );
+  };
+
+  //Hämtar event baserat på inloggad användare
   useEffect(() => {
     const fetchUserEvents = async () => {
       try {
@@ -81,6 +110,9 @@ const AttendingEvents = () => {
                     <h3>{event.eventname}</h3>
                     <p>{event.eventstreet}</p>
                     <p>{event.eventemail}</p>
+                    <p>
+                      People Attending: {countUsersAttending(event.eventid)}
+                    </p>
                     <div>
                       <p>
                         {new Date(event.eventdate).toLocaleDateString('sv-SE')}
