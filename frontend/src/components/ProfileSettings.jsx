@@ -292,7 +292,7 @@ const ProfileSettings = () => {
                 )}
               </div>
 
-              <div className='buttonDiv'>
+              <div className='button-div-profile'>
                 <button className='changeSettingsButton' type='submit'>
                   Uppdate settings
                 </button>

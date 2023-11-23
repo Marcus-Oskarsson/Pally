@@ -1,3 +1,11 @@
+@mixin transition($content) {
+  -webkit-transition: $content;
+  -moz-transition: $content;
+  -ms-transition: $content;
+  -o-transition: $content;
+  transition: $content;
+}
+
 .flex-container {
   display: flex;
   flex-direction: column;
@@ -30,14 +38,14 @@
     }
   }
 
-  .button-column{
+  .button-column {
     display: flex;
     flex-direction: column;
   }
 
   .button-choices {
     margin: 17px 0;
-    }
+  }
 }
 
 .div-flex-right {
@@ -58,8 +66,35 @@
   margin-top: 35px;
 }
 
-.buttonDiv {
+.button-div-profile {
+  display: flex;
+  justify-content: center;
+  height: 3em;
+  margin-bottom: 1em;
   gap: 5px;
+
+  button {
+    width: 10em;
+    padding: 10px 25px;
+    font-size: 15px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 50px;
+    animation: fadeIn 1s ease forwards;
+    padding: 5px 35px;
+    color: #fff;
+    font-size: 12px;
+    background-color: #5900ff;
+    border: none;
+    border-radius: 50px;
+
+    @include transition(all 0.3s ease);
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
 }
 
 .flex-row {
