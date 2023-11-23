@@ -1,5 +1,10 @@
+@import 'base';
+
 .single-event {
   .event-wrapper {
+    display: flex;
+    flex-direction: column;
+
     .event-info-container {
       position: relative;
       margin-bottom: 32px;
@@ -76,14 +81,12 @@
         display: grid;
         grid-template-columns: repeat(4, minmax(64px, 1fr));
         gap: 8px;
-        outline: 1px dotted red;
 
         li {
           display: flex;
           flex-direction: column;
           align-items: center;
           width: fit-content;
-          outline: 1px solid green;
 
           img {
             width: 56px;
@@ -106,6 +109,119 @@
 
     &.animate-prev {
       animation: animate-prev 0.25s ease-out;
+    }
+
+    .btn {
+      width: 220px;
+      padding: 10px 25px;
+      color: #fff;
+      font-size: 14px;
+      background-color: #5900ff;
+      border: 1px solid #5900ff;
+      border-radius: 50px;
+      box-shadow: 1px 5px 12px rgb(194 194 194);
+      animation: fadeIn 1s ease forwards;
+      margin: 64px auto 0;
+
+      @include transition(all 0.5s ease);
+
+      &:hover {
+        color: #000;
+        background-color: #fff;
+        cursor: pointer;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.invite-user-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #fff;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+
+  .search-friends-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin: 20px auto;
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 50px;
+
+    input {
+      width: 85%;
+      border: none;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    img {
+      width: 10%;
+    }
+  }
+
+  .invite-user-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    padding: 32px;
+
+    .invite-user {
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 64px 1fr 24px;
+      gap: 16px;
+      align-items: center;
+      width: 100%;
+      background-color: #efefef;
+      padding: 8px 16px;
+
+      .invite-user-img {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      label {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #000;
+      }
+    }
+  }
+
+  .btn {
+    width: 220px;
+    padding: 10px 25px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #5900ff;
+    border: 1px solid #5900ff;
+    border-radius: 50px;
+    box-shadow: 1px 5px 12px rgb(194 194 194);
+    animation: fadeIn 1s ease forwards;
+    margin: auto;
+
+    @include transition(all 0.5s ease);
+
+    &:hover {
+      color: #000;
+      background-color: #fff;
+      cursor: pointer;
+      opacity: 0.5;
     }
   }
 }

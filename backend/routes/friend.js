@@ -60,6 +60,28 @@ router.get('/friends/search/:userId', async (req, res) => {
   }
 });
 
+// Kopierade ovan, men vände på det så man bara söker bland sina vänner
+router.get('/friends/myfriends/search/:userId', async (req, res) => {
+  const { userId } = req.params;
+  const { search } = req.query;
+  try {
+    const query = `
+    SELECT u.userId, CONCAT(u.userFirstName, ' ', u.userLastName) AS fullName, u.userimgurl AS userimgUrl
+    FROM userInfo u
+    INNER JOIN friend f ON (u.userId = f.user1Id OR u.userId = f.user2Id)
+    WHERE (f.user1Id = $1 OR f.user2Id = $1) AND u.userId != $1
+    ${search ? 'AND (u.userFirstName ILIKE $2 OR u.userLastName ILIKE $2)' : ''}
+    `;
+    const values = search ? [userId, `%${search}%`] : [userId];
+    const users = await client.query(query, values);
+
+    res.json(users.rows);
+  } catch (error) {
+    console.error('failed', error);
+    res.status(500).json({ error: `Failed with id ${userId}` });
+  }
+});
+
 router.post('/friends/add', async (req, res) => {
   const { userId, friendId } = req.body;
 

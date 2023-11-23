@@ -1,111 +1,30 @@
-import { useContext, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useRef, useContext, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useSwipeable } from 'react-swipeable';
 
 import Error from './Error';
+import EventParticipants from '../components/EventParticipants';
+import EventInviteModal from '../components/EventInviteModal';
+import Loading from '../components/Loading';
 
 import { Context } from '../contexts/UserContext';
 import '../styles/SingleEvent.scss';
 
-const Loading = () => {
-  return <p>Loading...</p>;
-};
-
-const Participants = ({ participants }) => {
-  return (
-    <div className='participants-container'>
-      <h2>Deltagare</h2>
-      <ul className='participant-content-container'>
-        {participants.map((participant) => (
-          <li key={participant.userid}>
-            <img src={participant.userimgurl} alt={participant.username} />
-            <Link to={`/profile/${participant.userid}`}>
-              {participant.username}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const InviteUserModal = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const { user } = useContext(Context);
-
-  async function getFriends() {
-    console.log('searchTerm', searchTerm);
-    const response = await fetch(
-      `/api/friends/search/${user.userid}?search=${searchTerm}`
-    );
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    return response.json();
-  }
-
-  function handleSearch(e) {
-    console.log('handle search', e.target.value);
-    setSearchTerm(e.target.value);
-  }
-
-  // fetch users friends
-  const query = useQuery({
-    queryKey: ['friends', user.userid, searchTerm],
-    queryFn: getFriends,
-  });
-
-  console.log('friends', query);
-
-  return createPortal(
-    <div className='invite-user-modal'>
-      <label>Sök bland vänner</label>
-      <input
-        onChange={handleSearch}
-        type='text'
-        name='invite-user'
-        id='invite-user'
-      />
-
-      {query.isLoading ? (
-        <Loading />
-      ) : query.isSuccess ? (
-        <>
-          <div className='invite-user-list'>
-            <ul>
-              {query.data.map((friend) => (
-                <li key={friend.userid}>
-                  <img
-                    src={friend.userimgurl}
-                    alt={friend.firstname + friend.firstname}
-                  />
-                  <Link to={`/profile/${friend.userid}`}>
-                    {friend.firstname}
-                  </Link>
-                  <input type='radio' name='' id='' />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <button type='button'>Bjud in</button>
-        </>
-      ) : (
-        <Error />
-      )}
-    </div>,
-    document.body
-  );
-};
-
 const SingleEvent = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const { eventId } = useParams();
   const navigate = useNavigate();
-
+  const { user } = useContext(Context);
   const wrapper = useRef(null);
+
+  function openModal() {
+    setModalIsOpen(true);
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
 
   function animateEventLeft() {
     wrapper.current.classList.remove('animate-next');
@@ -164,8 +83,6 @@ const SingleEvent = () => {
     queryFn: getEvent,
   });
 
-  console.log(query);
-
   return (
     <div {...handlers} className='single-event'>
       {query.isLoading ? (
@@ -211,9 +128,21 @@ const SingleEvent = () => {
             )}
           </div>
           <div className='event-participants-container'>
-            <Participants participants={query.data.participants} />
+            <EventParticipants
+              participants={query.data.participants.filter(
+                (participant) => participant.userid !== user.userid
+              )}
+            />
           </div>
-          <InviteUserModal />
+          <button className='btn' onClick={openModal}>
+            Invite friends
+          </button>
+          {modalIsOpen && (
+            <EventInviteModal
+              participants={query.data.participants}
+              closeModal={closeModal}
+            />
+          )}
         </div>
       ) : (
         <div>Error</div>
