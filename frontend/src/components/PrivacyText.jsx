@@ -13,7 +13,15 @@ const PrivacyText = () => {
           use of data are managed on our website to comply with applicable laws
           and regulations, such as GDPR (General Data Protection Regulation).
         </p>
-
+        <p>
+          By creating your account and accepting the privacy policy and GDPR
+          guidelines, you provide your specific and informed consent to Pally
+          for processing your personal data as the legal basis. Your consent is
+          voluntary, and you have the rights to withdraw it at any time. Pally
+          will only process your personal data in accordance with the purpose
+          clearly communicated to you at the time of consent and in compliance
+          with applicable legal requirements.
+        </p>
         {/* Tatiana: */}
         <h2>What data do we store and for how long?</h2>
         <p>
@@ -38,7 +46,6 @@ const PrivacyText = () => {
           that you are over 18 years old. We require your full social security
           number so we can verify that you are of legal age.
         </p>
-
         {/* Johan: */}
         <h2>Our Purpose for Collecting Data</h2>
         <p>
@@ -59,7 +66,6 @@ const PrivacyText = () => {
           further information regarding our data protection policy, please
           contact us.
         </p>
-
         {/* Stina: */}
         <h2>What rights do you have?</h2>
         <p>
@@ -72,7 +78,6 @@ const PrivacyText = () => {
           Alternatively, you can contact us via our contact information to
           perform these actions.
         </p>
-
         {/* Marcus: */}
         <h2>Who do we share your information with?</h2>
         <p>
@@ -89,7 +94,6 @@ const PrivacyText = () => {
           information you choose to share and ensuring that it aligns with your
           privacy preferences.
         </p>
-
         {/* Marcus: */}
         <h2>How long is my data stored?</h2>
         <p>
@@ -98,7 +102,6 @@ const PrivacyText = () => {
           opportunity to request the retention of your information for a longer
           period if needed.
         </p>
-
         {/* Johan: */}
         <h2>Security Measures</h2>
         <p>
@@ -112,7 +115,6 @@ const PrivacyText = () => {
           including affected users and authorities, about the ongoing incident,
           its impact, and the actions being taken to address it.
         </p>
-
         {/* Tatiana: */}
         <h2>Contact Information</h2>
         <p>
