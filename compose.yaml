@@ -1,20 +1,18 @@
-services:
-  backend:
+backend:
     build: backend
     depends_on:
       database:
         condition: service_healthy
     env_file:
       - ./backend/.env
-    healthcheck:
-      interval: 2s
-      test: "curl -f http://localhost:3000"
     ports:
       - "3000:3000"
+    volumes:
+      - ./backend/uploads:/app/uploads
     restart: unless-stopped
   database:
-    env_file:
-      - ./backend/.env
+    environment:
+      - POSTGRES_PASSWORD=secret
     healthcheck:
       interval: 2s
       test: "pg_isready --username=postgres"
