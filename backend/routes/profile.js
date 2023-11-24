@@ -67,7 +67,7 @@ router.put('/profile/:userId', upload.single('img'), async (req, res) => {
 
       destinationPath = `uploads/${req.file.originalname}`;
 
-      const image = await Jimp.read(destinationPath);
+      const image = await Jimp.read(req.file.path);
       await image.resize(300, 300).write(destinationPath);
 
       console.log('bild2: ', image);
