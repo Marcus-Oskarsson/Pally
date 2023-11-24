@@ -8,6 +8,7 @@ import '../styles/navbar.scss';
 const Navbar = ({ setIsOpen, isOpen }) => {
   let location = useLocation();
   let pages = [{ name: 'Login', path: 'login', restricted: false }];
+  let privacy = [{ name: 'Privacy', path: 'privacy', restricted: false }];
 
   useEffect(
     function hiddenOverflowWhenOpen() {
@@ -29,6 +30,11 @@ const Navbar = ({ setIsOpen, isOpen }) => {
     <nav className={`navbar ${isOpen ? 'open' : ''}`}>
       <ul>
         {pages.map((page) => (
+          <li key={page.name}>
+            <NavLink to={`/${page.path.toLowerCase()}`}>{page.name}</NavLink>
+          </li>
+        ))}
+        {privacy.map((page) => (
           <li key={page.name}>
             <NavLink to={`/${page.path.toLowerCase()}`}>{page.name}</NavLink>
           </li>

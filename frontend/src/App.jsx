@@ -51,7 +51,6 @@ const App = () => {
             { element: <Friends />, path: '/friends/:id?' },
             { element: <Home />, path: '/' },
             { element: <Logout />, path: '/logout' },
-            { element: <Privacy />, path: '/privacy' },
             { element: <Event />, path: '/event' },
             { element: <SingleEvent />, path: '/event/:eventId' },
           ],
